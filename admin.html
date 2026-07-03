@@ -1,0 +1,751 @@
+<!doctype html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FGES Content Admin</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <style>
+      :root {
+        --bg: #050816;
+        --panel: #0d1428;
+        --panel-2: #111b34;
+        --line: rgba(24, 232, 255, 0.2);
+        --text: #f4f7ff;
+        --muted: #9fb1d4;
+        --cyan: #18e8ff;
+        --blue: #2b5dff;
+        --violet: #9b3dff;
+        --danger: #ff5c7a;
+        --ok: #47e6a6;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        color: var(--text);
+        font-family: Arial, "Microsoft YaHei", sans-serif;
+        background:
+          radial-gradient(circle at 10% 0%, rgba(24, 232, 255, 0.16), transparent 28rem),
+          radial-gradient(circle at 90% 12%, rgba(155, 61, 255, 0.15), transparent 26rem),
+          var(--bg);
+      }
+
+      a {
+        color: inherit;
+      }
+
+      button,
+      input,
+      textarea,
+      select {
+        font: inherit;
+      }
+
+      .admin-shell {
+        min-height: 100vh;
+      }
+
+      .admin-header {
+        position: sticky;
+        top: 0;
+        z-index: 5;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        padding: 18px clamp(16px, 4vw, 42px);
+        border-bottom: 1px solid var(--line);
+        background: rgba(5, 8, 22, 0.92);
+        backdrop-filter: blur(18px);
+      }
+
+      .admin-title {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        min-width: 0;
+      }
+
+      .admin-title img {
+        width: 42px;
+        height: 42px;
+        object-fit: contain;
+        filter: drop-shadow(0 0 12px rgba(24, 232, 255, 0.55));
+      }
+
+      .admin-title h1 {
+        margin: 0;
+        font-size: clamp(1rem, 2vw, 1.35rem);
+        line-height: 1.1;
+      }
+
+      .admin-title p {
+        margin: 4px 0 0;
+        color: var(--muted);
+        font-size: 0.86rem;
+      }
+
+      .admin-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: flex-end;
+      }
+
+      .button {
+        min-height: 40px;
+        padding: 9px 14px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        color: var(--text);
+        background: rgba(255, 255, 255, 0.07);
+        cursor: pointer;
+      }
+
+      .button:hover {
+        border-color: rgba(24, 232, 255, 0.55);
+      }
+
+      .button.primary {
+        border-color: transparent;
+        color: #03101b;
+        font-weight: 800;
+        background: linear-gradient(135deg, var(--cyan), #8cf7ff);
+      }
+
+      .button.danger {
+        border-color: rgba(255, 92, 122, 0.35);
+        color: #ffd8df;
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: 250px minmax(0, 1fr);
+        gap: 22px;
+        width: min(1440px, calc(100% - 32px));
+        margin: 24px auto 48px;
+      }
+
+      .sidebar,
+      .panel {
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: rgba(13, 20, 40, 0.86);
+        box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+      }
+
+      .sidebar {
+        position: sticky;
+        top: 92px;
+        align-self: start;
+        padding: 10px;
+      }
+
+      .tab {
+        display: block;
+        width: 100%;
+        margin: 0 0 6px;
+        padding: 12px;
+        border: 1px solid transparent;
+        border-radius: 8px;
+        color: var(--muted);
+        text-align: left;
+        background: transparent;
+        cursor: pointer;
+      }
+
+      .tab.is-active {
+        color: var(--text);
+        border-color: rgba(24, 232, 255, 0.35);
+        background: rgba(24, 232, 255, 0.1);
+      }
+
+      .panel {
+        display: none;
+        padding: clamp(18px, 3vw, 28px);
+      }
+
+      .panel.is-active {
+        display: block;
+      }
+
+      .panel h2 {
+        margin: 0;
+        font-size: clamp(1.35rem, 2.5vw, 2rem);
+      }
+
+      .panel > p {
+        max-width: 860px;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .notice {
+        margin: 16px 0;
+        padding: 14px 16px;
+        border: 1px solid rgba(24, 232, 255, 0.28);
+        border-radius: 8px;
+        color: #dce8ff;
+        background: rgba(24, 232, 255, 0.08);
+        line-height: 1.65;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .field {
+        display: grid;
+        gap: 7px;
+      }
+
+      .field label,
+      .field-title {
+        color: #d9e7ff;
+        font-size: 0.88rem;
+        font-weight: 800;
+      }
+
+      .field small {
+        color: var(--muted);
+        line-height: 1.45;
+      }
+
+      input,
+      textarea,
+      select {
+        width: 100%;
+        border: 1px solid rgba(159, 177, 212, 0.28);
+        border-radius: 8px;
+        color: var(--text);
+        background: rgba(3, 4, 11, 0.45);
+        outline: none;
+      }
+
+      input,
+      select {
+        min-height: 42px;
+        padding: 10px 12px;
+      }
+
+      textarea {
+        min-height: 82px;
+        padding: 12px;
+        resize: vertical;
+      }
+
+      input:focus,
+      textarea:focus,
+      select:focus {
+        border-color: rgba(24, 232, 255, 0.68);
+      }
+
+      .card-list {
+        display: grid;
+        gap: 16px;
+      }
+
+      .edit-card {
+        padding: 16px;
+        border: 1px solid rgba(159, 177, 212, 0.18);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.045);
+      }
+
+      .edit-card h3 {
+        margin: 0 0 14px;
+      }
+
+      .portfolio-preview {
+        width: 100%;
+        aspect-ratio: 16 / 10;
+        margin-top: 12px;
+        border: 1px solid rgba(24, 232, 255, 0.24);
+        border-radius: 8px;
+        object-fit: cover;
+        background: #03040b;
+      }
+
+      .toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+        margin: 16px 0;
+      }
+
+      .toolbar > * {
+        flex: 1 1 220px;
+      }
+
+      .text-list {
+        display: grid;
+        gap: 12px;
+      }
+
+      .text-row {
+        display: grid;
+        grid-template-columns: minmax(180px, 260px) minmax(0, 1fr);
+        gap: 14px;
+        padding: 12px;
+        border: 1px solid rgba(159, 177, 212, 0.14);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.035);
+      }
+
+      .key-name {
+        color: var(--cyan);
+        font-family: Consolas, monospace;
+        font-size: 0.82rem;
+        overflow-wrap: anywhere;
+      }
+
+      .export-box {
+        min-height: 280px;
+        font-family: Consolas, monospace;
+        font-size: 0.82rem;
+      }
+
+      .status {
+        min-height: 22px;
+        margin-top: 10px;
+        color: var(--ok);
+        font-size: 0.9rem;
+      }
+
+      .status.error {
+        color: var(--danger);
+      }
+
+      .hidden-input {
+        display: none;
+      }
+
+      @media (max-width: 900px) {
+        .admin-header,
+        .layout {
+          grid-template-columns: 1fr;
+        }
+
+        .admin-header {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .layout {
+          width: min(100% - 24px, 1440px);
+        }
+
+        .sidebar {
+          position: static;
+        }
+
+        .grid,
+        .text-row {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body data-admin="true">
+    <div class="admin-shell">
+      <header class="admin-header">
+        <div class="admin-title">
+          <img src="images/fges-logo-transparent.png" alt="FGES logo" />
+          <div>
+            <h1>FGES 网站内容后台</h1>
+            <p>免费安全版：编辑后导出 content.json，再上传到 GitHub。</p>
+          </div>
+        </div>
+        <div class="admin-actions">
+          <button class="button" type="button" id="importButton">导入 content.json</button>
+          <button class="button" type="button" id="refreshExportButton">刷新导出内容</button>
+          <button class="button primary" type="button" id="downloadButton">下载 content.json</button>
+          <input class="hidden-input" type="file" id="importFile" accept="application/json,.json" />
+        </div>
+      </header>
+
+      <div class="layout">
+        <aside class="sidebar" aria-label="Admin sections">
+          <button class="tab is-active" type="button" data-tab="basic">基础资料</button>
+          <button class="tab" type="button" data-tab="pricing">价格配套</button>
+          <button class="tab" type="button" data-tab="portfolio">作品图片</button>
+          <button class="tab" type="button" data-tab="texts">全部文字</button>
+          <button class="tab" type="button" data-tab="export">导出与上传</button>
+        </aside>
+
+        <main>
+          <section class="panel is-active" data-panel="basic">
+            <h2>基础资料</h2>
+            <p>这里会影响网站的公司名、WhatsApp、Email 和社交媒体链接。</p>
+            <div class="grid">
+              <div class="field">
+                <label for="companyName">公司英文全名</label>
+                <input id="companyName" data-field="contactSettings.companyName" />
+              </div>
+              <div class="field">
+                <label for="shortName">短名称</label>
+                <input id="shortName" data-field="contactSettings.shortName" />
+              </div>
+              <div class="field">
+                <label for="chineseName">中文名称</label>
+                <input id="chineseName" data-field="contactSettings.chineseName" />
+              </div>
+              <div class="field">
+                <label for="whatsappNumber">WhatsApp 号码</label>
+                <input id="whatsappNumber" data-field="contactSettings.whatsappNumber" />
+                <small>写国家代码，不要加 +。例如 60172599400。</small>
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" data-field="contactSettings.email" />
+              </div>
+              <div class="field">
+                <label for="facebookUrl">Facebook 链接</label>
+                <input id="facebookUrl" data-field="contactSettings.facebookUrl" />
+              </div>
+              <div class="field">
+                <label for="instagramUrl">Instagram 链接</label>
+                <input id="instagramUrl" data-field="contactSettings.instagramUrl" />
+              </div>
+            </div>
+          </section>
+
+          <section class="panel" data-panel="pricing">
+            <h2>价格配套</h2>
+            <p>这里只改价格。配套名称、项目说明可以到“全部文字”里搜索 pricing 修改。</p>
+            <div class="grid">
+              <div class="field">
+                <label for="starterPrice">Starter Package 价格</label>
+                <input id="starterPrice" data-field="editable.pricing.starter.price" />
+              </div>
+              <div class="field">
+                <label for="standardPrice">Standard Package 价格</label>
+                <input id="standardPrice" data-field="editable.pricing.standard.price" />
+              </div>
+              <div class="field">
+                <label for="monthlyPrice">Monthly Social Media Package 价格</label>
+                <input id="monthlyPrice" data-field="editable.pricing.monthly.price" />
+              </div>
+            </div>
+          </section>
+
+          <section class="panel" data-panel="portfolio">
+            <h2>作品图片</h2>
+            <div class="notice">
+              上架图片的做法：先把图片文件上传到 GitHub 的 <strong>images</strong> 文件夹，然后在这里填写路径，
+              例如 <strong>images/poster-01.jpg</strong>。选择本地图片只会帮你自动填文件名和预览，不会真正上传图片。
+            </div>
+            <div class="card-list" id="portfolioEditor"></div>
+          </section>
+
+          <section class="panel" data-panel="texts">
+            <h2>全部文字</h2>
+            <p>这里可以改网站几乎所有文字。先选语言，再搜索关键词，例如 hero、services、pricing、portfolio、mcn、contact。</p>
+            <div class="toolbar">
+              <label class="field">
+                <span class="field-title">语言</span>
+                <select id="textLanguage">
+                  <option value="cn">中文 CN</option>
+                  <option value="en">English EN</option>
+                  <option value="bm">Bahasa Melayu BM</option>
+                </select>
+              </label>
+              <label class="field">
+                <span class="field-title">搜索文字或 key</span>
+                <input id="textSearch" placeholder="例如 hero / services / copyright / WhatsApp" />
+              </label>
+            </div>
+            <div class="text-list" id="textEditor"></div>
+          </section>
+
+          <section class="panel" data-panel="export">
+            <h2>导出与上传</h2>
+            <div class="notice">
+              修改完成后，点击“下载 content.json”。然后到 GitHub 仓库上传并覆盖根目录的 <strong>content.json</strong>。
+              如果你有新增图片，也要把图片上传到 <strong>images</strong> 文件夹。等 GitHub Pages 部署成功后，网站就会更新。
+            </div>
+            <div class="toolbar">
+              <button class="button primary" type="button" id="downloadButton2">下载 content.json</button>
+              <button class="button" type="button" id="copyButton">复制 JSON</button>
+              <button class="button danger" type="button" id="resetButton">重置为默认内容</button>
+            </div>
+            <textarea class="export-box" id="exportBox" spellcheck="false"></textarea>
+          </section>
+
+          <p class="status" id="status"></p>
+        </main>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+      const defaultContent = JSON.parse(JSON.stringify(window.FGES_DEFAULT_CONTENT || {}));
+      let contentState = normalizeContent(defaultContent);
+
+      const portfolioItems = [
+        { id: "item1", title: "作品图片 1" },
+        { id: "item2", title: "作品图片 2" },
+        { id: "item3", title: "作品图片 3" },
+      ];
+
+      function normalizeContent(content) {
+        return {
+          schemaVersion: 1,
+          contactSettings: JSON.parse(JSON.stringify(content.contactSettings || {})),
+          editable: JSON.parse(JSON.stringify(content.editable || {})),
+          translations: JSON.parse(JSON.stringify(content.translations || {})),
+        };
+      }
+
+      function isObject(value) {
+        return value && typeof value === "object" && !Array.isArray(value);
+      }
+
+      function mergeDeep(target, source) {
+        if (!isObject(source)) return target;
+        Object.entries(source).forEach(([key, value]) => {
+          if (isObject(value) && isObject(target[key])) {
+            mergeDeep(target[key], value);
+          } else {
+            target[key] = value;
+          }
+        });
+        return target;
+      }
+
+      function getValue(path) {
+        return path.split(".").reduce((value, key) => (value == null ? undefined : value[key]), contentState);
+      }
+
+      function setValue(path, value) {
+        const parts = path.split(".");
+        const last = parts.pop();
+        let target = contentState;
+        parts.forEach((part) => {
+          if (!isObject(target[part])) target[part] = {};
+          target = target[part];
+        });
+        target[last] = value;
+        updateExportBox();
+      }
+
+      function setStatus(message, isError = false) {
+        const status = document.querySelector("#status");
+        status.textContent = message;
+        status.classList.toggle("error", isError);
+      }
+
+      function bindFields() {
+        document.querySelectorAll("[data-field]").forEach((field) => {
+          field.value = getValue(field.dataset.field) ?? "";
+          field.addEventListener("input", () => {
+            setValue(field.dataset.field, field.value);
+          });
+        });
+      }
+
+      function renderPortfolioEditor() {
+        const container = document.querySelector("#portfolioEditor");
+        container.innerHTML = "";
+
+        portfolioItems.forEach((item) => {
+          const path = `editable.portfolioImages.${item.id}`;
+          const value = getValue(path) || "";
+          const card = document.createElement("article");
+          card.className = "edit-card";
+          card.innerHTML = `
+            <h3>${item.title}</h3>
+            <div class="field">
+              <label>图片路径</label>
+              <input data-portfolio-path="${path}" value="${escapeHtml(value)}" />
+              <small>建议格式：images/your-image-name.jpg</small>
+            </div>
+            <div class="toolbar">
+              <label class="button">
+                选择本地图片
+                <input class="hidden-input" type="file" accept="image/*" data-portfolio-file="${path}" />
+              </label>
+            </div>
+            <img class="portfolio-preview" src="${escapeHtml(value)}" alt="${item.title} preview" />
+          `;
+          container.appendChild(card);
+        });
+
+        container.querySelectorAll("[data-portfolio-path]").forEach((input) => {
+          input.addEventListener("input", () => {
+            setValue(input.dataset.portfolioPath, input.value);
+            input.closest(".edit-card").querySelector(".portfolio-preview").src = input.value;
+          });
+        });
+
+        container.querySelectorAll("[data-portfolio-file]").forEach((input) => {
+          input.addEventListener("change", () => {
+            const file = input.files && input.files[0];
+            if (!file) return;
+            const suggestedPath = `images/${file.name}`;
+            const card = input.closest(".edit-card");
+            const pathInput = card.querySelector("[data-portfolio-path]");
+            pathInput.value = suggestedPath;
+            card.querySelector(".portfolio-preview").src = URL.createObjectURL(file);
+            setValue(input.dataset.portfolioFile, suggestedPath);
+            setStatus(`已填入图片路径：${suggestedPath}。记得把图片上传到 GitHub 的 images 文件夹。`);
+          });
+        });
+      }
+
+      function renderTextEditor() {
+        const lang = document.querySelector("#textLanguage").value;
+        const query = document.querySelector("#textSearch").value.trim().toLowerCase();
+        const container = document.querySelector("#textEditor");
+        const entries = Object.entries(contentState.translations[lang] || {})
+          .filter(([key, value]) => {
+            const haystack = `${key} ${value}`.toLowerCase();
+            return !query || haystack.includes(query);
+          })
+          .sort(([a], [b]) => a.localeCompare(b));
+
+        container.innerHTML = "";
+
+        entries.forEach(([key, value]) => {
+          const row = document.createElement("div");
+          row.className = "text-row";
+          row.innerHTML = `
+            <div class="key-name">${escapeHtml(key)}</div>
+            <textarea data-text-key="${escapeHtml(key)}">${escapeHtml(value)}</textarea>
+          `;
+          container.appendChild(row);
+        });
+
+        container.querySelectorAll("[data-text-key]").forEach((textarea) => {
+          textarea.addEventListener("input", () => {
+            const key = textarea.dataset.textKey;
+            contentState.translations[lang][key] = textarea.value;
+            updateExportBox();
+          });
+        });
+      }
+
+      function updateExportBox() {
+        const box = document.querySelector("#exportBox");
+        if (box) box.value = JSON.stringify(contentState, null, 2);
+      }
+
+      function downloadContent() {
+        updateExportBox();
+        const blob = new Blob([JSON.stringify(contentState, null, 2) + "\\n"], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "content.json";
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        URL.revokeObjectURL(url);
+        setStatus("content.json 已下载。上传到 GitHub 根目录并覆盖旧文件。");
+      }
+
+      async function loadExistingContent() {
+        try {
+          const response = await fetch("content.json", { cache: "no-store" });
+          if (!response.ok) throw new Error("content.json not found");
+          const existing = await response.json();
+          contentState = mergeDeep(normalizeContent(defaultContent), existing);
+          setStatus("已载入现有 content.json。");
+        } catch (error) {
+          contentState = normalizeContent(defaultContent);
+          setStatus("没有载入到现有 content.json，正在使用网站默认内容。");
+        }
+      }
+
+      function importContentFile(file) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          try {
+            const imported = JSON.parse(reader.result);
+            contentState = mergeDeep(normalizeContent(defaultContent), imported);
+            rerenderAll();
+            setStatus("已导入 content.json。");
+          } catch (error) {
+            setStatus("导入失败：JSON 格式不正确。", true);
+          }
+        };
+        reader.readAsText(file);
+      }
+
+      function resetContent() {
+        if (!confirm("确定要重置为默认内容吗？当前未导出的修改会消失。")) return;
+        contentState = normalizeContent(defaultContent);
+        rerenderAll();
+        setStatus("已重置为默认内容。");
+      }
+
+      async function copyJson() {
+        updateExportBox();
+        try {
+          await navigator.clipboard.writeText(document.querySelector("#exportBox").value);
+          setStatus("JSON 已复制。");
+        } catch (error) {
+          setStatus("复制失败，请手动复制导出框内容。", true);
+        }
+      }
+
+      function escapeHtml(value) {
+        return String(value ?? "")
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;");
+      }
+
+      function initTabs() {
+        document.querySelectorAll("[data-tab]").forEach((tab) => {
+          tab.addEventListener("click", () => {
+            document.querySelectorAll("[data-tab]").forEach((item) => item.classList.remove("is-active"));
+            document.querySelectorAll("[data-panel]").forEach((panel) => panel.classList.remove("is-active"));
+            tab.classList.add("is-active");
+            document.querySelector(`[data-panel="${tab.dataset.tab}"]`).classList.add("is-active");
+            updateExportBox();
+          });
+        });
+      }
+
+      function rerenderAll() {
+        bindFields();
+        renderPortfolioEditor();
+        renderTextEditor();
+        updateExportBox();
+      }
+
+      async function initAdmin() {
+        initTabs();
+        await loadExistingContent();
+        rerenderAll();
+
+        document.querySelector("#importButton").addEventListener("click", () => document.querySelector("#importFile").click());
+        document.querySelector("#importFile").addEventListener("change", (event) => {
+          const file = event.target.files && event.target.files[0];
+          if (file) importContentFile(file);
+        });
+        document.querySelector("#downloadButton").addEventListener("click", downloadContent);
+        document.querySelector("#downloadButton2").addEventListener("click", downloadContent);
+        document.querySelector("#refreshExportButton").addEventListener("click", () => {
+          updateExportBox();
+          setStatus("导出内容已刷新。");
+        });
+        document.querySelector("#copyButton").addEventListener("click", copyJson);
+        document.querySelector("#resetButton").addEventListener("click", resetContent);
+        document.querySelector("#textLanguage").addEventListener("change", renderTextEditor);
+        document.querySelector("#textSearch").addEventListener("input", renderTextEditor);
+      }
+
+      initAdmin();
+    </script>
+  </body>
+</html>

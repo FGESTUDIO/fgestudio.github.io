@@ -1,4 +1,4 @@
-const contactSettings = {
+let contactSettings = {
   companyName: "FANTASY GENESIS ENTERTAINMENT STUDIO",
   shortName: "FGES",
   chineseName: "梦幻起源欢娱工作室",
@@ -10,7 +10,7 @@ const contactSettings = {
 
 const currentYear = new Date().getFullYear();
 
-const translations = {
+let translations = {
   cn: {
     "metaTitle.design": "{company} | 平面设计服务",
     "metaDescription.design": "{company} 提供海报、社交媒体帖子、广告图、banner、名片、YouTube 缩略图与月配套平面设计服务。",
@@ -652,6 +652,30 @@ const translations = {
   },
 };
 
+let editableContent = {
+  pricing: {
+    starter: { price: "RMXX" },
+    standard: { price: "RMXX" },
+    monthly: { price: "RMXX" },
+  },
+  portfolioImages: {
+    item1:
+      "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 560'%3E%3Crect width='800' height='560' fill='%23050816'/%3E%3Crect x='78' y='78' width='644' height='404' rx='28' fill='%23112a72'/%3E%3Crect x='130' y='132' width='330' height='44' rx='12' fill='%2318e8ff'/%3E%3Crect x='130' y='214' width='440' height='26' rx='10' fill='%23ffffff' opacity='.86'/%3E%3Crect x='130' y='264' width='360' height='20' rx='10' fill='%23ffffff' opacity='.54'/%3E%3Ccircle cx='620' cy='206' r='74' fill='%239b3dff' opacity='.82'/%3E%3Cpath d='M594 348l50-104 60 104h-44l-16 36-16-36z' fill='%2318e8ff'/%3E%3C/svg%3E",
+    item2:
+      "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 560'%3E%3Crect width='800' height='560' fill='%23050816'/%3E%3Crect x='72' y='70' width='656' height='420' rx='28' fill='%23131325'/%3E%3Crect x='116' y='118' width='568' height='320' rx='24' fill='%232b5dff'/%3E%3Crect x='158' y='158' width='350' height='56' rx='14' fill='%23ffffff'/%3E%3Crect x='158' y='250' width='230' height='30' rx='12' fill='%23050816' opacity='.85'/%3E%3Cpath d='M532 330l52-112 70 112h-48l-20 42-20-42z' fill='%239b3dff'/%3E%3Ccircle cx='584' cy='220' r='42' fill='%2318e8ff'/%3E%3C/svg%3E",
+    item3:
+      "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 560'%3E%3Crect width='800' height='560' fill='%23050816'/%3E%3Crect x='88' y='98' width='624' height='114' rx='26' fill='%2318e8ff'/%3E%3Crect x='88' y='252' width='292' height='210' rx='28' fill='%23131325'/%3E%3Crect x='420' y='252' width='292' height='210' rx='28' fill='%239b3dff'/%3E%3Crect x='130' y='134' width='326' height='28' rx='10' fill='%23050816' opacity='.9'/%3E%3Ccircle cx='514' cy='357' r='58' fill='%23ffffff' opacity='.82'/%3E%3Cpath d='M200 392l54-92 54 92h-36l-18 34-18-34z' fill='%2318e8ff'/%3E%3C/svg%3E",
+  },
+};
+
+const defaultContentSnapshot = {
+  contactSettings: JSON.parse(JSON.stringify(contactSettings)),
+  editable: JSON.parse(JSON.stringify(editableContent)),
+  translations: JSON.parse(JSON.stringify(translations)),
+};
+
+window.FGES_DEFAULT_CONTENT = defaultContentSnapshot;
+
 const langMap = {
   cn: "zh-Hans",
   en: "en",
@@ -675,6 +699,45 @@ let latestYouTubeStats = null;
 
 function getPageKey() {
   return document.body?.dataset.page || "design";
+}
+
+function isPlainObject(value) {
+  return value && typeof value === "object" && !Array.isArray(value);
+}
+
+function deepMerge(target, source) {
+  if (!isPlainObject(source)) return target;
+
+  Object.entries(source).forEach(([key, value]) => {
+    if (isPlainObject(value) && isPlainObject(target[key])) {
+      deepMerge(target[key], value);
+    } else if (value !== undefined) {
+      target[key] = value;
+    }
+  });
+
+  return target;
+}
+
+function getNestedValue(source, path) {
+  return path.split(".").reduce((value, key) => {
+    if (value === undefined || value === null) return undefined;
+    return value[key];
+  }, source);
+}
+
+async function loadContentOverrides() {
+  try {
+    const response = await fetch("content.json", { cache: "no-store" });
+    if (!response.ok) return;
+
+    const content = await response.json();
+    contactSettings = deepMerge(contactSettings, content.contactSettings || {});
+    editableContent = deepMerge(editableContent, content.editable || {});
+    translations = deepMerge(translations, content.translations || {});
+  } catch (error) {
+    // The site keeps working with built-in content when content.json is missing locally.
+  }
 }
 
 function formatText(value) {
@@ -724,6 +787,24 @@ function formatUpdatedDate(value, lang) {
 
 function setMeta(selector, value) {
   document.querySelector(selector)?.setAttribute("content", value);
+}
+
+function renderEditableContent() {
+  document.querySelectorAll("[data-content]").forEach((element) => {
+    const path = element.getAttribute("data-content");
+    const value = getNestedValue(editableContent, path);
+    if (value !== undefined && value !== null) {
+      element.textContent = formatText(value);
+    }
+  });
+
+  document.querySelectorAll("[data-content-src]").forEach((element) => {
+    const path = element.getAttribute("data-content-src");
+    const value = getNestedValue(editableContent, path);
+    if (value) {
+      element.setAttribute("src", value);
+    }
+  });
 }
 
 function renderYouTubeStats(stats) {
@@ -827,6 +908,7 @@ function applyTranslations(lang) {
   });
 
   markCurrentPageNav();
+  renderEditableContent();
   renderYouTubeStats(latestYouTubeStats);
   localStorage.setItem("preferredLanguage", activeLanguage);
 }
@@ -1059,7 +1141,10 @@ function initHeroCanvas() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+  if (document.body?.dataset.admin === "true") return;
+
+  await loadContentOverrides();
   initLanguageSwitcher();
   loadYouTubeStats();
   initMobileMenu();

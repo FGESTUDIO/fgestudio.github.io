@@ -28,6 +28,8 @@ FGES WEB/
 ├── index.html
 ├── mcn.html
 ├── about.html
+├── admin.html
+├── content.json
 ├── style.css
 ├── script.js
 ├── README.md
@@ -60,7 +62,39 @@ FGES WEB/
 
 双击 `index.html` 也可以预览网站，只是部分浏览器会限制本地 JSON 读取；上线到 GitHub Pages 后会正常读取。
 
+## 1.1 如何使用免费后台 UI
+
+后台文件是：
+
+```text
+admin.html
+```
+
+使用方式：
+
+1. 双击打开 `admin.html`。
+2. 在后台修改基础资料、价格、作品图片路径或三语文字。
+3. 修改完成后点击 `下载 content.json`。
+4. 到 GitHub repository 上传并覆盖根目录的 `content.json`。
+5. 如果你新增了图片，也要把图片上传到 GitHub 的 `images` 文件夹。
+6. 点击 `Commit changes`。
+7. 等 GitHub Pages 部署成功后，刷新网站。
+
+注意：这个后台是免费安全版，不会自动登录 GitHub，也不会直接帮你上传文件。它只负责帮你编辑并生成 `content.json`。
+
+如果你双击打开 `admin.html` 时，它没有自动读取旧的 `content.json`，可以点击 `导入 content.json` 手动导入旧文件继续编辑。
+
 ## 2. 如何修改公司资料
+
+推荐使用后台 UI 修改：
+
+1. 双击打开 `admin.html`。
+2. 在 `基础资料` 修改公司名称、WhatsApp、Email、Facebook、Instagram。
+3. 点击 `下载 content.json`。
+4. 到 GitHub 上传并覆盖根目录的 `content.json`。
+5. 等 GitHub Pages 部署成功后刷新网站。
+
+也可以手动修改代码：
 
 打开 `script.js`，最上面有：
 
@@ -87,6 +121,17 @@ const contactSettings = {
 - `instagramUrl`：Instagram 链接
 
 ## 3. 如何修改三语文字
+
+推荐使用后台 UI：
+
+1. 打开 `admin.html`。
+2. 进入 `全部文字`。
+3. 选择语言：中文 CN、English EN、Bahasa Melayu BM。
+4. 搜索关键词，例如 `hero`、`services`、`pricing`、`mcn`、`contact`。
+5. 修改文字后下载 `content.json`。
+6. 上传并覆盖 GitHub 根目录的 `content.json`。
+
+也可以手动修改代码：
 
 所有中文、英文、马来文内容都在 `script.js` 的 `translations` 里面。
 
@@ -120,23 +165,13 @@ const translations = {
 
 ## 4. 如何修改价格
 
-打开 `index.html`，搜索：
+推荐使用后台 UI：
 
-```html
-RMXX
-```
-
-然后把它换成你的真实价格，例如：
-
-```html
-RM99
-```
-
-也可以写成：
-
-```html
-Contact Us
-```
+1. 打开 `admin.html`。
+2. 进入 `价格配套`。
+3. 把 `RMXX` 改成真实价格，例如 `RM99`，也可以写 `Contact Us`。
+4. 下载 `content.json`。
+5. 上传并覆盖 GitHub 根目录的 `content.json`。
 
 目前有三个配套：
 
@@ -162,19 +197,9 @@ images/fges-logo-social.png
 
 ## 6. 如何修改作品集图片
 
-打开 `index.html`，搜索：
+推荐使用后台 UI：
 
-```html
-id="portfolio"
-```
-
-每个作品卡片都有一个 `img`：
-
-```html
-<img src="..." alt="..." />
-```
-
-建议把真实作品图放进 `images` 文件夹，例如：
+1. 把真实作品图放进 `images` 文件夹，例如：
 
 ```text
 images/poster-01.jpg
@@ -182,11 +207,16 @@ images/youtube-thumbnail-01.jpg
 images/creator-branding-01.jpg
 ```
 
-然后把 `src` 改成：
+2. 打开 `admin.html`。
+3. 进入 `作品图片`。
+4. 填图片路径，例如：
 
-```html
-<img src="images/youtube-thumbnail-01.jpg" alt="Gaming YouTube thumbnail design" />
+```text
+images/poster-01.jpg
 ```
+
+5. 下载 `content.json`。
+6. 上传 `content.json`，也要把新图片上传到 GitHub 的 `images` 文件夹。
 
 ## 7. YouTube 频道数据如何自动更新
 
@@ -328,6 +358,8 @@ fgesstudio.github.io
    - `index.html`
    - `mcn.html`
    - `about.html`
+   - `admin.html`
+   - `content.json`
    - `style.css`
    - `script.js`
    - `README.md`
@@ -397,10 +429,12 @@ DNS 生效可能需要几分钟到 48 小时。
 上线前建议先检查：
 
 1. `script.js` 的公司名称、WhatsApp、Email、Facebook、Instagram。
-2. `script.js` 的三种语言文案。
-3. `index.html` 的 `RMXX` 价格。
-4. `mcn.html` 的艺人名字、介绍和频道链接。
-5. `data/youtube-stats.json` 是否存在。
-6. GitHub Secret `YOUTUBE_API_KEY` 是否已经设置。
-7. `index.html` 的 Portfolio 图片和作品描述。
-8. `images` 文件夹里的 logo 和作品图片是否已经上传。
+2. `admin.html` 能否打开。
+3. `content.json` 是否已经上传到 GitHub 根目录。
+4. `script.js` 的三种语言文案。
+5. `index.html` 的 `RMXX` 价格。
+6. `mcn.html` 的艺人名字、介绍和频道链接。
+7. `data/youtube-stats.json` 是否存在。
+8. GitHub Secret `YOUTUBE_API_KEY` 是否已经设置。
+9. `index.html` 的 Portfolio 图片和作品描述。
+10. `images` 文件夹里的 logo 和作品图片是否已经上传。
