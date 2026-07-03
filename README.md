@@ -4,11 +4,9 @@
 
 网站定位：
 
-- 平面设计服务
-- 社交媒体视觉设计
-- YouTube 缩略图设计
-- 游戏内容创作者品牌包装
-- 游戏创作者 MCN 孵化与长期内容支持
+- `index.html`：平面设计服务主页面
+- `mcn.html`：游戏内容创作者 MCN 孵化页面
+- `about.html`：公司介绍与两大业务分类页面
 
 网站特点：
 
@@ -28,6 +26,8 @@
 ```text
 FGES WEB/
 ├── index.html
+├── mcn.html
+├── about.html
 ├── style.css
 ├── script.js
 ├── README.md
@@ -326,6 +326,8 @@ fgesstudio.github.io
 8. 点击 `Upload files`。
 9. 上传整个项目文件夹里的内容，包含：
    - `index.html`
+   - `mcn.html`
+   - `about.html`
    - `style.css`
    - `script.js`
    - `README.md`
@@ -397,7 +399,7 @@ DNS 生效可能需要几分钟到 48 小时。
 1. `script.js` 的公司名称、WhatsApp、Email、Facebook、Instagram。
 2. `script.js` 的三种语言文案。
 3. `index.html` 的 `RMXX` 价格。
-4. `index.html` 的艺人名字、介绍和频道链接。
+4. `mcn.html` 的艺人名字、介绍和频道链接。
 5. `data/youtube-stats.json` 是否存在。
 6. GitHub Secret `YOUTUBE_API_KEY` 是否已经设置。
 7. `index.html` 的 Portfolio 图片和作品描述。
