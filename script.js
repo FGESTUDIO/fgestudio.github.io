@@ -168,7 +168,7 @@ const translations = {
     "contact.facebook": "Facebook",
     "contact.instagram": "Instagram placeholder",
     "contact.email": "Email",
-    "footer.rights": "- All rights reserved.",
+    "footer.rights": "© 2026 FANTASY GENESIS ENTERTAINMENT STUDIO. 版权所有。",
     "footer.backTop": "回到顶部",
   },
   en: {
@@ -330,7 +330,7 @@ const translations = {
     "contact.facebook": "Facebook",
     "contact.instagram": "Instagram placeholder",
     "contact.email": "Email",
-    "footer.rights": "- All rights reserved.",
+    "footer.rights": "© 2026 FANTASY GENESIS ENTERTAINMENT STUDIO. All rights reserved.",
     "footer.backTop": "Back to top",
   },
   bm: {
@@ -492,7 +492,7 @@ const translations = {
     "contact.facebook": "Facebook",
     "contact.instagram": "Instagram placeholder",
     "contact.email": "Email",
-    "footer.rights": "- Hak cipta terpelihara.",
+    "footer.rights": "© 2026 FANTASY GENESIS ENTERTAINMENT STUDIO. Hak cipta terpelihara.",
     "footer.backTop": "Kembali ke atas",
   },
 };
