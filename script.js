@@ -4,6 +4,12 @@ let contactSettings = {
   chineseName: "梦幻起源欢娱工作室",
   whatsappNumber: "60172599400",
   email: "contact@fgestudio.my",
+  emails: {
+    general: "contact@fgestudio.my",
+    design: "design@fgestudio.my",
+    creators: "creators@fgestudio.my",
+    business: "business@fgestudio.my",
+  },
   facebookUrl: "https://www.facebook.com/fantasygenesisentertainmentstudio/",
   instagramUrl: "#",
 };
@@ -21,6 +27,19 @@ let translations = {
     "whatsappMessage.design": "你好，我想询问你们的平面设计服务。我的需求是：海报 / 社交媒体帖子 / 广告图 / Banner / 名片 / YouTube 缩略图 / 月配套设计。想了解价格配套、制作时间和需要准备的资料，谢谢。",
     "whatsappMessage.mcn": "你好，我想了解 {short} 的游戏创作者 MCN 合作。",
     "whatsappMessage.about": "你好，我想了解 {short} 的公司业务。",
+    "emailSubject.design": "平面设计服务询问 - {short}",
+    "emailSubject.mcn": "MCN 创作者孵化询问 - {short}",
+    "emailSubject.general": "公司一般询问 - {short}",
+    "emailSubject.creators": "MCN 创作者孵化询问 - {short}",
+    "emailSubject.business": "品牌广告合作询问 - {short}",
+    "emailSubject.about": "公司业务询问 - {short}",
+    "emailBody.design": "你好，我想询问你们的平面设计服务。\\n\\n我的需求：\\n预算 / 时间：\\n需要设计的内容：\\n\\n谢谢。",
+    "emailBody.mcn": "你好，我想询问 {short} 的 MCN 合作与创作者孵化。\\n\\n频道链接：\\n内容类型：\\n目前目标：\\n想了解的合作方向：\\n\\n谢谢。",
+    "emailBody.general": "你好，我想询问 {short} 的公司业务。\\n\\n我的需求：\\n联系方式：\\n\\n谢谢。",
+    "emailBody.creators": "你好，我想询问 {short} 的 MCN 合作与创作者孵化。\\n\\n频道链接：\\n内容类型：\\n目前目标：\\n想了解的合作方向：\\n\\n谢谢。",
+    "emailBody.business": "你好，我是品牌方，想询问与 {short} 旗下艺人的广告合作。\\n\\n品牌 / 公司名称：\\n想合作的艺人：\\n产品 / 服务类型：\\n预算 / 时间：\\n合作形式：\\n\\n谢谢。",
+    "emailBody.about": "你好，我想了解 {short} 的公司业务。\\n\\n我的需求：\\n联系方式：\\n\\n谢谢。",
+    "contact.emailCopied": "Email 已复制，可以贴到你常用的邮箱发送。",
     "company.name": "{company}",
     "company.shortName": "{short}",
     "company.subtitle": "{cnName}",
@@ -215,7 +234,7 @@ let translations = {
     "contact.design.title": "需要平面设计服务？把你的宣传需求发给我们。",
     "contact.design.copy": "这个联系入口主要面向平面设计客户。你可以告诉我们设计类型、用途、尺寸、文案、参考风格和预计发布时间，我们会先帮你整理方向与配套。",
     "contact.mcn.title": "MCN 合作与创作者孵化，请通过 Email 联系我们。",
-    "contact.mcn.copy": "为了方便整理频道资料、合作方向和后续记录，MCN 业务目前只接受 Email 询问。请在邮件中附上你的频道链接、内容类型、目前目标和想了解的合作方向。",
+    "contact.mcn.copy": "创作者想加入 MCN 或了解孵化合作，请使用 creators@fgestudio.my。品牌方想找旗下艺人打广告或商业合作，请使用 business@fgestudio.my。",
     "contact.about.title": "不确定该看哪个业务？可以直接 WhatsApp 询问。",
     "contact.about.copy": "告诉我们你是需要设计服务，还是想了解创作者孵化，我们会引导你到合适的合作方向。",
     "contact.design.whatsapp": "WhatsApp 询问平面设计",
@@ -223,6 +242,10 @@ let translations = {
     "contact.facebook": "Facebook",
     "contact.instagram": "Instagram",
     "contact.email": "Email：contact@fgestudio.my",
+    "contact.emailGeneral": "公司公开邮箱：contact@fgestudio.my",
+    "contact.emailDesign": "平面设计：design@fgestudio.my",
+    "contact.emailCreators": "MCN 创作者合作：creators@fgestudio.my",
+    "contact.emailBusiness": "品牌广告合作：business@fgestudio.my",
     "footer.rights": "© {year} FANTASY GENESIS ENTERTAINMENT STUDIO. 版权所有。",
     "footer.backTop": "回到顶部",
     "metaTitle.privacy": "{company} | 隐私政策",
@@ -244,6 +267,19 @@ let translations = {
     "whatsappMessage.design": "Hi, I would like to ask about your graphic design services. I need: poster / social media post / ad creative / banner / business card / YouTube thumbnail / monthly design package. Please let me know the package, timeline, and materials needed. Thank you.",
     "whatsappMessage.mcn": "Hi, I would like to ask about {short} gaming creator MCN collaboration.",
     "whatsappMessage.about": "Hi, I would like to ask about {short} company services.",
+    "emailSubject.design": "Graphic Design Service Enquiry - {short}",
+    "emailSubject.mcn": "MCN Creator Incubation Enquiry - {short}",
+    "emailSubject.general": "General Company Enquiry - {short}",
+    "emailSubject.creators": "MCN Creator Incubation Enquiry - {short}",
+    "emailSubject.business": "Brand Advertising Collaboration Enquiry - {short}",
+    "emailSubject.about": "Company Service Enquiry - {short}",
+    "emailBody.design": "Hi, I would like to ask about your graphic design services.\\n\\nMy request:\\nBudget / timeline:\\nDesign items needed:\\n\\nThank you.",
+    "emailBody.mcn": "Hi, I would like to ask about {short} MCN collaboration and creator incubation.\\n\\nChannel link:\\nContent type:\\nCurrent goals:\\nCollaboration direction I want to discuss:\\n\\nThank you.",
+    "emailBody.general": "Hi, I would like to ask about {short} company services.\\n\\nMy request:\\nContact details:\\n\\nThank you.",
+    "emailBody.creators": "Hi, I would like to ask about {short} MCN collaboration and creator incubation.\\n\\nChannel link:\\nContent type:\\nCurrent goals:\\nCollaboration direction I want to discuss:\\n\\nThank you.",
+    "emailBody.business": "Hi, I represent a brand and would like to ask about advertising or commercial collaboration with {short} creators.\\n\\nBrand / company name:\\nCreator I want to work with:\\nProduct / service type:\\nBudget / timeline:\\nCollaboration format:\\n\\nThank you.",
+    "emailBody.about": "Hi, I would like to learn more about {short} company services.\\n\\nMy request:\\nContact details:\\n\\nThank you.",
+    "contact.emailCopied": "Email copied. You can paste it into your preferred mail app.",
     "company.name": "{company}",
     "company.shortName": "{short}",
     "company.subtitle": "{cnName}",
@@ -438,7 +474,7 @@ let translations = {
     "contact.design.title": "Need graphic design support? Send us your promotional brief.",
     "contact.design.copy": "This contact section is mainly for graphic design enquiries. Share the design type, usage, size, copy, reference style, and expected posting date so we can suggest the right direction and package.",
     "contact.mcn.title": "For MCN collaboration and creator incubation, please contact us by email.",
-    "contact.mcn.copy": "To keep channel details, collaboration direction, and follow-up records clear, MCN enquiries are currently handled by email only. Please include your channel link, content type, current goals, and the collaboration direction you want to discuss.",
+    "contact.mcn.copy": "Creators who want to join the MCN or ask about incubation can use creators@fgestudio.my. Brands looking for advertising or commercial collaboration with our creators can use business@fgestudio.my.",
     "contact.about.title": "Not sure which business line fits? Ask us on WhatsApp.",
     "contact.about.copy": "Tell us whether you need design services or creator incubation, and we will guide you to the right direction.",
     "contact.design.whatsapp": "Ask About Graphic Design",
@@ -446,6 +482,10 @@ let translations = {
     "contact.facebook": "Facebook",
     "contact.instagram": "Instagram",
     "contact.email": "Email: contact@fgestudio.my",
+    "contact.emailGeneral": "Public email: contact@fgestudio.my",
+    "contact.emailDesign": "Graphic design: design@fgestudio.my",
+    "contact.emailCreators": "MCN creator collaboration: creators@fgestudio.my",
+    "contact.emailBusiness": "Brand advertising collaboration: business@fgestudio.my",
     "footer.rights": "© {year} FANTASY GENESIS ENTERTAINMENT STUDIO. All rights reserved.",
     "footer.backTop": "Back to top",
     "metaTitle.privacy": "{company} | Privacy Policy",
@@ -467,6 +507,19 @@ let translations = {
     "whatsappMessage.design": "Hai, saya ingin bertanya tentang servis reka bentuk grafik anda. Saya perlukan: poster / hantaran media sosial / grafik iklan / banner / kad nama / thumbnail YouTube / pakej reka bentuk bulanan. Sila maklumkan pakej, tempoh masa, dan bahan yang perlu disediakan. Terima kasih.",
     "whatsappMessage.mcn": "Hai, saya ingin bertanya tentang kerjasama MCN pencipta gaming {short}.",
     "whatsappMessage.about": "Hai, saya ingin bertanya tentang bisnes {short}.",
+    "emailSubject.design": "Pertanyaan Servis Reka Bentuk Grafik - {short}",
+    "emailSubject.mcn": "Pertanyaan Inkubasi Pencipta MCN - {short}",
+    "emailSubject.general": "Pertanyaan Umum Syarikat - {short}",
+    "emailSubject.creators": "Pertanyaan Inkubasi Pencipta MCN - {short}",
+    "emailSubject.business": "Pertanyaan Kerjasama Iklan Jenama - {short}",
+    "emailSubject.about": "Pertanyaan Servis Syarikat - {short}",
+    "emailBody.design": "Hai, saya ingin bertanya tentang servis reka bentuk grafik anda.\\n\\nKeperluan saya:\\nBajet / masa:\\nItem reka bentuk yang diperlukan:\\n\\nTerima kasih.",
+    "emailBody.mcn": "Hai, saya ingin bertanya tentang kerjasama MCN dan inkubasi pencipta {short}.\\n\\nPautan channel:\\nJenis kandungan:\\nMatlamat semasa:\\nArah kerjasama yang ingin dibincangkan:\\n\\nTerima kasih.",
+    "emailBody.general": "Hai, saya ingin tahu lebih lanjut tentang bisnes {short}.\\n\\nKeperluan saya:\\nButiran untuk dihubungi:\\n\\nTerima kasih.",
+    "emailBody.creators": "Hai, saya ingin bertanya tentang kerjasama MCN dan inkubasi pencipta {short}.\\n\\nPautan channel:\\nJenis kandungan:\\nMatlamat semasa:\\nArah kerjasama yang ingin dibincangkan:\\n\\nTerima kasih.",
+    "emailBody.business": "Hai, saya wakil jenama dan ingin bertanya tentang iklan atau kerjasama komersial dengan pencipta di bawah {short}.\\n\\nNama jenama / syarikat:\\nPencipta yang ingin bekerjasama:\\nJenis produk / servis:\\nBajet / masa:\\nBentuk kerjasama:\\n\\nTerima kasih.",
+    "emailBody.about": "Hai, saya ingin tahu lebih lanjut tentang bisnes {short}.\\n\\nKeperluan saya:\\nButiran untuk dihubungi:\\n\\nTerima kasih.",
+    "contact.emailCopied": "Email telah disalin. Anda boleh tampal ke aplikasi email pilihan anda.",
     "company.name": "{company}",
     "company.shortName": "{short}",
     "company.subtitle": "{cnName}",
@@ -661,7 +714,7 @@ let translations = {
     "contact.design.title": "Perlukan servis reka bentuk grafik? Hantar brief promosi anda kepada kami.",
     "contact.design.copy": "Bahagian hubungi ini terutama untuk pertanyaan reka bentuk grafik. Beritahu jenis reka bentuk, kegunaan, saiz, teks, gaya rujukan, dan tarikh posting supaya kami boleh cadangkan arah dan pakej yang sesuai.",
     "contact.mcn.title": "Untuk kerjasama MCN dan inkubasi pencipta, sila hubungi kami melalui email.",
-    "contact.mcn.copy": "Bagi memudahkan susunan maklumat channel, arah kerjasama, dan rekod susulan, pertanyaan MCN buat masa ini hanya diterima melalui email. Sila sertakan pautan channel, jenis kandungan, matlamat semasa, dan arah kerjasama yang ingin dibincangkan.",
+    "contact.mcn.copy": "Pencipta yang ingin menyertai MCN atau bertanya tentang inkubasi boleh menggunakan creators@fgestudio.my. Jenama yang ingin membuat iklan atau kerjasama komersial dengan pencipta kami boleh menggunakan business@fgestudio.my.",
     "contact.about.title": "Tidak pasti cabang mana sesuai? Tanya kami di WhatsApp.",
     "contact.about.copy": "Beritahu kami sama ada anda perlukan reka bentuk atau inkubasi pencipta, dan kami akan arahkan anda ke pilihan yang sesuai.",
     "contact.design.whatsapp": "Tanya Reka Bentuk Grafik",
@@ -669,6 +722,10 @@ let translations = {
     "contact.facebook": "Facebook",
     "contact.instagram": "Instagram",
     "contact.email": "Email: contact@fgestudio.my",
+    "contact.emailGeneral": "Email umum: contact@fgestudio.my",
+    "contact.emailDesign": "Reka bentuk grafik: design@fgestudio.my",
+    "contact.emailCreators": "Kerjasama pencipta MCN: creators@fgestudio.my",
+    "contact.emailBusiness": "Kerjasama iklan jenama: business@fgestudio.my",
     "footer.rights": "© {year} FANTASY GENESIS ENTERTAINMENT STUDIO. Hak cipta terpelihara.",
     "footer.backTop": "Kembali ke atas",
     "metaTitle.privacy": "{company} | Dasar Privasi",
@@ -800,6 +857,66 @@ const getText = (lang, key) => formatText(getRawText(lang, key) ?? "");
 
 function getPageText(lang, baseKey) {
   return getText(lang, `${baseKey}.${getPageKey()}`) || getText(lang, `${baseKey}.design`);
+}
+
+function getEmailRole(element) {
+  const explicitRole = element?.getAttribute("data-email");
+  if (explicitRole) return explicitRole;
+
+  const pageRoleMap = {
+    design: "design",
+    mcn: "creators",
+    about: "general",
+    privacy: "general",
+    terms: "general",
+  };
+
+  return pageRoleMap[getPageKey()] || "general";
+}
+
+function getEmailAddress(role) {
+  return contactSettings.emails?.[role] || contactSettings.email || "contact@fgestudio.my";
+}
+
+function getEmailUrl(role) {
+  const email = getEmailAddress(role);
+  const subject = encodeURIComponent(getText(activeLanguage, `emailSubject.${role}`) || getPageText(activeLanguage, "emailSubject"));
+  const body = encodeURIComponent(getText(activeLanguage, `emailBody.${role}`) || getPageText(activeLanguage, "emailBody"));
+  return `mailto:${email}?subject=${subject}&body=${body}`;
+}
+
+function showEmailCopyNotice(message) {
+  let notice = document.querySelector("[data-email-notice]");
+
+  if (!notice) {
+    notice = document.createElement("div");
+    notice.className = "email-copy-notice";
+    notice.setAttribute("data-email-notice", "");
+    document.body.appendChild(notice);
+  }
+
+  notice.textContent = message;
+  notice.classList.add("is-visible");
+  window.clearTimeout(showEmailCopyNotice.timer);
+  showEmailCopyNotice.timer = window.setTimeout(() => {
+    notice.classList.remove("is-visible");
+  }, 2400);
+}
+
+function initEmailCopyFeedback() {
+  document.addEventListener("click", async (event) => {
+    const link = event.target.closest("[data-email]");
+    if (!link) return;
+
+    const email = getEmailAddress(getEmailRole(link));
+    try {
+      if (!navigator.clipboard?.writeText) throw new Error("Clipboard unavailable");
+      await navigator.clipboard.writeText(email);
+      showEmailCopyNotice(getText(activeLanguage, "contact.emailCopied"));
+    } catch (error) {
+      showEmailCopyNotice(email);
+    }
+  });
 }
 
 function formatStatNumber(value) {
@@ -937,10 +1054,14 @@ function applyTranslations(lang) {
     link.setAttribute("rel", "noopener");
   });
 
-  document.querySelector("[data-facebook]")?.setAttribute("href", contactSettings.facebookUrl);
-  document.querySelector("[data-instagram]")?.setAttribute("href", contactSettings.instagramUrl);
+  document.querySelectorAll("[data-facebook]").forEach((link) => {
+    link.setAttribute("href", contactSettings.facebookUrl);
+  });
+  document.querySelectorAll("[data-instagram]").forEach((link) => {
+    link.setAttribute("href", contactSettings.instagramUrl);
+  });
   document.querySelectorAll("[data-email]").forEach((link) => {
-    link.setAttribute("href", `mailto:${contactSettings.email}`);
+    link.setAttribute("href", getEmailUrl(getEmailRole(link)));
   });
 
   document.querySelectorAll(".lang-btn").forEach((button) => {
@@ -1200,6 +1321,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   cleanLegacyHtmlUrl();
   await loadContentOverrides();
   initLanguageSwitcher();
+  initEmailCopyFeedback();
   loadYouTubeStats();
   initMobileMenu();
   initFaq();

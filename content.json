@@ -1,7 +1,13 @@
 {
   "schemaVersion": 1,
   "contactSettings": {
-    "email": "contact@fgestudio.my"
+    "email": "contact@fgestudio.my",
+    "emails": {
+      "general": "contact@fgestudio.my",
+      "design": "design@fgestudio.my",
+      "creators": "creators@fgestudio.my",
+      "business": "business@fgestudio.my"
+    }
   },
   "editable": {},
   "translations": {}

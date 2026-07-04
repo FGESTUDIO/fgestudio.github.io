@@ -89,7 +89,7 @@ admin.html
 推荐使用后台 UI 修改：
 
 1. 双击打开 `admin.html`。
-2. 在 `基础资料` 修改公司名称、WhatsApp、Email、Facebook、Instagram。
+2. 在 `基础资料` 修改公司名称、WhatsApp、业务邮箱、Facebook、Instagram。
 3. 点击 `下载 content.json`。
 4. 到 GitHub 上传并覆盖根目录的 `content.json`。
 5. 等 GitHub Pages 部署成功后刷新网站。
@@ -104,7 +104,13 @@ const contactSettings = {
   shortName: "FGES",
   chineseName: "梦幻起源欢娱工作室",
   whatsappNumber: "60172599400",
-email: "contact@fgestudio.my",
+  email: "contact@fgestudio.my",
+  emails: {
+    general: "contact@fgestudio.my",
+    design: "design@fgestudio.my",
+    creators: "creators@fgestudio.my",
+    business: "business@fgestudio.my",
+  },
   facebookUrl: "https://www.facebook.com/fantasygenesisentertainmentstudio/",
   instagramUrl: "#",
 };
@@ -116,7 +122,11 @@ email: "contact@fgestudio.my",
 - `shortName`：短名称
 - `chineseName`：中文工作室名
 - `whatsappNumber`：WhatsApp 号码，建议写国家代码，不要加 `+`
-- `email`：联系邮箱
+- `email`：公司主要公开邮箱
+- `emails.general`：公司主要公开邮箱
+- `emails.design`：平面设计询问邮箱
+- `emails.creators`：MCN 创作者孵化邮箱
+- `emails.business`：品牌广告合作邮箱
 - `facebookUrl`：Facebook 链接
 - `instagramUrl`：Instagram 链接
 
@@ -428,7 +438,7 @@ DNS 生效可能需要几分钟到 48 小时。
 
 上线前建议先检查：
 
-1. `script.js` 的公司名称、WhatsApp、Email、Facebook、Instagram。
+1. `script.js` 的公司名称、WhatsApp、业务邮箱、Facebook、Instagram。
 2. `admin.html` 能否打开。
 3. `content.json` 是否已经上传到 GitHub 根目录。
 4. `script.js` 的三种语言文案。

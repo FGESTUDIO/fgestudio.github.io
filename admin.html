@@ -403,8 +403,20 @@
                 <small>鍐欏浗瀹朵唬鐮侊紝涓嶈鍔?+銆備緥濡?60172599400銆?/small>
               </div>
               <div class="field">
-                <label for="email">Email</label>
+                <label for="email">Default Email</label>
                 <input id="email" data-field="contactSettings.email" />
+              </div>
+              <div class="field">
+                <label for="designEmail">Design Email</label>
+                <input id="designEmail" data-field="contactSettings.emails.design" />
+              </div>
+              <div class="field">
+                <label for="creatorsEmail">MCN Creators Email</label>
+                <input id="creatorsEmail" data-field="contactSettings.emails.creators" />
+              </div>
+              <div class="field">
+                <label for="businessEmail">Brand Business Email</label>
+                <input id="businessEmail" data-field="contactSettings.emails.business" />
               </div>
               <div class="field">
                 <label for="facebookUrl">Facebook 閾炬帴</label>
@@ -481,7 +493,7 @@
       </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=20260704-email-roles"></script>
     <script>
       const defaultContent = JSON.parse(JSON.stringify(window.FGES_DEFAULT_CONTENT || {}));
       let contentState = normalizeContent(defaultContent);
