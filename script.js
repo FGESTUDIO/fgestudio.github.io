@@ -223,6 +223,14 @@ let translations = {
     "contact.email": "Email",
     "footer.rights": "© {year} FANTASY GENESIS ENTERTAINMENT STUDIO. 版权所有。",
     "footer.backTop": "回到顶部",
+    "metaTitle.privacy": "{company} | 隐私政策",
+    "metaDescription.privacy": "了解 {company} 如何处理通过 WhatsApp、Email、社交平台和网站沟通收到的个人资料。",
+    "metaTitle.terms": "{company} | 服务条款",
+    "metaDescription.terms": "查看 {company} 的设计服务、MCN 咨询、报价、付款、修改、交付和作品使用条款。",
+    "whatsappMessage.privacy": "你好，我想询问 {short} 的隐私政策。",
+    "whatsappMessage.terms": "你好，我想询问 {short} 的服务条款。",
+    "footer.privacy": "隐私政策",
+    "footer.terms": "服务条款",
   },
   en: {
     "metaTitle.design": "{company} | Graphic Design Services",
@@ -436,6 +444,14 @@ let translations = {
     "contact.email": "Email",
     "footer.rights": "© {year} FANTASY GENESIS ENTERTAINMENT STUDIO. All rights reserved.",
     "footer.backTop": "Back to top",
+    "metaTitle.privacy": "{company} | Privacy Policy",
+    "metaDescription.privacy": "Learn how {company} handles personal information received through WhatsApp, email, social platforms, and website communication.",
+    "metaTitle.terms": "{company} | Terms of Service",
+    "metaDescription.terms": "View {company} terms for design services, MCN enquiries, quotations, payment, revisions, delivery, and portfolio usage.",
+    "whatsappMessage.privacy": "Hi, I would like to ask about the {short} privacy policy.",
+    "whatsappMessage.terms": "Hi, I would like to ask about the {short} terms of service.",
+    "footer.privacy": "Privacy Policy",
+    "footer.terms": "Terms of Service",
   },
   bm: {
     "metaTitle.design": "{company} | Servis Reka Bentuk Grafik",
@@ -649,6 +665,14 @@ let translations = {
     "contact.email": "Email",
     "footer.rights": "© {year} FANTASY GENESIS ENTERTAINMENT STUDIO. Hak cipta terpelihara.",
     "footer.backTop": "Kembali ke atas",
+    "metaTitle.privacy": "{company} | Dasar Privasi",
+    "metaDescription.privacy": "Ketahui cara {company} mengendalikan maklumat peribadi yang diterima melalui WhatsApp, email, platform sosial, dan komunikasi laman web.",
+    "metaTitle.terms": "{company} | Terma Perkhidmatan",
+    "metaDescription.terms": "Lihat terma {company} untuk servis reka bentuk, pertanyaan MCN, sebut harga, bayaran, pindaan, penghantaran, dan penggunaan portfolio.",
+    "whatsappMessage.privacy": "Hai, saya ingin bertanya tentang dasar privasi {short}.",
+    "whatsappMessage.terms": "Hai, saya ingin bertanya tentang terma perkhidmatan {short}.",
+    "footer.privacy": "Dasar Privasi",
+    "footer.terms": "Terma Perkhidmatan",
   },
 };
 
@@ -883,6 +907,10 @@ function applyTranslations(lang) {
   document.querySelectorAll("[data-i18n]").forEach((element) => {
     const key = element.getAttribute("data-i18n");
     element.textContent = getText(activeLanguage, key);
+  });
+
+  document.querySelectorAll("[data-lang-panel]").forEach((element) => {
+    element.hidden = element.getAttribute("data-lang-panel") !== activeLanguage;
   });
 
   document.querySelectorAll("[data-i18n-attr]").forEach((element) => {
