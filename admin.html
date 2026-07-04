@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="zh-Hans">
   <head>
     <meta charset="UTF-8" />
@@ -359,122 +359,119 @@
         <div class="admin-title">
           <img src="images/fges-logo-transparent.png" alt="FGES logo" />
           <div>
-            <h1>FGES 网站内容后台</h1>
-            <p>免费安全版：编辑后导出 content.json，再上传到 GitHub。</p>
+            <h1>FGES 缃戠珯鍐呭鍚庡彴</h1>
+            <p>鍏嶈垂瀹夊叏鐗堬細缂栬緫鍚庡鍑?content.json锛屽啀涓婁紶鍒?GitHub銆?/p>
           </div>
         </div>
         <div class="admin-actions">
-          <button class="button" type="button" id="importButton">导入 content.json</button>
-          <button class="button" type="button" id="refreshExportButton">刷新导出内容</button>
-          <button class="button primary" type="button" id="downloadButton">下载 content.json</button>
+          <button class="button" type="button" id="importButton">瀵煎叆 content.json</button>
+          <button class="button" type="button" id="refreshExportButton">鍒锋柊瀵煎嚭鍐呭</button>
+          <button class="button primary" type="button" id="downloadButton">涓嬭浇 content.json</button>
           <input class="hidden-input" type="file" id="importFile" accept="application/json,.json" />
         </div>
       </header>
 
       <div class="layout">
         <aside class="sidebar" aria-label="Admin sections">
-          <button class="tab is-active" type="button" data-tab="basic">基础资料</button>
-          <button class="tab" type="button" data-tab="pricing">价格配套</button>
-          <button class="tab" type="button" data-tab="portfolio">作品图片</button>
-          <button class="tab" type="button" data-tab="texts">全部文字</button>
-          <button class="tab" type="button" data-tab="export">导出与上传</button>
+          <button class="tab is-active" type="button" data-tab="basic">鍩虹璧勬枡</button>
+          <button class="tab" type="button" data-tab="pricing">浠锋牸閰嶅</button>
+          <button class="tab" type="button" data-tab="portfolio">浣滃搧鍥剧墖</button>
+          <button class="tab" type="button" data-tab="texts">鍏ㄩ儴鏂囧瓧</button>
+          <button class="tab" type="button" data-tab="export">瀵煎嚭涓庝笂浼?/button>
         </aside>
 
         <main>
           <section class="panel is-active" data-panel="basic">
-            <h2>基础资料</h2>
-            <p>这里会影响网站的公司名、WhatsApp、Email 和社交媒体链接。</p>
+            <h2>鍩虹璧勬枡</h2>
+            <p>杩欓噷浼氬奖鍝嶇綉绔欑殑鍏徃鍚嶃€乄hatsApp銆丒mail 鍜岀ぞ浜ゅ獟浣撻摼鎺ャ€?/p>
             <div class="grid">
               <div class="field">
-                <label for="companyName">公司英文全名</label>
+                <label for="companyName">鍏徃鑻辨枃鍏ㄥ悕</label>
                 <input id="companyName" data-field="contactSettings.companyName" />
               </div>
               <div class="field">
-                <label for="shortName">短名称</label>
+                <label for="shortName">鐭悕绉?/label>
                 <input id="shortName" data-field="contactSettings.shortName" />
               </div>
               <div class="field">
-                <label for="chineseName">中文名称</label>
+                <label for="chineseName">涓枃鍚嶇О</label>
                 <input id="chineseName" data-field="contactSettings.chineseName" />
               </div>
               <div class="field">
-                <label for="whatsappNumber">WhatsApp 号码</label>
+                <label for="whatsappNumber">WhatsApp 鍙风爜</label>
                 <input id="whatsappNumber" data-field="contactSettings.whatsappNumber" />
-                <small>写国家代码，不要加 +。例如 60172599400。</small>
+                <small>鍐欏浗瀹朵唬鐮侊紝涓嶈鍔?+銆備緥濡?60172599400銆?/small>
               </div>
               <div class="field">
                 <label for="email">Email</label>
                 <input id="email" data-field="contactSettings.email" />
               </div>
               <div class="field">
-                <label for="facebookUrl">Facebook 链接</label>
+                <label for="facebookUrl">Facebook 閾炬帴</label>
                 <input id="facebookUrl" data-field="contactSettings.facebookUrl" />
               </div>
               <div class="field">
-                <label for="instagramUrl">Instagram 链接</label>
+                <label for="instagramUrl">Instagram 閾炬帴</label>
                 <input id="instagramUrl" data-field="contactSettings.instagramUrl" />
               </div>
             </div>
           </section>
 
           <section class="panel" data-panel="pricing">
-            <h2>价格配套</h2>
-            <p>这里只改价格。配套名称、项目说明可以到“全部文字”里搜索 pricing 修改。</p>
+            <h2>浠锋牸閰嶅</h2>
+            <p>杩欓噷鍙敼浠锋牸銆傞厤濂楀悕绉般€侀」鐩鏄庡彲浠ュ埌鈥滃叏閮ㄦ枃瀛椻€濋噷鎼滅储 pricing 淇敼銆?/p>
             <div class="grid">
               <div class="field">
-                <label for="starterPrice">Starter Package 价格</label>
+                <label for="starterPrice">Starter Package 浠锋牸</label>
                 <input id="starterPrice" data-field="editable.pricing.starter.price" />
               </div>
               <div class="field">
-                <label for="standardPrice">Standard Package 价格</label>
+                <label for="standardPrice">Standard Package 浠锋牸</label>
                 <input id="standardPrice" data-field="editable.pricing.standard.price" />
               </div>
               <div class="field">
-                <label for="monthlyPrice">Monthly Social Media Package 价格</label>
+                <label for="monthlyPrice">Monthly Social Media Package 浠锋牸</label>
                 <input id="monthlyPrice" data-field="editable.pricing.monthly.price" />
               </div>
             </div>
           </section>
 
           <section class="panel" data-panel="portfolio">
-            <h2>作品图片</h2>
+            <h2>浣滃搧鍥剧墖</h2>
             <div class="notice">
-              上架图片的做法：先把图片文件上传到 GitHub 的 <strong>images</strong> 文件夹，然后在这里填写路径，
-              例如 <strong>images/poster-01.jpg</strong>。选择本地图片只会帮你自动填文件名和预览，不会真正上传图片。
-            </div>
+              涓婃灦鍥剧墖鐨勫仛娉曪細鍏堟妸鍥剧墖鏂囦欢涓婁紶鍒?GitHub 鐨?<strong>images</strong> 鏂囦欢澶癸紝鐒跺悗鍦ㄨ繖閲屽～鍐欒矾寰勶紝
+              渚嬪 <strong>images/poster-01.jpg</strong>銆傞€夋嫨鏈湴鍥剧墖鍙細甯綘鑷姩濉枃浠跺悕鍜岄瑙堬紝涓嶄細鐪熸涓婁紶鍥剧墖銆?            </div>
             <div class="card-list" id="portfolioEditor"></div>
           </section>
 
           <section class="panel" data-panel="texts">
-            <h2>全部文字</h2>
-            <p>这里可以改网站几乎所有文字。先选语言，再搜索关键词，例如 hero、services、pricing、portfolio、mcn、contact。</p>
+            <h2>鍏ㄩ儴鏂囧瓧</h2>
+            <p>杩欓噷鍙互鏀圭綉绔欏嚑涔庢墍鏈夋枃瀛椼€傚厛閫夎瑷€锛屽啀鎼滅储鍏抽敭璇嶏紝渚嬪 hero銆乻ervices銆乸ricing銆乸ortfolio銆乵cn銆乧ontact銆?/p>
             <div class="toolbar">
               <label class="field">
-                <span class="field-title">语言</span>
+                <span class="field-title">璇█</span>
                 <select id="textLanguage">
-                  <option value="cn">中文 CN</option>
+                  <option value="cn">涓枃 CN</option>
                   <option value="en">English EN</option>
                   <option value="bm">Bahasa Melayu BM</option>
                 </select>
               </label>
               <label class="field">
-                <span class="field-title">搜索文字或 key</span>
-                <input id="textSearch" placeholder="例如 hero / services / copyright / WhatsApp" />
+                <span class="field-title">鎼滅储鏂囧瓧鎴?key</span>
+                <input id="textSearch" placeholder="渚嬪 hero / services / copyright / WhatsApp" />
               </label>
             </div>
             <div class="text-list" id="textEditor"></div>
           </section>
 
           <section class="panel" data-panel="export">
-            <h2>导出与上传</h2>
+            <h2>瀵煎嚭涓庝笂浼?/h2>
             <div class="notice">
-              修改完成后，点击“下载 content.json”。然后到 GitHub 仓库上传并覆盖根目录的 <strong>content.json</strong>。
-              如果你有新增图片，也要把图片上传到 <strong>images</strong> 文件夹。等 GitHub Pages 部署成功后，网站就会更新。
-            </div>
+              淇敼瀹屾垚鍚庯紝鐐瑰嚮鈥滀笅杞?content.json鈥濄€傜劧鍚庡埌 GitHub 浠撳簱涓婁紶骞惰鐩栨牴鐩綍鐨?<strong>content.json</strong>銆?              濡傛灉浣犳湁鏂板鍥剧墖锛屼篃瑕佹妸鍥剧墖涓婁紶鍒?<strong>images</strong> 鏂囦欢澶广€傜瓑 GitHub Pages 閮ㄧ讲鎴愬姛鍚庯紝缃戠珯灏变細鏇存柊銆?            </div>
             <div class="toolbar">
-              <button class="button primary" type="button" id="downloadButton2">下载 content.json</button>
-              <button class="button" type="button" id="copyButton">复制 JSON</button>
-              <button class="button danger" type="button" id="resetButton">重置为默认内容</button>
+              <button class="button primary" type="button" id="downloadButton2">涓嬭浇 content.json</button>
+              <button class="button" type="button" id="copyButton">澶嶅埗 JSON</button>
+              <button class="button danger" type="button" id="resetButton">閲嶇疆涓洪粯璁ゅ唴瀹?/button>
             </div>
             <textarea class="export-box" id="exportBox" spellcheck="false"></textarea>
           </section>
@@ -490,9 +487,9 @@
       let contentState = normalizeContent(defaultContent);
 
       const portfolioItems = [
-        { id: "item1", title: "作品图片 1" },
-        { id: "item2", title: "作品图片 2" },
-        { id: "item3", title: "作品图片 3" },
+        { id: "item1", title: "浣滃搧鍥剧墖 1" },
+        { id: "item2", title: "浣滃搧鍥剧墖 2" },
+        { id: "item3", title: "浣滃搧鍥剧墖 3" },
       ];
 
       function normalizeContent(content) {
@@ -563,13 +560,13 @@
           card.innerHTML = `
             <h3>${item.title}</h3>
             <div class="field">
-              <label>图片路径</label>
+              <label>鍥剧墖璺緞</label>
               <input data-portfolio-path="${path}" value="${escapeHtml(value)}" />
-              <small>建议格式：images/your-image-name.jpg</small>
+              <small>寤鸿鏍煎紡锛歩mages/your-image-name.jpg</small>
             </div>
             <div class="toolbar">
               <label class="button">
-                选择本地图片
+                閫夋嫨鏈湴鍥剧墖
                 <input class="hidden-input" type="file" accept="image/*" data-portfolio-file="${path}" />
               </label>
             </div>
@@ -595,7 +592,7 @@
             pathInput.value = suggestedPath;
             card.querySelector(".portfolio-preview").src = URL.createObjectURL(file);
             setValue(input.dataset.portfolioFile, suggestedPath);
-            setStatus(`已填入图片路径：${suggestedPath}。记得把图片上传到 GitHub 的 images 文件夹。`);
+            setStatus(`宸插～鍏ュ浘鐗囪矾寰勶細${suggestedPath}銆傝寰楁妸鍥剧墖涓婁紶鍒?GitHub 鐨?images 鏂囦欢澶广€俙);
           });
         });
       }
@@ -648,7 +645,7 @@
         link.click();
         link.remove();
         URL.revokeObjectURL(url);
-        setStatus("content.json 已下载。上传到 GitHub 根目录并覆盖旧文件。");
+        setStatus("content.json 宸蹭笅杞姐€備笂浼犲埌 GitHub 鏍圭洰褰曞苟瑕嗙洊鏃ф枃浠躲€?);
       }
 
       async function loadExistingContent() {
@@ -657,10 +654,10 @@
           if (!response.ok) throw new Error("content.json not found");
           const existing = await response.json();
           contentState = mergeDeep(normalizeContent(defaultContent), existing);
-          setStatus("已载入现有 content.json。");
+          setStatus("宸茶浇鍏ョ幇鏈?content.json銆?);
         } catch (error) {
           contentState = normalizeContent(defaultContent);
-          setStatus("没有载入到现有 content.json，正在使用网站默认内容。");
+          setStatus("娌℃湁杞藉叆鍒扮幇鏈?content.json锛屾鍦ㄤ娇鐢ㄧ綉绔欓粯璁ゅ唴瀹广€?);
         }
       }
 
@@ -671,28 +668,28 @@
             const imported = JSON.parse(reader.result);
             contentState = mergeDeep(normalizeContent(defaultContent), imported);
             rerenderAll();
-            setStatus("已导入 content.json。");
+            setStatus("宸插鍏?content.json銆?);
           } catch (error) {
-            setStatus("导入失败：JSON 格式不正确。", true);
+            setStatus("瀵煎叆澶辫触锛欽SON 鏍煎紡涓嶆纭€?, true);
           }
         };
         reader.readAsText(file);
       }
 
       function resetContent() {
-        if (!confirm("确定要重置为默认内容吗？当前未导出的修改会消失。")) return;
+        if (!confirm("纭畾瑕侀噸缃负榛樿鍐呭鍚楋紵褰撳墠鏈鍑虹殑淇敼浼氭秷澶便€?)) return;
         contentState = normalizeContent(defaultContent);
         rerenderAll();
-        setStatus("已重置为默认内容。");
+        setStatus("宸查噸缃负榛樿鍐呭銆?);
       }
 
       async function copyJson() {
         updateExportBox();
         try {
           await navigator.clipboard.writeText(document.querySelector("#exportBox").value);
-          setStatus("JSON 已复制。");
+          setStatus("JSON 宸插鍒躲€?);
         } catch (error) {
-          setStatus("复制失败，请手动复制导出框内容。", true);
+          setStatus("澶嶅埗澶辫触锛岃鎵嬪姩澶嶅埗瀵煎嚭妗嗗唴瀹广€?, true);
         }
       }
 
@@ -737,7 +734,7 @@
         document.querySelector("#downloadButton2").addEventListener("click", downloadContent);
         document.querySelector("#refreshExportButton").addEventListener("click", () => {
           updateExportBox();
-          setStatus("导出内容已刷新。");
+          setStatus("瀵煎嚭鍐呭宸插埛鏂般€?);
         });
         document.querySelector("#copyButton").addEventListener("click", copyJson);
         document.querySelector("#resetButton").addEventListener("click", resetContent);

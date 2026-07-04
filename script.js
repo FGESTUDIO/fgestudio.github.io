@@ -46,6 +46,7 @@ let translations = {
     "hero.mcn.slogan": "频道定位、视觉包装、缩略图方向、内容节奏与长期成长支持。",
     "hero.mcn.copy": "MCN 业务专注协助游戏内容创作者整理频道品牌、优化内容呈现，并建立更稳定的发布和成长节奏。",
     "hero.mcn.ctaCreators": "查看旗下创作者",
+    "hero.mcn.ctaEmail": "Email 询问 MCN",
     "hero.mcn.ctaWhatsapp": "WhatsApp 询问 MCN",
     "hero.mcn.badge1": "频道包装",
     "hero.mcn.badge2": "内容成长",
@@ -213,8 +214,8 @@ let translations = {
     "contact.kicker": "联系我们",
     "contact.design.title": "需要平面设计服务？把你的宣传需求发给我们。",
     "contact.design.copy": "这个联系入口主要面向平面设计客户。你可以告诉我们设计类型、用途、尺寸、文案、参考风格和预计发布时间，我们会先帮你整理方向与配套。",
-    "contact.mcn.title": "如果你是游戏内容创作者，可以先和我们聊频道方向。",
-    "contact.mcn.copy": "我们会先了解你的频道、内容类型和目标，再判断适合做视觉包装、内容支持或长期 MCN 合作。",
+    "contact.mcn.title": "MCN 合作与创作者孵化，请通过 Email 联系我们。",
+    "contact.mcn.copy": "为了方便整理频道资料、合作方向和后续记录，MCN 业务目前只接受 Email 询问。请在邮件中附上你的频道链接、内容类型、目前目标和想了解的合作方向。",
     "contact.about.title": "不确定该看哪个业务？可以直接 WhatsApp 询问。",
     "contact.about.copy": "告诉我们你是需要设计服务，还是想了解创作者孵化，我们会引导你到合适的合作方向。",
     "contact.design.whatsapp": "WhatsApp 询问平面设计",
@@ -268,6 +269,7 @@ let translations = {
     "hero.mcn.slogan": "Channel positioning, visual branding, thumbnail direction, content rhythm, and long-term growth support.",
     "hero.mcn.copy": "The MCN side helps gaming creators organize their channel brand, improve content presentation, and build a steadier publishing and growth rhythm.",
     "hero.mcn.ctaCreators": "View Creators",
+    "hero.mcn.ctaEmail": "Email About MCN",
     "hero.mcn.ctaWhatsapp": "Ask About MCN",
     "hero.mcn.badge1": "Channel branding",
     "hero.mcn.badge2": "Content growth",
@@ -435,8 +437,8 @@ let translations = {
     "contact.kicker": "Contact Us",
     "contact.design.title": "Need graphic design support? Send us your promotional brief.",
     "contact.design.copy": "This contact section is mainly for graphic design enquiries. Share the design type, usage, size, copy, reference style, and expected posting date so we can suggest the right direction and package.",
-    "contact.mcn.title": "If you are a gaming creator, start by discussing your channel direction.",
-    "contact.mcn.copy": "We will first understand your channel, content type, and goals before suggesting visual packaging, content support, or long-term MCN collaboration.",
+    "contact.mcn.title": "For MCN collaboration and creator incubation, please contact us by email.",
+    "contact.mcn.copy": "To keep channel details, collaboration direction, and follow-up records clear, MCN enquiries are currently handled by email only. Please include your channel link, content type, current goals, and the collaboration direction you want to discuss.",
     "contact.about.title": "Not sure which business line fits? Ask us on WhatsApp.",
     "contact.about.copy": "Tell us whether you need design services or creator incubation, and we will guide you to the right direction.",
     "contact.design.whatsapp": "Ask About Graphic Design",
@@ -490,6 +492,7 @@ let translations = {
     "hero.mcn.slogan": "Positioning channel, penjenamaan visual, arah thumbnail, ritma kandungan, dan sokongan pertumbuhan.",
     "hero.mcn.copy": "Bahagian MCN membantu pencipta gaming menyusun jenama channel, memperbaiki persembahan kandungan, dan membina ritma penerbitan yang lebih stabil.",
     "hero.mcn.ctaCreators": "Lihat Pencipta",
+    "hero.mcn.ctaEmail": "Email Tentang MCN",
     "hero.mcn.ctaWhatsapp": "Tanya Tentang MCN",
     "hero.mcn.badge1": "Penjenamaan channel",
     "hero.mcn.badge2": "Pertumbuhan kandungan",
@@ -657,8 +660,8 @@ let translations = {
     "contact.kicker": "Hubungi Kami",
     "contact.design.title": "Perlukan servis reka bentuk grafik? Hantar brief promosi anda kepada kami.",
     "contact.design.copy": "Bahagian hubungi ini terutama untuk pertanyaan reka bentuk grafik. Beritahu jenis reka bentuk, kegunaan, saiz, teks, gaya rujukan, dan tarikh posting supaya kami boleh cadangkan arah dan pakej yang sesuai.",
-    "contact.mcn.title": "Jika anda pencipta gaming, mula dengan bincang arah channel anda.",
-    "contact.mcn.copy": "Kami akan fahami channel, jenis kandungan, dan matlamat anda sebelum mencadangkan packaging visual, sokongan kandungan, atau kerjasama MCN jangka panjang.",
+    "contact.mcn.title": "Untuk kerjasama MCN dan inkubasi pencipta, sila hubungi kami melalui email.",
+    "contact.mcn.copy": "Bagi memudahkan susunan maklumat channel, arah kerjasama, dan rekod susulan, pertanyaan MCN buat masa ini hanya diterima melalui email. Sila sertakan pautan channel, jenis kandungan, matlamat semasa, dan arah kerjasama yang ingin dibincangkan.",
     "contact.about.title": "Tidak pasti cabang mana sesuai? Tanya kami di WhatsApp.",
     "contact.about.copy": "Beritahu kami sama ada anda perlukan reka bentuk atau inkubasi pencipta, dan kami akan arahkan anda ke pilihan yang sesuai.",
     "contact.design.whatsapp": "Tanya Reka Bentuk Grafik",
@@ -936,7 +939,9 @@ function applyTranslations(lang) {
 
   document.querySelector("[data-facebook]")?.setAttribute("href", contactSettings.facebookUrl);
   document.querySelector("[data-instagram]")?.setAttribute("href", contactSettings.instagramUrl);
-  document.querySelector("[data-email]")?.setAttribute("href", `mailto:${contactSettings.email}`);
+  document.querySelectorAll("[data-email]").forEach((link) => {
+    link.setAttribute("href", `mailto:${contactSettings.email}`);
+  });
 
   document.querySelectorAll(".lang-btn").forEach((button) => {
     const isActive = button.dataset.lang === activeLanguage;

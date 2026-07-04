@@ -297,6 +297,15 @@ button {
   font-weight: 850;
 }
 
+.brand-aliases {
+  max-width: 720px;
+  margin: 8px 0 0;
+  color: rgba(219, 232, 255, 0.72);
+  font-size: 0.92rem;
+  font-weight: 750;
+  letter-spacing: 0.02em;
+}
+
 .hero-slogan {
   max-width: 720px;
   margin: 24px 0 0;
