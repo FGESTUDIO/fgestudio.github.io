@@ -282,12 +282,12 @@ button {
 }
 
 .hero h1 {
-  max-width: 850px;
+  max-width: 780px;
   margin: 0;
-  font-size: clamp(2.35rem, 5.5vw, 5.3rem);
-  line-height: 0.95;
+  font-size: clamp(2.25rem, 4.6vw, 4.55rem);
+  line-height: 1.02;
   letter-spacing: 0;
-  overflow-wrap: normal;
+  overflow-wrap: anywhere;
   text-shadow: 0 0 34px rgba(24, 232, 255, 0.18);
 }
 
@@ -298,20 +298,11 @@ button {
   font-weight: 850;
 }
 
-.brand-aliases {
-  max-width: 720px;
-  margin: 8px 0 0;
-  color: rgba(219, 232, 255, 0.72);
-  font-size: 0.92rem;
-  font-weight: 750;
-  letter-spacing: 0.02em;
-}
-
 .hero-slogan {
   max-width: 720px;
-  margin: 24px 0 0;
-  font-size: clamp(1.28rem, 2.7vw, 2.15rem);
-  line-height: 1.18;
+  margin: 22px 0 0;
+  font-size: clamp(1.22rem, 2.1vw, 1.78rem);
+  line-height: 1.25;
   font-weight: 850;
 }
 
@@ -419,8 +410,8 @@ button {
 .section-heading h2,
 .section-intro h2 {
   margin: 0;
-  font-size: clamp(2rem, 4vw, 3.35rem);
-  line-height: 1.08;
+  font-size: clamp(1.9rem, 3.4vw, 2.92rem);
+  line-height: 1.12;
   letter-spacing: 0;
 }
 
@@ -580,7 +571,7 @@ button {
   display: grid;
   gap: 16px;
   margin: 0;
-  padding: 0;
+  padding: 0 0 0 42px;
   list-style: none;
 }
 
@@ -589,7 +580,7 @@ button {
   position: absolute;
   top: 18px;
   bottom: 18px;
-  left: 58px;
+  left: 13px;
   width: 2px;
   background: linear-gradient(180deg, var(--cyan), rgba(155, 61, 255, 0.72), rgba(24, 232, 255, 0.2));
   box-shadow: 0 0 18px rgba(24, 232, 255, 0.28);
@@ -598,8 +589,8 @@ button {
 .timeline-item {
   position: relative;
   display: grid;
-  grid-template-columns: 118px minmax(0, 1fr);
-  gap: 24px;
+  grid-template-columns: 110px minmax(0, 1fr);
+  gap: 26px;
   align-items: start;
   min-height: 142px;
   padding: 24px;
@@ -616,7 +607,7 @@ button {
   content: "";
   position: absolute;
   top: 34px;
-  left: 53px;
+  left: -35px;
   width: 12px;
   height: 12px;
   border: 2px solid #03101b;
@@ -637,13 +628,16 @@ button {
 .timeline-year {
   display: inline-grid;
   place-items: center;
-  width: 76px;
+  width: fit-content;
+  min-width: 86px;
   min-height: 42px;
+  padding: 0 12px;
   border-radius: var(--radius);
   color: #03101b;
   background: linear-gradient(135deg, var(--cyan), #7af7ff);
-  font-size: 1rem;
+  font-size: 0.96rem;
   font-weight: 950;
+  white-space: nowrap;
   box-shadow: var(--glow);
 }
 
@@ -1071,7 +1065,7 @@ button {
 
 .contact-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 430px);
   gap: clamp(32px, 6vw, 86px);
   align-items: start;
 }
@@ -1081,8 +1075,8 @@ button {
   isolation: isolate;
   overflow: hidden;
   display: grid;
-  gap: 14px;
-  padding: 16px;
+  gap: 10px;
+  padding: 12px;
   border: 1px solid rgba(24, 232, 255, 0.16);
   border-radius: var(--radius-lg);
   background:
@@ -1096,9 +1090,9 @@ button {
   position: absolute;
   inset: 0 0 auto;
   z-index: -1;
-  height: 86px;
-  background: linear-gradient(90deg, rgba(24, 232, 255, 0.22), rgba(155, 61, 255, 0.08), transparent);
-  opacity: 0.7;
+  height: 64px;
+  background: linear-gradient(90deg, rgba(24, 232, 255, 0.16), rgba(155, 61, 255, 0.06), transparent);
+  opacity: 0.55;
 }
 
 .contact-link,
@@ -1128,9 +1122,9 @@ button {
 .contact-link {
   display: flex;
   align-items: center;
-  gap: 14px;
-  min-height: 64px;
-  padding: 14px;
+  gap: 12px;
+  min-height: 56px;
+  padding: 12px 14px;
   text-decoration: none;
 }
 
@@ -1158,14 +1152,14 @@ button {
 .contact-card-head {
   display: flex;
   align-items: flex-start;
-  gap: 14px;
+  gap: 12px;
   min-width: 0;
 }
 
 .contact-email-card {
   display: grid;
-  gap: 14px;
-  padding: 16px;
+  gap: 12px;
+  padding: 14px;
 }
 
 .contact-link .contact-icon,
@@ -1173,8 +1167,8 @@ button {
   display: grid;
   place-items: center;
   flex: 0 0 auto;
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   border-radius: var(--radius);
   color: #03101b;
   background: rgba(255, 255, 255, 0.09);
@@ -1225,7 +1219,7 @@ button {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  padding-left: 58px;
+  padding-left: 52px;
 }
 
 .contact-action {
@@ -1584,22 +1578,21 @@ button {
   }
 
   .timeline-list::before {
-    left: 24px;
+    left: 10px;
   }
 
   .timeline-item {
     grid-template-columns: 1fr;
     gap: 16px;
-    padding: 22px 18px 22px 52px;
+    padding: 20px;
   }
 
   .timeline-item::before {
-    left: 19px;
+    left: -24px;
   }
 
   .timeline-year {
-    width: fit-content;
-    min-width: 76px;
+    min-width: 86px;
   }
 
   .creator-profile {
