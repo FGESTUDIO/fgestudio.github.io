@@ -988,6 +988,10 @@ button {
   font-weight: 900;
 }
 
+.contact-link strong {
+  overflow-wrap: anywhere;
+}
+
 .site-footer {
   padding-block: 24px;
   color: rgba(224, 235, 255, 0.72);
