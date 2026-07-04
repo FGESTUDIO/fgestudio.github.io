@@ -3,7 +3,7 @@ let contactSettings = {
   shortName: "FGES",
   chineseName: "梦幻起源欢娱工作室",
   whatsappNumber: "60172599400",
-  email: "fgestudio.contact@gmail.com",
+  email: "contact@fgestudio.my",
   facebookUrl: "https://www.facebook.com/fantasygenesisentertainmentstudio/",
   instagramUrl: "#",
 };
