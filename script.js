@@ -65,7 +65,7 @@ let translations = {
     "hero.mcn.slogan": "频道定位、视觉包装、缩略图方向、内容节奏与长期成长支持。",
     "hero.mcn.copy": "MCN 业务专注协助游戏内容创作者整理频道品牌、优化内容呈现，并建立更稳定的发布和成长节奏。",
     "hero.mcn.ctaCreators": "查看旗下创作者",
-    "hero.mcn.ctaEmail": "Email 询问 MCN",
+    "hero.mcn.ctaEmail": "Email 咨询合作",
     "hero.mcn.ctaWhatsapp": "WhatsApp 询问 MCN",
     "hero.mcn.badge1": "频道包装",
     "hero.mcn.badge2": "内容成长",
@@ -246,6 +246,8 @@ let translations = {
     "contact.emailDesign": "平面设计：design@fgestudio.my",
     "contact.emailCreators": "MCN 创作者合作：creators@fgestudio.my",
     "contact.emailBusiness": "品牌广告合作：business@fgestudio.my",
+    "contact.copyEmail": "复制邮箱",
+    "contact.writeEmail": "撰写邮件",
     "footer.rights": "© {year} FANTASY GENESIS ENTERTAINMENT STUDIO. 版权所有。",
     "footer.backTop": "回到顶部",
     "metaTitle.privacy": "{company} | 隐私政策",
@@ -305,7 +307,7 @@ let translations = {
     "hero.mcn.slogan": "Channel positioning, visual branding, thumbnail direction, content rhythm, and long-term growth support.",
     "hero.mcn.copy": "The MCN side helps gaming creators organize their channel brand, improve content presentation, and build a steadier publishing and growth rhythm.",
     "hero.mcn.ctaCreators": "View Creators",
-    "hero.mcn.ctaEmail": "Email About MCN",
+    "hero.mcn.ctaEmail": "Email Collaboration",
     "hero.mcn.ctaWhatsapp": "Ask About MCN",
     "hero.mcn.badge1": "Channel branding",
     "hero.mcn.badge2": "Content growth",
@@ -486,6 +488,8 @@ let translations = {
     "contact.emailDesign": "Graphic design: design@fgestudio.my",
     "contact.emailCreators": "MCN creator collaboration: creators@fgestudio.my",
     "contact.emailBusiness": "Brand advertising collaboration: business@fgestudio.my",
+    "contact.copyEmail": "Copy Email",
+    "contact.writeEmail": "Write Email",
     "footer.rights": "© {year} FANTASY GENESIS ENTERTAINMENT STUDIO. All rights reserved.",
     "footer.backTop": "Back to top",
     "metaTitle.privacy": "{company} | Privacy Policy",
@@ -545,7 +549,7 @@ let translations = {
     "hero.mcn.slogan": "Positioning channel, penjenamaan visual, arah thumbnail, ritma kandungan, dan sokongan pertumbuhan.",
     "hero.mcn.copy": "Bahagian MCN membantu pencipta gaming menyusun jenama channel, memperbaiki persembahan kandungan, dan membina ritma penerbitan yang lebih stabil.",
     "hero.mcn.ctaCreators": "Lihat Pencipta",
-    "hero.mcn.ctaEmail": "Email Tentang MCN",
+    "hero.mcn.ctaEmail": "Email Kerjasama",
     "hero.mcn.ctaWhatsapp": "Tanya Tentang MCN",
     "hero.mcn.badge1": "Penjenamaan channel",
     "hero.mcn.badge2": "Pertumbuhan kandungan",
@@ -726,6 +730,8 @@ let translations = {
     "contact.emailDesign": "Reka bentuk grafik: design@fgestudio.my",
     "contact.emailCreators": "Kerjasama pencipta MCN: creators@fgestudio.my",
     "contact.emailBusiness": "Kerjasama iklan jenama: business@fgestudio.my",
+    "contact.copyEmail": "Salin Email",
+    "contact.writeEmail": "Tulis Email",
     "footer.rights": "© {year} FANTASY GENESIS ENTERTAINMENT STUDIO. Hak cipta terpelihara.",
     "footer.backTop": "Kembali ke atas",
     "metaTitle.privacy": "{company} | Dasar Privasi",
@@ -860,7 +866,7 @@ function getPageText(lang, baseKey) {
 }
 
 function getEmailRole(element) {
-  const explicitRole = element?.getAttribute("data-email");
+  const explicitRole = element?.getAttribute("data-email") || element?.getAttribute("data-copy-email") || element?.getAttribute("data-email-address");
   if (explicitRole) return explicitRole;
 
   const pageRoleMap = {
@@ -905,16 +911,28 @@ function showEmailCopyNotice(message) {
 
 function initEmailCopyFeedback() {
   document.addEventListener("click", async (event) => {
-    const link = event.target.closest("[data-email]");
-    if (!link) return;
+    const target = event.target.closest("[data-email], [data-copy-email], [data-email-address]");
+    if (!target) return;
 
-    const email = getEmailAddress(getEmailRole(link));
+    const shouldOpenMailApp = target.matches("a[data-email]");
+    if (shouldOpenMailApp) {
+      event.preventDefault();
+    }
+
+    const role = getEmailRole(target);
+    const email = getEmailAddress(role);
     try {
       if (!navigator.clipboard?.writeText) throw new Error("Clipboard unavailable");
       await navigator.clipboard.writeText(email);
       showEmailCopyNotice(getText(activeLanguage, "contact.emailCopied"));
     } catch (error) {
       showEmailCopyNotice(email);
+    }
+
+    if (shouldOpenMailApp) {
+      window.setTimeout(() => {
+        window.location.href = getEmailUrl(role);
+      }, 180);
     }
   });
 }
@@ -1062,6 +1080,9 @@ function applyTranslations(lang) {
   });
   document.querySelectorAll("[data-email]").forEach((link) => {
     link.setAttribute("href", getEmailUrl(getEmailRole(link)));
+  });
+  document.querySelectorAll("[data-email-address]").forEach((element) => {
+    element.textContent = getEmailAddress(getEmailRole(element));
   });
 
   document.querySelectorAll(".lang-btn").forEach((button) => {

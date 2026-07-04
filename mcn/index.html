@@ -26,7 +26,7 @@
     <meta name="theme-color" content="#050816" />
     <link rel="canonical" href="https://fgestudio.my/mcn/" />
     <link rel="icon" href="../images/fges-logo-transparent.png" />
-    <link rel="stylesheet" href="../style.css?v=20260704-email-roles" />
+    <link rel="stylesheet" href="../style.css?v=20260704-contact-ui" />
   </head>
   <body data-page="mcn">
     <header class="site-header" data-header>
@@ -84,7 +84,7 @@
               <span class="btn-icon" aria-hidden="true">
                 <img src="../images/icons/email.svg" alt="" />
               </span>
-              <span data-i18n="hero.mcn.ctaEmail">Email 询问 MCN</span>
+              <span data-i18n="hero.mcn.ctaEmail">Email 咨询合作</span>
             </a>
           </div>
           <div class="hero-badges" aria-label="MCN highlights">
@@ -223,22 +223,40 @@
             <p class="section-kicker" data-i18n="contact.kicker">联系我们</p>
             <h2 id="contactTitle" data-i18n="contact.mcn.title">MCN 合作与创作者孵化，请通过 Email 联系我们。</h2>
             <p data-i18n="contact.mcn.copy">
-              为了方便整理频道资料、合作方向和后续记录，MCN 业务目前只接受 Email 询问。请在邮件中附上你的频道链接、内容类型、目前目标和想了解的合作方向。
+              创作者想加入 MCN 或了解孵化合作，请使用 creators@fgestudio.my。品牌方想找旗下艺人打广告或商业合作，请使用 business@fgestudio.my。
             </p>
           </div>
           <div class="contact-card reveal">
-            <a class="contact-link primary-contact" href="mailto:creators@fgestudio.my" data-email="creators">
-              <span class="contact-icon" aria-hidden="true">
-                <img src="../images/icons/email.svg" alt="" />
-              </span>
-              <strong data-i18n="contact.emailCreators">MCN 创作者合作：creators@fgestudio.my</strong>
-            </a>
-            <a class="contact-link" href="mailto:business@fgestudio.my" data-email="business">
-              <span class="contact-icon" aria-hidden="true">
-                <img src="../images/icons/email.svg" alt="" />
-              </span>
-              <strong data-i18n="contact.emailBusiness">品牌广告合作：business@fgestudio.my</strong>
-            </a>
+            <article class="contact-email-card primary-contact">
+              <div class="contact-card-head">
+                <span class="contact-icon" aria-hidden="true">
+                  <img src="../images/icons/email.svg" alt="" />
+                </span>
+                <div class="contact-email-content">
+                  <strong data-i18n="contact.emailCreators">MCN 创作者合作：creators@fgestudio.my</strong>
+                  <span class="contact-email-address" data-email-address="creators">creators@fgestudio.my</span>
+                </div>
+              </div>
+              <div class="contact-actions">
+                <button class="contact-action" type="button" data-copy-email="creators" data-i18n="contact.copyEmail">复制邮箱</button>
+                <a class="contact-action primary" href="mailto:creators@fgestudio.my" data-email="creators" data-i18n="contact.writeEmail">撰写邮件</a>
+              </div>
+            </article>
+            <article class="contact-email-card">
+              <div class="contact-card-head">
+                <span class="contact-icon" aria-hidden="true">
+                  <img src="../images/icons/email.svg" alt="" />
+                </span>
+                <div class="contact-email-content">
+                  <strong data-i18n="contact.emailBusiness">品牌广告合作：business@fgestudio.my</strong>
+                  <span class="contact-email-address" data-email-address="business">business@fgestudio.my</span>
+                </div>
+              </div>
+              <div class="contact-actions">
+                <button class="contact-action" type="button" data-copy-email="business" data-i18n="contact.copyEmail">复制邮箱</button>
+                <a class="contact-action primary" href="mailto:business@fgestudio.my" data-email="business" data-i18n="contact.writeEmail">撰写邮件</a>
+              </div>
+            </article>
           </div>
         </div>
       </section>
@@ -257,6 +275,6 @@
       </div>
     </footer>
 
-    <script src="../script.js?v=20260704-email-roles"></script>
+    <script src="../script.js?v=20260704-contact-ui"></script>
   </body>
 </html>

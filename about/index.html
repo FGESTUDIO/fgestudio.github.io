@@ -26,7 +26,7 @@
     <meta name="theme-color" content="#050816" />
     <link rel="canonical" href="https://fgestudio.my/about/" />
     <link rel="icon" href="../images/fges-logo-transparent.png" />
-    <link rel="stylesheet" href="../style.css?v=20260704-email-roles" />
+    <link rel="stylesheet" href="../style.css?v=20260704-contact-ui" />
   </head>
   <body data-page="about">
     <header class="site-header" data-header>
@@ -177,30 +177,66 @@
               </span>
               <strong data-i18n="contact.instagram">Instagram</strong>
             </a>
-            <a class="contact-link" href="mailto:contact@fgestudio.my" data-email="general">
-              <span class="contact-icon" aria-hidden="true">
-                <img src="../images/icons/email.svg" alt="" />
-              </span>
-              <strong data-i18n="contact.emailGeneral">公司公开邮箱：contact@fgestudio.my</strong>
-            </a>
-            <a class="contact-link" href="mailto:design@fgestudio.my" data-email="design">
-              <span class="contact-icon" aria-hidden="true">
-                <img src="../images/icons/email.svg" alt="" />
-              </span>
-              <strong data-i18n="contact.emailDesign">平面设计：design@fgestudio.my</strong>
-            </a>
-            <a class="contact-link" href="mailto:creators@fgestudio.my" data-email="creators">
-              <span class="contact-icon" aria-hidden="true">
-                <img src="../images/icons/email.svg" alt="" />
-              </span>
-              <strong data-i18n="contact.emailCreators">MCN 创作者合作：creators@fgestudio.my</strong>
-            </a>
-            <a class="contact-link" href="mailto:business@fgestudio.my" data-email="business">
-              <span class="contact-icon" aria-hidden="true">
-                <img src="../images/icons/email.svg" alt="" />
-              </span>
-              <strong data-i18n="contact.emailBusiness">品牌广告合作：business@fgestudio.my</strong>
-            </a>
+            <article class="contact-email-card">
+              <div class="contact-card-head">
+                <span class="contact-icon" aria-hidden="true">
+                  <img src="../images/icons/email.svg" alt="" />
+                </span>
+                <div class="contact-email-content">
+                  <strong data-i18n="contact.emailGeneral">公司公开邮箱：contact@fgestudio.my</strong>
+                  <span class="contact-email-address" data-email-address="general">contact@fgestudio.my</span>
+                </div>
+              </div>
+              <div class="contact-actions">
+                <button class="contact-action" type="button" data-copy-email="general" data-i18n="contact.copyEmail">复制邮箱</button>
+                <a class="contact-action primary" href="mailto:contact@fgestudio.my" data-email="general" data-i18n="contact.writeEmail">撰写邮件</a>
+              </div>
+            </article>
+            <article class="contact-email-card">
+              <div class="contact-card-head">
+                <span class="contact-icon" aria-hidden="true">
+                  <img src="../images/icons/email.svg" alt="" />
+                </span>
+                <div class="contact-email-content">
+                  <strong data-i18n="contact.emailDesign">平面设计：design@fgestudio.my</strong>
+                  <span class="contact-email-address" data-email-address="design">design@fgestudio.my</span>
+                </div>
+              </div>
+              <div class="contact-actions">
+                <button class="contact-action" type="button" data-copy-email="design" data-i18n="contact.copyEmail">复制邮箱</button>
+                <a class="contact-action primary" href="mailto:design@fgestudio.my" data-email="design" data-i18n="contact.writeEmail">撰写邮件</a>
+              </div>
+            </article>
+            <article class="contact-email-card">
+              <div class="contact-card-head">
+                <span class="contact-icon" aria-hidden="true">
+                  <img src="../images/icons/email.svg" alt="" />
+                </span>
+                <div class="contact-email-content">
+                  <strong data-i18n="contact.emailCreators">MCN 创作者合作：creators@fgestudio.my</strong>
+                  <span class="contact-email-address" data-email-address="creators">creators@fgestudio.my</span>
+                </div>
+              </div>
+              <div class="contact-actions">
+                <button class="contact-action" type="button" data-copy-email="creators" data-i18n="contact.copyEmail">复制邮箱</button>
+                <a class="contact-action primary" href="mailto:creators@fgestudio.my" data-email="creators" data-i18n="contact.writeEmail">撰写邮件</a>
+              </div>
+            </article>
+            <article class="contact-email-card">
+              <div class="contact-card-head">
+                <span class="contact-icon" aria-hidden="true">
+                  <img src="../images/icons/email.svg" alt="" />
+                </span>
+                <div class="contact-email-content">
+                  <strong data-i18n="contact.emailBusiness">品牌广告合作：business@fgestudio.my</strong>
+                  <span class="contact-email-address" data-email-address="business">business@fgestudio.my</span>
+                </div>
+              </div>
+              <div class="contact-actions">
+                <button class="contact-action" type="button" data-copy-email="business" data-i18n="contact.copyEmail">复制邮箱</button>
+                <a class="contact-action primary" href="mailto:business@fgestudio.my" data-email="business" data-i18n="contact.writeEmail">撰写邮件</a>
+              </div>
+            </article>
           </div>
         </div>
       </section>
@@ -219,6 +255,6 @@
       </div>
     </footer>
 
-    <script src="../script.js?v=20260704-email-roles"></script>
+    <script src="../script.js?v=20260704-contact-ui"></script>
   </body>
 </html>
