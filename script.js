@@ -726,18 +726,28 @@ function getNestedValue(source, path) {
   }, source);
 }
 
-async function loadContentOverrides() {
-  try {
-    const response = await fetch("content.json", { cache: "no-store" });
-    if (!response.ok) return;
-
-    const content = await response.json();
-    contactSettings = deepMerge(contactSettings, content.contactSettings || {});
-    editableContent = deepMerge(editableContent, content.editable || {});
-    translations = deepMerge(translations, content.translations || {});
-  } catch (error) {
-    // The site keeps working with built-in content when content.json is missing locally.
+async function fetchJsonFrom(paths) {
+  for (const path of paths) {
+    try {
+      const response = await fetch(path, { cache: "no-store" });
+      if (response.ok) {
+        return await response.json();
+      }
+    } catch (error) {
+      // Try the next path when local preview or nested clean URLs block this one.
+    }
   }
+
+  return null;
+}
+
+async function loadContentOverrides() {
+  const content = await fetchJsonFrom(["content.json", "../content.json", "/content.json"]);
+  if (!content) return;
+
+  contactSettings = deepMerge(contactSettings, content.contactSettings || {});
+  editableContent = deepMerge(editableContent, content.editable || {});
+  translations = deepMerge(translations, content.translations || {});
 }
 
 function formatText(value) {
@@ -837,13 +847,9 @@ function renderYouTubeStats(stats) {
 }
 
 async function loadYouTubeStats() {
-  try {
-    const response = await fetch("data/youtube-stats.json", { cache: "no-store" });
-    if (!response.ok) return;
-    latestYouTubeStats = await response.json();
+  latestYouTubeStats = await fetchJsonFrom(["data/youtube-stats.json", "../data/youtube-stats.json", "/data/youtube-stats.json"]);
+  if (latestYouTubeStats) {
     renderYouTubeStats(latestYouTubeStats);
-  } catch (error) {
-    // Local file preview may block fetch; GitHub Pages will load the JSON normally.
   }
 }
 
@@ -1141,9 +1147,21 @@ function initHeroCanvas() {
   });
 }
 
+function cleanLegacyHtmlUrl() {
+  const cleanPath = window.location.pathname
+    .replace(/\/index\.html$/i, "/")
+    .replace(/\/about\.html$/i, "/about/")
+    .replace(/\/mcn\.html$/i, "/mcn/");
+
+  if (cleanPath !== window.location.pathname) {
+    window.history.replaceState(null, "", `${cleanPath}${window.location.search}${window.location.hash}`);
+  }
+}
+
 document.addEventListener("DOMContentLoaded", async () => {
   if (document.body?.dataset.admin === "true") return;
 
+  cleanLegacyHtmlUrl();
   await loadContentOverrides();
   initLanguageSwitcher();
   loadYouTubeStats();
