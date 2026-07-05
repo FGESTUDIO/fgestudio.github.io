@@ -1364,11 +1364,12 @@ button {
   overflow: hidden;
   display: grid;
   gap: 12px;
-  padding: 12px;
-  border: 1px solid rgba(24, 232, 255, 0.16);
+  padding: 14px;
+  border: 1px solid rgba(24, 232, 255, 0.2);
   border-radius: var(--radius-lg);
   background:
-    linear-gradient(145deg, rgba(24, 232, 255, 0.08), rgba(155, 61, 255, 0.08)),
+    radial-gradient(circle at 12% 0%, rgba(24, 232, 255, 0.12), transparent 34%),
+    radial-gradient(circle at 100% 20%, rgba(155, 61, 255, 0.1), transparent 36%),
     rgba(255, 255, 255, 0.045);
   box-shadow: var(--shadow);
 }
@@ -1377,7 +1378,8 @@ button {
   transform: none;
   border-color: rgba(24, 232, 255, 0.28);
   background:
-    linear-gradient(145deg, rgba(24, 232, 255, 0.08), rgba(155, 61, 255, 0.08)),
+    radial-gradient(circle at 12% 0%, rgba(24, 232, 255, 0.12), transparent 34%),
+    radial-gradient(circle at 100% 20%, rgba(155, 61, 255, 0.1), transparent 36%),
     rgba(255, 255, 255, 0.045);
   box-shadow: var(--shadow);
 }
@@ -1385,11 +1387,11 @@ button {
 .contact-card::before {
   content: "";
   position: absolute;
-  inset: 0 0 auto;
+  inset: 0;
   z-index: -1;
-  height: 64px;
-  background: linear-gradient(90deg, rgba(24, 232, 255, 0.16), rgba(155, 61, 255, 0.06), transparent);
-  opacity: 0.55;
+  background: linear-gradient(135deg, rgba(24, 232, 255, 0.05), transparent 46%, rgba(155, 61, 255, 0.04));
+  opacity: 0.8;
+  pointer-events: none;
 }
 
 .contact-link,
@@ -1419,11 +1421,12 @@ button {
 }
 
 .contact-link {
-  display: flex;
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
   align-items: center;
-  gap: 12px;
-  min-height: 66px;
-  padding: 12px 14px;
+  gap: 14px;
+  min-height: 68px;
+  padding: 14px 16px;
   text-decoration: none;
   line-height: 1.15;
 }
@@ -1469,8 +1472,18 @@ button {
 
 .contact-email-card {
   display: grid;
-  gap: 12px;
-  padding: 14px;
+  grid-template-columns: 42px minmax(0, 1fr);
+  grid-template-areas:
+    "icon content"
+    ". actions";
+  align-items: start;
+  gap: 10px 14px;
+  min-height: 116px;
+  padding: 16px;
+}
+
+.contact-email-card .contact-card-head {
+  display: contents;
 }
 
 .contact-link .contact-icon,
@@ -1488,7 +1501,12 @@ button {
   overflow: visible;
 }
 
-.contact-link.primary-contact .contact-icon,
+.contact-link.primary-contact .contact-icon {
+  border: 1px solid rgba(37, 211, 102, 0.36);
+  background: rgba(37, 211, 102, 0.12);
+  box-shadow: 0 0 24px rgba(37, 211, 102, 0.14);
+}
+
 .contact-email-card.primary-contact .contact-icon {
   background: rgba(24, 232, 255, 0.12);
   box-shadow: 0 0 24px rgba(24, 232, 255, 0.16);
@@ -1507,9 +1525,12 @@ button {
 }
 
 .contact-email-card .contact-icon {
+  grid-area: icon;
+  margin-top: 2px;
   border: 1px solid rgba(24, 232, 255, 0.28);
+  border-radius: 10px;
   background:
-    linear-gradient(135deg, rgba(24, 232, 255, 0.16), rgba(155, 61, 255, 0.1)),
+    linear-gradient(135deg, rgba(24, 232, 255, 0.12), rgba(155, 61, 255, 0.08)),
     rgba(255, 255, 255, 0.06);
 }
 
@@ -1519,8 +1540,9 @@ button {
 }
 
 .contact-email-content {
+  grid-area: content;
   display: grid;
-  gap: 4px;
+  gap: 3px;
   min-width: 0;
 }
 
@@ -1544,10 +1566,12 @@ button {
 }
 
 .contact-actions {
+  grid-area: actions;
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  padding-left: 52px;
+  padding-left: 0;
+  margin-top: 2px;
 }
 
 .contact-action {
@@ -1953,7 +1977,7 @@ button {
   }
 
   .contact-card {
-    padding: 10px;
+    padding: 12px;
   }
 
   .contact-card-head {
@@ -1961,6 +1985,9 @@ button {
   }
 
   .contact-email-card {
+    grid-template-columns: 40px minmax(0, 1fr);
+    gap: 10px 12px;
+    min-height: auto;
     padding: 14px;
   }
 
@@ -1970,12 +1997,12 @@ button {
 
   .contact-actions {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     padding-left: 0;
   }
 
   .contact-action {
-    width: 100%;
+    width: auto;
   }
 
   .footer-inner {
