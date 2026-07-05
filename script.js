@@ -11,7 +11,6 @@ let contactSettings = {
     business: "business@fgestudio.my",
   },
   facebookUrl: "https://www.facebook.com/fantasygenesisentertainmentstudio/",
-  instagramUrl: "#",
 };
 
 const currentYear = new Date().getFullYear();
@@ -250,7 +249,6 @@ let translations = {
     "contact.design.whatsapp": "WhatsApp 询问平面设计",
     "contact.whatsapp": "WhatsApp 一般咨询",
     "contact.facebook": "Facebook",
-    "contact.instagram": "Instagram",
     "contact.email": "Email：contact@fgestudio.my",
     "contact.emailGeneral": "公司公开邮箱",
     "contact.emailDesign": "平面设计",
@@ -502,7 +500,6 @@ let translations = {
     "contact.design.whatsapp": "Ask About Graphic Design",
     "contact.whatsapp": "WhatsApp General Enquiry",
     "contact.facebook": "Facebook",
-    "contact.instagram": "Instagram",
     "contact.email": "Email: contact@fgestudio.my",
     "contact.emailGeneral": "Public email",
     "contact.emailDesign": "Graphic design",
@@ -754,7 +751,6 @@ let translations = {
     "contact.design.whatsapp": "Tanya Reka Bentuk Grafik",
     "contact.whatsapp": "Pertanyaan Umum WhatsApp",
     "contact.facebook": "Facebook",
-    "contact.instagram": "Instagram",
     "contact.email": "Email: contact@fgestudio.my",
     "contact.emailGeneral": "Email umum",
     "contact.emailDesign": "Reka bentuk grafik",
@@ -1104,9 +1100,6 @@ function applyTranslations(lang) {
 
   document.querySelectorAll("[data-facebook]").forEach((link) => {
     link.setAttribute("href", contactSettings.facebookUrl);
-  });
-  document.querySelectorAll("[data-instagram]").forEach((link) => {
-    link.setAttribute("href", contactSettings.instagramUrl);
   });
   document.querySelectorAll("[data-email]").forEach((link) => {
     link.setAttribute("href", getEmailUrl(getEmailRole(link)));
