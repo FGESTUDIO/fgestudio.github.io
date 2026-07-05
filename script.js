@@ -1178,6 +1178,11 @@ function initFaq() {
 
 function initRevealAnimations() {
   const elements = document.querySelectorAll(".reveal");
+  const groupedElements = document.querySelectorAll("main section .reveal");
+
+  groupedElements.forEach((element, index) => {
+    element.style.setProperty("--reveal-delay", `${Math.min(index % 8, 7) * 45}ms`);
+  });
 
   if (!("IntersectionObserver" in window)) {
     elements.forEach((element) => element.classList.add("is-visible"));
@@ -1197,6 +1202,42 @@ function initRevealAnimations() {
   );
 
   elements.forEach((element) => observer.observe(element));
+}
+
+function initInteractiveSurfaces() {
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (prefersReducedMotion) return;
+
+  const selector = [
+    ".btn",
+    ".service-card",
+    ".pricing-card",
+    ".portfolio-card",
+    ".business-card",
+    ".timeline-item",
+    ".process-list li",
+    ".faq-item",
+    ".creator-link",
+    ".creator-stats div",
+    ".contact-link",
+    ".contact-email-card",
+    ".contact-action"
+  ].join(",");
+
+  document.querySelectorAll(selector).forEach((element) => {
+    element.addEventListener("pointermove", (event) => {
+      const rect = element.getBoundingClientRect();
+      const x = ((event.clientX - rect.left) / rect.width) * 100;
+      const y = ((event.clientY - rect.top) / rect.height) * 100;
+      element.style.setProperty("--pointer-x", `${x.toFixed(1)}%`);
+      element.style.setProperty("--pointer-y", `${y.toFixed(1)}%`);
+    });
+
+    element.addEventListener("pointerleave", () => {
+      element.style.removeProperty("--pointer-x");
+      element.style.removeProperty("--pointer-y");
+    });
+  });
 }
 
 function initActiveNav() {
@@ -1377,6 +1418,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   initMobileMenu();
   initFaq();
   initRevealAnimations();
+  initInteractiveSurfaces();
   initActiveNav();
   initHeroCanvas();
 });

@@ -16,6 +16,9 @@
   --radius: 8px;
   --radius-lg: 8px;
   --header-height: 78px;
+  --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-fast: 160ms;
+  --motion-med: 360ms;
 }
 
 .legal-hero {
@@ -135,14 +138,14 @@
   border-radius: 6px;
   color: #e8f3ff;
   font-weight: 850;
-  transition: background 160ms ease, color 160ms ease, transform 160ms ease, border-color 160ms ease;
+  transition: background var(--motion-fast) ease, color var(--motion-fast) ease, border-color var(--motion-fast) ease, box-shadow var(--motion-fast) ease;
 }
 
 .legal-jump-nav a:hover {
   color: #03101b;
   background: var(--cyan);
   border-color: var(--cyan);
-  transform: translateY(-1px);
+  box-shadow: 0 0 18px rgba(24, 232, 255, 0.2);
 }
 
 .legal-document {
@@ -410,7 +413,7 @@ button {
 
 .lang-btn:hover {
   color: var(--white);
-  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .lang-btn.is-active {
@@ -482,6 +485,7 @@ button {
   filter:
     drop-shadow(0 0 20px rgba(24, 232, 255, 0.7))
     drop-shadow(0 0 58px rgba(155, 61, 255, 0.45));
+  animation: logoBreath 6s var(--ease-smooth) infinite;
 }
 
 .hero-content {
@@ -539,6 +543,9 @@ button {
 }
 
 .btn {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -548,7 +555,19 @@ button {
   border-radius: var(--radius);
   padding: 12px 18px;
   font-weight: 850;
-  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease, background 180ms ease;
+  transform: translateZ(0);
+  transition: box-shadow var(--motion-fast) ease, border-color var(--motion-fast) ease, background var(--motion-fast) ease, filter var(--motion-fast) ease;
+}
+
+.btn::after {
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  content: "";
+  background: linear-gradient(120deg, transparent 18%, rgba(255, 255, 255, 0.22), transparent 82%);
+  opacity: 0;
+  transform: translateX(-42%);
+  transition: opacity var(--motion-fast) ease, transform var(--motion-med) var(--ease-smooth);
 }
 
 .btn-icon {
@@ -566,8 +585,17 @@ button {
 }
 
 .btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.28);
+  filter: brightness(1.06);
+  box-shadow: 0 0 0 1px rgba(24, 232, 255, 0.14), 0 16px 34px rgba(0, 0, 0, 0.24);
+}
+
+.btn:hover::after {
+  opacity: 1;
+  transform: translateX(42%);
+}
+
+.btn:active {
+  filter: brightness(0.96);
 }
 
 .btn-primary {
@@ -692,7 +720,8 @@ button {
   background:
     linear-gradient(145deg, rgba(24, 232, 255, 0.08), rgba(255, 255, 255, 0.035)),
     var(--panel);
-  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease, background 180ms ease;
+  transform: translateZ(0);
+  transition: box-shadow var(--motion-fast) ease, border-color var(--motion-fast) ease, background var(--motion-fast) ease, filter var(--motion-fast) ease;
 }
 
 .business-card::after {
@@ -712,12 +741,12 @@ button {
 }
 
 .business-card:hover {
-  transform: translateY(-4px);
   border-color: rgba(24, 232, 255, 0.56);
   box-shadow: var(--shadow), 0 0 24px rgba(24, 232, 255, 0.14);
   background:
     linear-gradient(145deg, rgba(24, 232, 255, 0.12), rgba(155, 61, 255, 0.08)),
     var(--panel-strong);
+  filter: brightness(1.04);
 }
 
 .business-tag {
@@ -818,7 +847,8 @@ button {
     linear-gradient(135deg, rgba(24, 232, 255, 0.08), rgba(155, 61, 255, 0.07)),
     rgba(255, 255, 255, 0.055);
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08) inset;
-  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
+  transform: translateZ(0);
+  transition: border-color var(--motion-fast) ease, box-shadow var(--motion-fast) ease, background var(--motion-fast) ease, filter var(--motion-fast) ease;
 }
 
 .timeline-item::before {
@@ -835,12 +865,12 @@ button {
 }
 
 .timeline-item:hover {
-  transform: translateY(-4px);
   border-color: rgba(24, 232, 255, 0.52);
   background:
     linear-gradient(135deg, rgba(24, 232, 255, 0.12), rgba(155, 61, 255, 0.12)),
     rgba(255, 255, 255, 0.08);
   box-shadow: var(--shadow), 0 0 24px rgba(24, 232, 255, 0.12);
+  filter: brightness(1.04);
 }
 
 .timeline-year {
@@ -894,21 +924,52 @@ button {
 .portfolio-card,
 .faq-item,
 .process-list li {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--panel);
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08) inset;
-  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease, background 180ms ease;
+  transform: translateZ(0);
+  transition: box-shadow var(--motion-fast) ease, border-color var(--motion-fast) ease, background var(--motion-fast) ease, filter var(--motion-fast) ease;
+}
+
+.service-card::after,
+.pricing-card::after,
+.portfolio-card::after,
+.faq-item::after,
+.process-list li::after,
+.creator-stats div::after {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  content: "";
+  background:
+    radial-gradient(circle at var(--pointer-x, 50%) var(--pointer-y, 50%), rgba(24, 232, 255, 0.18), transparent 30%),
+    linear-gradient(135deg, rgba(24, 232, 255, 0.06), rgba(155, 61, 255, 0.06));
+  opacity: 0;
+  transition: opacity var(--motion-fast) ease;
+  pointer-events: none;
+}
+
+.service-card:hover::after,
+.pricing-card:hover::after,
+.portfolio-card:hover::after,
+.faq-item:hover::after,
+.process-list li:hover::after,
+.creator-stats div:hover::after {
+  opacity: 1;
 }
 
 .service-card:hover,
 .pricing-card:hover,
 .portfolio-card:hover,
 .process-list li:hover {
-  transform: translateY(-4px);
   border-color: rgba(24, 232, 255, 0.5);
   box-shadow: var(--shadow), 0 0 24px rgba(24, 232, 255, 0.14);
   background: var(--panel-strong);
+  filter: brightness(1.04);
 }
 
 .service-card {
@@ -928,6 +989,12 @@ button {
   font-size: 0.8rem;
   font-weight: 900;
   box-shadow: var(--glow);
+  transition: filter var(--motion-fast) ease, box-shadow var(--motion-fast) ease;
+}
+
+.service-card:hover .service-icon {
+  filter: brightness(1.1);
+  box-shadow: 0 0 30px rgba(24, 232, 255, 0.45);
 }
 
 .service-card h3,
@@ -1088,13 +1155,13 @@ button {
   color: var(--white);
   font-weight: 850;
   background: rgba(255, 255, 255, 0.06);
-  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+  transition: border-color var(--motion-fast) ease, background var(--motion-fast) ease, box-shadow var(--motion-fast) ease;
 }
 
 .creator-link:hover {
-  transform: translateY(-2px);
   border-color: rgba(24, 232, 255, 0.72);
   background: rgba(24, 232, 255, 0.1);
+  box-shadow: 0 0 18px rgba(24, 232, 255, 0.12);
 }
 
 .creator-stats {
@@ -1105,6 +1172,9 @@ button {
 }
 
 .creator-stats div {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   display: grid;
   gap: 10px;
   min-width: 0;
@@ -1114,13 +1184,15 @@ button {
   background:
     linear-gradient(145deg, rgba(24, 232, 255, 0.13), rgba(155, 61, 255, 0.08)),
     rgba(3, 4, 11, 0.64);
-  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+  transition: border-color var(--motion-fast) ease, box-shadow var(--motion-fast) ease, background var(--motion-fast) ease;
 }
 
 .creator-stats div:hover {
-  transform: translateY(-3px);
   border-color: rgba(24, 232, 255, 0.48);
   box-shadow: 0 18px 34px rgba(0, 0, 0, 0.24);
+  background:
+    linear-gradient(145deg, rgba(24, 232, 255, 0.18), rgba(155, 61, 255, 0.1)),
+    rgba(3, 4, 11, 0.64);
 }
 
 .creator-stats strong,
@@ -1249,13 +1321,13 @@ button {
   border-radius: 50%;
   color: #03101b;
   background: var(--cyan);
-  transition: transform 180ms ease;
+  transition: transform var(--motion-fast) var(--ease-smooth), filter var(--motion-fast) ease;
 }
 
 .faq-answer {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 220ms ease;
+  transition: max-height var(--motion-med) var(--ease-smooth);
 }
 
 .faq-answer p {
@@ -1339,6 +1411,7 @@ button {
   inset: 0;
   z-index: -1;
   background:
+    radial-gradient(circle at var(--pointer-x, 50%) var(--pointer-y, 50%), rgba(24, 232, 255, 0.2), transparent 32%),
     linear-gradient(120deg, rgba(24, 232, 255, 0.14), transparent 38%),
     radial-gradient(circle at 92% 0%, rgba(155, 61, 255, 0.18), transparent 42%);
   opacity: 0;
@@ -1352,6 +1425,7 @@ button {
   min-height: 66px;
   padding: 12px 14px;
   text-decoration: none;
+  line-height: 1.15;
 }
 
 .contact-link:hover,
@@ -1411,7 +1485,7 @@ button {
   background: rgba(255, 255, 255, 0.09);
   font-size: 0.78rem;
   font-weight: 900;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .contact-link.primary-contact .contact-icon,
@@ -1425,6 +1499,11 @@ button {
   width: 34px;
   height: 34px;
   object-fit: contain;
+}
+
+.contact-link.primary-contact .contact-icon img {
+  width: 32px;
+  height: 32px;
 }
 
 .contact-email-card .contact-icon {
@@ -1485,13 +1564,13 @@ button {
   font-size: 0.86rem;
   font-weight: 850;
   cursor: pointer;
-  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease, color 160ms ease;
+  transition: border-color var(--motion-fast) ease, background var(--motion-fast) ease, color var(--motion-fast) ease, box-shadow var(--motion-fast) ease;
 }
 
 .contact-action:hover {
-  transform: translateY(-1px);
   border-color: rgba(24, 232, 255, 0.66);
   background: rgba(24, 232, 255, 0.1);
+  box-shadow: 0 0 16px rgba(24, 232, 255, 0.1);
 }
 
 .contact-action.primary {
@@ -1526,6 +1605,21 @@ button {
 .email-copy-notice.is-visible {
   opacity: 1;
   transform: translate(-50%, 0);
+}
+
+@keyframes logoBreath {
+  0%,
+  100% {
+    filter:
+      drop-shadow(0 0 18px rgba(24, 232, 255, 0.62))
+      drop-shadow(0 0 52px rgba(155, 61, 255, 0.38));
+  }
+
+  50% {
+    filter:
+      drop-shadow(0 0 26px rgba(24, 232, 255, 0.82))
+      drop-shadow(0 0 76px rgba(155, 61, 255, 0.52));
+  }
 }
 
 .site-footer {
@@ -1598,7 +1692,8 @@ button {
 .reveal {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 520ms ease, transform 520ms ease;
+  transition: opacity 520ms var(--ease-smooth), transform 520ms var(--ease-smooth);
+  transition-delay: var(--reveal-delay, 0ms);
 }
 
 .hero-logo-stage.reveal {
