@@ -1367,31 +1367,19 @@ button {
   padding: 14px;
   border: 1px solid rgba(24, 232, 255, 0.2);
   border-radius: var(--radius-lg);
-  background:
-    radial-gradient(circle at 12% 0%, rgba(24, 232, 255, 0.12), transparent 34%),
-    radial-gradient(circle at 100% 20%, rgba(155, 61, 255, 0.1), transparent 36%),
-    rgba(255, 255, 255, 0.045);
+  background: rgba(255, 255, 255, 0.045);
   box-shadow: var(--shadow);
 }
 
 .contact-card:hover {
   transform: none;
   border-color: rgba(24, 232, 255, 0.28);
-  background:
-    radial-gradient(circle at 12% 0%, rgba(24, 232, 255, 0.12), transparent 34%),
-    radial-gradient(circle at 100% 20%, rgba(155, 61, 255, 0.1), transparent 36%),
-    rgba(255, 255, 255, 0.045);
+  background: rgba(255, 255, 255, 0.045);
   box-shadow: var(--shadow);
 }
 
 .contact-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: linear-gradient(135deg, rgba(24, 232, 255, 0.05), transparent 46%, rgba(155, 61, 255, 0.04));
-  opacity: 0.8;
-  pointer-events: none;
+  display: none;
 }
 
 .contact-link,
@@ -1450,13 +1438,12 @@ button {
 
 .contact-link.primary-contact,
 .contact-email-card.primary-contact {
-  border-color: rgba(24, 232, 255, 0.42);
-  background:
-    linear-gradient(135deg, rgba(24, 232, 255, 0.14), rgba(155, 61, 255, 0.12)),
-    rgba(255, 255, 255, 0.07);
+  border-color: rgba(24, 232, 255, 0.16);
+  background: rgba(255, 255, 255, 0.055);
 }
 
-.contact-link.primary-contact:hover {
+.contact-link.primary-contact:hover,
+.contact-email-card.primary-contact:hover {
   border-color: rgba(24, 232, 255, 0.78);
   background:
     linear-gradient(135deg, rgba(24, 232, 255, 0.2), rgba(155, 61, 255, 0.14)),
@@ -1502,12 +1489,22 @@ button {
 }
 
 .contact-link.primary-contact .contact-icon {
+  border: 0;
+  background: rgba(255, 255, 255, 0.09);
+  box-shadow: none;
+}
+
+.contact-link.primary-contact:hover .contact-icon {
   border: 1px solid rgba(37, 211, 102, 0.36);
   background: rgba(37, 211, 102, 0.12);
   box-shadow: 0 0 24px rgba(37, 211, 102, 0.14);
 }
 
 .contact-email-card.primary-contact .contact-icon {
+  box-shadow: none;
+}
+
+.contact-email-card.primary-contact:hover .contact-icon {
   background: rgba(24, 232, 255, 0.12);
   box-shadow: 0 0 24px rgba(24, 232, 255, 0.16);
 }
