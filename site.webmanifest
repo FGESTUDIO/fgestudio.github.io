@@ -1,7 +1,7 @@
 {
   "name": "FANTASY GENESIS ENTERTAINMENT STUDIO",
-  "short_name": "FGES",
-  "description": "FGES / FGESTUDIO / 梦幻起源欢娱工作室 provides graphic design services and gaming creator MCN incubation.",
+  "short_name": "FGESTUDIO",
+  "description": "FGESTUDIO（梦幻起源欢娱工作室） provides graphic design services and gaming creator MCN incubation.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

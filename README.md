@@ -1,4 +1,4 @@
-# FGES Website
+# FGESTUDIO Website
 
 这是 FANTASY GENESIS ENTERTAINMENT STUDIO / 梦幻起源欢娱工作室 的静态官方网站。
 
@@ -24,7 +24,7 @@
 ## 文件结构
 
 ```text
-FGES WEB/
+FGESTUDIO WEB/
 ├── index.html
 ├── mcn.html
 ├── about.html
@@ -36,8 +36,8 @@ FGES WEB/
 ├── data/
 │   └── youtube-stats.json
 ├── images/
-│   ├── fges-logo-transparent.png
-│   └── fges-logo-social.png
+│   ├── fgestudio-logo-transparent.png
+│   └── fgestudio-logo-social.png
 ├── scripts/
 │   └── update-youtube-stats.mjs
 └── .github/
@@ -101,7 +101,7 @@ admin.html
 ```js
 const contactSettings = {
   companyName: "FANTASY GENESIS ENTERTAINMENT STUDIO",
-  shortName: "FGES",
+  shortName: "FGESTUDIO",
   chineseName: "梦幻起源欢娱工作室",
   whatsappNumber: "60172599400",
   email: "contact@fgestudio.my",
@@ -194,14 +194,14 @@ const translations = {
 目前网站使用两个 logo 文件：
 
 ```text
-images/fges-logo-transparent.png
-images/fges-logo-social.png
+images/fgestudio-logo-transparent.png
+images/fgestudio-logo-social.png
 ```
 
 用途：
 
-- `fges-logo-transparent.png`：header、Hero、favicon
-- `fges-logo-social.png`：社交分享图 / Open Graph image
+- `fgestudio-logo-transparent.png`：header、Hero、favicon
+- `fgestudio-logo-social.png`：社交分享图 / Open Graph image
 
 如果以后你要换 logo，建议继续用同样的文件名替换，这样不用改代码。
 
@@ -357,7 +357,7 @@ creator-link
 例子：
 
 ```text
-fgesstudio.github.io
+fgestudio.github.io
 ```
 
 5. 选择 `Public`。
@@ -390,7 +390,7 @@ https://你的GitHub用户名.github.io/
 如果你的 repository 名称不是 `用户名.github.io`，例如：
 
 ```text
-fges-website
+fgestudio-website
 ```
 
 你需要打开 GitHub Pages：
@@ -407,7 +407,7 @@ fges-website
 发布后网址通常是：
 
 ```text
-https://你的GitHub用户名.github.io/fges-website/
+https://你的GitHub用户名.github.io/fgestudio-website/
 ```
 
 ## 13. 如何以后接上自定义域名
