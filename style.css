@@ -1,6 +1,7 @@
-@import url("/style-original.css?v=20260711-ssm-all-pages");
+@import url("/style-original.css?v=20260711-ssm-all-pages-v2");
 
-.footer-inner > p[data-i18n="footer.rights"]::after {
+.footer-inner > p[data-i18n="footer.rights"]::after,
+.footer-inner > p > [data-i18n="footer.rights"]::after {
   content: "SSM Registration No.: 202603071810 (RA0133617-K)";
   display: block;
   margin-top: 4px;
