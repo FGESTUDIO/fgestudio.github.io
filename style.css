@@ -1,4 +1,4 @@
-@import url("/style-original.css?v=20260711-ssm-all-pages-v2");
+@import url("/style-original.css?v=20260711-facebook-browser-fix");
 
 .footer-inner > p[data-i18n="footer.rights"]::after,
 .footer-inner > p > [data-i18n="footer.rights"]::after {
@@ -20,4 +20,17 @@
   color: rgba(224, 235, 255, 0.72);
   font-size: 0.86rem;
   font-weight: 400;
+}
+
+/* Browser compatibility fallback:
+   keep website content visible when an in-app browser does not complete
+   IntersectionObserver or the reveal-animation JavaScript. */
+.reveal {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+.hero-logo-stage.reveal,
+.hero-logo-stage.reveal.is-visible {
+  transform: translateY(-47%) !important;
 }
