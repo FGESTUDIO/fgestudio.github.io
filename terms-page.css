@@ -265,11 +265,6 @@
   text-underline-offset: 4px;
 }
 
-.terms-page .footer-legal > p > [data-i18n="footer.rights"]::after {
-  content: none !important;
-  display: none !important;
-}
-
 @media (max-width: 900px) {
   .terms-summary-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
