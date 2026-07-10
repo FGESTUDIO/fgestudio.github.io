@@ -4,9 +4,11 @@
 
 网站定位：
 
-- `index.html`：平面设计服务主页面
-- `mcn.html`：游戏内容创作者 MCN 孵化页面
-- `about.html`：公司介绍与两大业务分类页面
+- `index.html`：FGESTUDIO 公司主页与双业务入口
+- `design/index.html`：平面设计服务页面
+- `mcn/index.html`：游戏内容创作者 MCN 孵化页面
+- `about/index.html`：公司介绍与两大业务分类页面
+- `mcn.html`、`about.html`：旧网址兼容页面
 
 网站特点：
 
@@ -26,6 +28,12 @@
 ```text
 FGESTUDIO WEB/
 ├── index.html
+├── design/
+│   └── index.html
+├── mcn/
+│   └── index.html
+├── about/
+│   └── index.html
 ├── mcn.html
 ├── about.html
 ├── admin.html
