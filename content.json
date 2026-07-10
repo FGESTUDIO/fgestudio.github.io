@@ -21,7 +21,11 @@
       { "name": "社媒标准月配套", "price": "RM529/月", "image": "images/packages/social-media-standard-package.png" },
       { "name": "社媒进阶月配套", "price": "RM729/月", "image": "images/packages/social-media-advanced-package.png" }
     ],
-    "monthlyYouTubeThumbnail": ["RM329/月", "RM589/月", "RM889/月"]
+    "monthlyYouTubeThumbnail": [
+      { "name": "视频封面设计轻量月配套", "price": "RM329/月", "image": "images/packages/youtube-thumbnail-lite-package.png" },
+      { "name": "视频封面设计标准月配套", "price": "RM589/月", "image": "images/packages/youtube-thumbnail-standard-package.png" },
+      { "name": "视频封面标题进阶月配套", "price": "RM889/月", "image": "images/packages/youtube-thumbnail-advanced-package.png" }
+    ]
   },
   "translations": {
     "cn": {

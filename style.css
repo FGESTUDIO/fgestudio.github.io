@@ -1151,13 +1151,6 @@ button {
   padding: 28px;
 }
 
-.pricing-card.is-featured {
-  background:
-    linear-gradient(145deg, rgba(24, 232, 255, 0.13), rgba(155, 61, 255, 0.18)),
-    rgba(255, 255, 255, 0.075);
-  border-color: rgba(24, 232, 255, 0.68);
-}
-
 .pricing-label {
   margin: 0 0 10px;
   color: var(--cyan);
