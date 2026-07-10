@@ -1421,16 +1421,10 @@ function getPackageWhatsappMessage(link, lang) {
   if (!card) return getPageText(lang, "whatsappMessage");
 
   const packageName = card.querySelector("h3")?.textContent.trim() || "";
-  const price = card.querySelector(".price")?.textContent.replace(/\s+/g, " ").trim() || "";
-  const items = [...card.querySelectorAll("li")]
-    .map((item) => item.textContent.replace(/\s+/g, " ").trim())
-    .filter(Boolean)
-    .join("；");
-
   const messages = {
-    cn: `你好，我想询问「${packageName}」${price ? `（${price}）` : ""}。\n\n配套内容：${items}\n\n我的行业 / 品牌：\n想宣传的内容：\n预计发布日期：\n\n谢谢。`,
-    en: `Hi, I would like to ask about the ${packageName}${price ? ` (${price})` : ""}.\n\nPackage details: ${items}\n\nMy business / brand:\nWhat I would like to promote:\nExpected posting date:\n\nThank you.`,
-    bm: `Hai, saya ingin bertanya tentang ${packageName}${price ? ` (${price})` : ""}.\n\nButiran pakej: ${items}\n\nBisnes / jenama saya:\nPerkara yang ingin dipromosikan:\nTarikh posting dijangka:\n\nTerima kasih.`,
+    cn: `你好，我想询问「${packageName}」。`,
+    en: `Hi, I would like to ask about "${packageName}".`,
+    bm: `Hai, saya ingin bertanya tentang "${packageName}".`,
   };
 
   return messages[lang] || messages.cn;
