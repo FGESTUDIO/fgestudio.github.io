@@ -5,11 +5,26 @@
     const rights = document.querySelector('[data-i18n="footer.rights"]');
     if (!rights) return;
 
-    let registration = rights.parentElement?.querySelector(".footer-registration");
+    const footerInner = rights.closest(".footer-inner") || rights.parentElement;
+    let legalGroup = footerInner.querySelector(".footer-legal");
+
+    if (!legalGroup) {
+      legalGroup = document.createElement("div");
+      legalGroup.className = "footer-legal";
+      legalGroup.style.display = "grid";
+      legalGroup.style.gap = "4px";
+      footerInner.insertBefore(legalGroup, rights);
+      legalGroup.appendChild(rights);
+    }
+
+    let registration = legalGroup.querySelector(".footer-registration");
     if (!registration) {
       registration = document.createElement("p");
       registration.className = "footer-registration";
-      rights.insertAdjacentElement("afterend", registration);
+      registration.style.margin = "0";
+      registration.style.fontSize = "0.86rem";
+      registration.style.color = "rgba(224, 235, 255, 0.72)";
+      legalGroup.appendChild(registration);
     }
 
     registration.textContent = `SSM Registration No.: ${registrationNumber}`;
