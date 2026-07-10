@@ -9,6 +9,85 @@
       "business": "business@fgestudio.my"
     }
   },
-  "editable": {},
-  "translations": {}
+  "editable": {
+    "pricing": {
+      "starter": {
+        "price": "RM239 起"
+      },
+      "standard": {
+        "price": "RM289/月 起"
+      },
+      "monthly": {
+        "price": "RM329/月 起"
+      }
+    }
+  },
+  "translations": {
+    "cn": {
+      "metaDescription.design": "FGESTUDIO 提供平价平面设计服务，包括开业与活动宣传配套、自媒体月配套、YouTube 视频封面月配套、海报、名片、横幅和社媒帖子设计。",
+      "pricing.kicker": "平面设计配套",
+      "pricing.title": "从单次宣传到长期内容更新，选择适合你的设计配套。",
+      "pricing.copy": "配套分为一次性宣传、自媒体月配套和 YouTube 视频封面月配套。具体制作时间、修改范围与交付安排可通过 WhatsApp 确认。",
+      "pricing.starter.label": "开业・活动・企业形象",
+      "pricing.starter.title": "一次性宣传配套",
+      "pricing.starter.item1": "平价开业宣传配套｜RM239（原价 RM250）：海报 ×1、名片 ×1、自媒体帖子 ×1",
+      "pricing.starter.item2": "平价活动宣传配套｜RM329（原价 RM350）：海报 ×1、横幅 ×1、自媒体帖子 ×1",
+      "pricing.starter.item3": "企业基础形象配套｜RM449（原价 RM480）：名片 ×1、海报 ×1、横幅 ×1、自媒体帖子 ×2",
+      "pricing.standard.label": "适合长期经营社交媒体",
+      "pricing.standard.title": "自媒体月配套",
+      "pricing.standard.item1": "社媒轻量月配套｜RM289/月：自媒体帖子设计 ×4，适合每周发布一次",
+      "pricing.standard.item2": "社媒标准月配套｜RM529/月：自媒体帖子设计 ×8，适合每周发布两次",
+      "pricing.standard.item3": "社媒进阶月配套｜RM729/月：自媒体帖子设计 ×12，适合餐饮、美容、补习、旅行、汽车服务与房产等行业",
+      "pricing.monthly.label": "适合 YouTube 创作者与频道",
+      "pricing.monthly.title": "YouTube 视频封面月配套",
+      "pricing.monthly.item1": "视频封面轻量月配套｜RM329/月：封面设计 ×4、封面标题优化 ×4",
+      "pricing.monthly.item2": "视频封面标准月配套｜RM589/月：封面设计 ×8、封面标题优化 ×8",
+      "pricing.monthly.item3": "视频封面进阶月配套｜RM889/月：封面设计 ×12、封面标题优化 ×12，赠送自媒体帖子 ×1",
+      "pricing.cta": "WhatsApp 询问配套"
+    },
+    "en": {
+      "metaDescription.design": "FGESTUDIO provides affordable graphic design services, including launch and campaign bundles, monthly social media packages, YouTube thumbnail packages, posters, business cards, banners, and social media post designs.",
+      "pricing.kicker": "Graphic Design Packages",
+      "pricing.title": "Choose a design package for one-off promotions or ongoing content.",
+      "pricing.copy": "Packages are grouped into one-off promotional bundles, monthly social media support, and monthly YouTube thumbnail support. Timelines, revision scope, and delivery arrangements can be confirmed through WhatsApp.",
+      "pricing.starter.label": "Launch, campaign & brand essentials",
+      "pricing.starter.title": "One-Off Promotion Packages",
+      "pricing.starter.item1": "Affordable Launch Package | RM239 (was RM250): 1 poster, 1 business card, and 1 social media post",
+      "pricing.starter.item2": "Affordable Campaign Package | RM329 (was RM350): 1 poster, 1 banner, and 1 social media post",
+      "pricing.starter.item3": "Business Essentials Package | RM449 (was RM480): 1 business card, 1 poster, 1 banner, and 2 social media posts",
+      "pricing.standard.label": "For consistent social media activity",
+      "pricing.standard.title": "Monthly Social Media Packages",
+      "pricing.standard.item1": "Lite | RM289/month: 4 social media post designs, suitable for one post per week",
+      "pricing.standard.item2": "Standard | RM529/month: 8 social media post designs, suitable for two posts per week",
+      "pricing.standard.item3": "Advanced | RM729/month: 12 social media post designs for F&B, beauty, tuition, travel, automotive services, property, and similar businesses",
+      "pricing.monthly.label": "For YouTube creators and channels",
+      "pricing.monthly.title": "Monthly YouTube Thumbnail Packages",
+      "pricing.monthly.item1": "Lite | RM329/month: 4 thumbnail designs and 4 thumbnail title optimisations",
+      "pricing.monthly.item2": "Standard | RM589/month: 8 thumbnail designs and 8 thumbnail title optimisations",
+      "pricing.monthly.item3": "Advanced | RM889/month: 12 thumbnail designs, 12 thumbnail title optimisations, plus 1 complimentary social media post",
+      "pricing.cta": "Ask About This Package"
+    },
+    "bm": {
+      "metaDescription.design": "FGESTUDIO menyediakan servis reka bentuk grafik mampu milik termasuk pakej pembukaan dan promosi, pakej media sosial bulanan, pakej thumbnail YouTube, poster, kad nama, banner dan hantaran media sosial.",
+      "pricing.kicker": "Pakej Reka Bentuk Grafik",
+      "pricing.title": "Pilih pakej reka bentuk untuk promosi sekali atau kandungan bulanan.",
+      "pricing.copy": "Pakej dibahagikan kepada promosi sekali, media sosial bulanan dan thumbnail YouTube bulanan. Tempoh kerja, skop pindaan dan penghantaran boleh disahkan melalui WhatsApp.",
+      "pricing.starter.label": "Pembukaan, promosi & imej bisnes",
+      "pricing.starter.title": "Pakej Promosi Sekali",
+      "pricing.starter.item1": "Pakej Pembukaan Mampu Milik | RM239 (harga asal RM250): 1 poster, 1 kad nama dan 1 hantaran media sosial",
+      "pricing.starter.item2": "Pakej Promosi Mampu Milik | RM329 (harga asal RM350): 1 poster, 1 banner dan 1 hantaran media sosial",
+      "pricing.starter.item3": "Pakej Imej Asas Perniagaan | RM449 (harga asal RM480): 1 kad nama, 1 poster, 1 banner dan 2 hantaran media sosial",
+      "pricing.standard.label": "Untuk media sosial yang konsisten",
+      "pricing.standard.title": "Pakej Media Sosial Bulanan",
+      "pricing.standard.item1": "Ringan | RM289/bulan: 4 reka bentuk hantaran media sosial, sesuai untuk satu hantaran seminggu",
+      "pricing.standard.item2": "Standard | RM529/bulan: 8 reka bentuk hantaran media sosial, sesuai untuk dua hantaran seminggu",
+      "pricing.standard.item3": "Lanjutan | RM729/bulan: 12 reka bentuk hantaran untuk F&B, kecantikan, tuisyen, pelancongan, servis automotif, hartanah dan bisnes seumpamanya",
+      "pricing.monthly.label": "Untuk pencipta dan channel YouTube",
+      "pricing.monthly.title": "Pakej Thumbnail YouTube Bulanan",
+      "pricing.monthly.item1": "Ringan | RM329/bulan: 4 reka bentuk thumbnail dan 4 pengoptimuman tajuk thumbnail",
+      "pricing.monthly.item2": "Standard | RM589/bulan: 8 reka bentuk thumbnail dan 8 pengoptimuman tajuk thumbnail",
+      "pricing.monthly.item3": "Lanjutan | RM889/bulan: 12 reka bentuk thumbnail, 12 pengoptimuman tajuk dan percuma 1 hantaran media sosial",
+      "pricing.cta": "Tanya Pakej Ini"
+    }
+  }
 }
