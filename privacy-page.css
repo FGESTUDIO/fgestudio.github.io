@@ -1,0 +1,130 @@
+.privacy-page .privacy-principles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.privacy-page .privacy-principle {
+  padding: 17px;
+  border: 1px solid rgba(120, 210, 255, 0.14);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.042);
+}
+
+.privacy-page .privacy-principle strong {
+  display: block;
+  margin-bottom: 5px;
+  color: #ffffff;
+}
+
+.privacy-page .privacy-principle p {
+  margin: 0;
+  color: #c9d7f2;
+  font-size: 0.93rem;
+}
+
+.privacy-table-wrap {
+  margin: 16px 0;
+  overflow-x: auto;
+  border: 1px solid rgba(120, 210, 255, 0.15);
+  border-radius: 9px;
+}
+
+.privacy-table {
+  width: 100%;
+  min-width: 620px;
+  border-collapse: collapse;
+  background: rgba(3, 9, 25, 0.45);
+}
+
+.privacy-table th,
+.privacy-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(120, 210, 255, 0.12);
+  text-align: left;
+  vertical-align: top;
+}
+
+.privacy-table th {
+  color: #ffffff;
+  background: rgba(24, 232, 255, 0.07);
+  font-size: 0.84rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.privacy-table td {
+  color: #cfddfb;
+  font-size: 0.94rem;
+}
+
+.privacy-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.privacy-note {
+  margin-top: 16px !important;
+  padding: 15px 17px;
+  border-left: 3px solid var(--cyan);
+  border-radius: 0 8px 8px 0;
+  background: rgba(24, 232, 255, 0.065);
+}
+
+.privacy-warning {
+  border-left-color: #ffcf5a;
+  background: rgba(255, 207, 90, 0.07);
+}
+
+.privacy-request-steps {
+  counter-reset: privacy-step;
+  display: grid;
+  gap: 12px;
+  margin: 16px 0 0;
+  padding: 0 !important;
+  list-style: none;
+}
+
+.privacy-request-steps li {
+  counter-increment: privacy-step;
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+  margin: 0;
+}
+
+.privacy-request-steps li::before {
+  content: counter(privacy-step);
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  color: #03101b;
+  background: var(--cyan);
+  font-size: 0.82rem;
+  font-weight: 900;
+}
+
+.privacy-page .footer-legal > p > [data-i18n="footer.rights"]::after {
+  content: none !important;
+  display: none !important;
+}
+
+@media (max-width: 900px) {
+  .privacy-page .privacy-principles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 620px) {
+  .privacy-page .privacy-principles {
+    grid-template-columns: 1fr;
+  }
+
+  .privacy-table th,
+  .privacy-table td {
+    padding: 12px 13px;
+  }
+}
