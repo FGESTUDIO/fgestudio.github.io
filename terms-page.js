@@ -29,8 +29,27 @@
     document.title = titles[activeLanguage];
   }
 
+  function getActiveLanguage() {
+    const activeButton = document.querySelector(".lang-btn.is-active");
+    return validLanguages.has(activeButton?.dataset.lang)
+      ? activeButton.dataset.lang
+      : getPreferredLanguage();
+  }
+
+  function initBackToTop() {
+    const link = document.querySelector('.footer-links a[data-i18n="footer.backTop"]');
+    if (!link) return;
+
+    link.setAttribute("href", "#");
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
   function initTermsPage() {
     applyTermsLanguage(getPreferredLanguage());
+    initBackToTop();
 
     document.querySelectorAll(".lang-btn").forEach((button) => {
       button.addEventListener("click", () => {
@@ -41,8 +60,7 @@
     const languageSwitcher = document.querySelector(".language-switcher");
     if (languageSwitcher && "MutationObserver" in window) {
       const observer = new MutationObserver(() => {
-        const activeButton = languageSwitcher.querySelector(".lang-btn.is-active");
-        if (activeButton) applyTermsLanguage(activeButton.dataset.lang);
+        applyTermsLanguage(getActiveLanguage());
       });
 
       observer.observe(languageSwitcher, {
@@ -51,6 +69,11 @@
         attributeFilter: ["class"],
       });
     }
+
+    // The global site script loads editable content asynchronously and may
+    // update the document title afterwards. Re-apply the legal page title.
+    window.setTimeout(() => applyTermsLanguage(getActiveLanguage()), 250);
+    window.setTimeout(() => applyTermsLanguage(getActiveLanguage()), 1000);
   }
 
   if (document.readyState === "loading") {
