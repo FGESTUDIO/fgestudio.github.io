@@ -1,3 +1,35 @@
+.privacy-page {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.privacy-page main,
+.privacy-page .legal-hero,
+.privacy-page .terms-summary-section,
+.privacy-page .terms-content-section,
+.privacy-page .site-footer {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.privacy-page .container,
+.privacy-page .legal-hero-grid,
+.privacy-page .terms-summary-card,
+.privacy-page .terms-shell,
+.privacy-page .terms-toc,
+.privacy-page .terms-document,
+.privacy-page .terms-block,
+.privacy-page [data-privacy-lang]:not([hidden]) {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.privacy-page [data-privacy-lang][hidden] {
+  display: none !important;
+}
+
 .privacy-page .privacy-principles {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -6,10 +38,12 @@
 }
 
 .privacy-page .privacy-principle {
+  min-width: 0;
   padding: 17px;
   border: 1px solid rgba(120, 210, 255, 0.14);
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.042);
+  overflow-wrap: anywhere;
 }
 
 .privacy-page .privacy-principle strong {
@@ -25,10 +59,15 @@
 }
 
 .privacy-table-wrap {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
   margin: 16px 0;
   overflow-x: auto;
+  overscroll-behavior-inline: contain;
   border: 1px solid rgba(120, 210, 255, 0.15);
   border-radius: 9px;
+  -webkit-overflow-scrolling: touch;
 }
 
 .privacy-table {
@@ -91,6 +130,7 @@
   grid-template-columns: 34px minmax(0, 1fr);
   gap: 12px;
   align-items: start;
+  min-width: 0;
   margin: 0;
 }
 
@@ -113,14 +153,93 @@
 }
 
 @media (max-width: 900px) {
+  html {
+    overflow-x: hidden;
+  }
+
+  .privacy-page,
+  .privacy-page main,
+  .privacy-page .site-header,
+  .privacy-page .legal-hero,
+  .privacy-page .terms-summary-section,
+  .privacy-page .terms-content-section,
+  .privacy-page .site-footer {
+    width: 100% !important;
+    max-width: 100vw !important;
+    min-width: 0 !important;
+  }
+
+  .privacy-page .container {
+    width: calc(100% - 24px) !important;
+    max-width: calc(100vw - 24px) !important;
+    margin-inline: auto !important;
+  }
+
+  .privacy-page .legal-hero-grid,
+  .privacy-page .terms-shell {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .privacy-page .terms-company-card {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+  }
+
+  .privacy-page .terms-summary-card,
+  .privacy-page .terms-toc,
+  .privacy-page .terms-document,
+  .privacy-page .terms-block,
+  .privacy-page [data-privacy-lang]:not([hidden]) {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .privacy-page .terms-toc {
+    position: static;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-bottom: 18px;
+  }
+
+  .privacy-page .terms-toc-title {
+    grid-column: 1 / -1;
+  }
+
   .privacy-page .privacy-principles {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .privacy-page .footer-inner {
+    width: 100%;
+    max-width: 100%;
   }
 }
 
 @media (max-width: 620px) {
-  .privacy-page .privacy-principles {
+  .privacy-page .container {
+    width: calc(100% - 24px) !important;
+    max-width: calc(100vw - 24px) !important;
+  }
+
+  .privacy-page .privacy-principles,
+  .privacy-page .terms-toc {
     grid-template-columns: 1fr;
+  }
+
+  .privacy-page .terms-summary-card,
+  .privacy-page .terms-company-card,
+  .privacy-page .terms-toc,
+  .privacy-page .terms-block {
+    padding: 18px;
+  }
+
+  .privacy-page .footer-inner {
+    align-items: flex-start;
   }
 
   .privacy-table th,
