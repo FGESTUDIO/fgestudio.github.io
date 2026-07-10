@@ -17,6 +17,8 @@ const currentYear = new Date().getFullYear();
 
 let translations = {
   cn: {
+    "metaTitle.home": "{company} (FGESTUDIO) | 平面设计与游戏创作者 MCN",
+    "metaDescription.home": "{company}，简称 FGESTUDIO，提供平面设计服务与游戏内容创作者 MCN 支持。选择适合你的业务入口。",
     "metaTitle.design": "{company} (FGESTUDIO) | 平面设计服务",
     "metaDescription.design": "{company}，简称 FGESTUDIO，中文名{cnName}，提供海报、社交媒体帖子、广告图、banner、名片、YouTube 缩略图与月配套平面设计服务。",
     "metaTitle.mcn": "{company} (FGESTUDIO) | 游戏创作者 MCN 孵化",
@@ -42,6 +44,7 @@ let translations = {
     "company.name": "{company}",
     "company.shortName": "{short}",
     "company.subtitle": "{cnName}",
+    "nav.home": "首页",
     "nav.design": "设计服务",
     "nav.pricing": "价格配套",
     "nav.portfolio": "作品集",
@@ -50,6 +53,12 @@ let translations = {
     "nav.about": "关于公司",
     "nav.business": "业务分类",
     "nav.contact": "联系",
+    "hero.home.kicker": "FGESTUDIO 官方网站",
+    "hero.home.title": "创意设计与创作者成长，汇聚在同一个起点。",
+    "hero.home.copy": "选择你需要的业务方向，进入独立页面了解服务、作品与合作方式。",
+    "hero.home.ctaDesign": "进入平面设计网站",
+    "hero.home.ctaMcn": "进入 MCN 网站",
+    "hero.home.scroll": "查看两大业务",
     "hero.design.kicker": "平面设计服务",
     "hero.design.title": "让你的品牌宣传图更清楚、更专业、更容易发布。",
     "hero.design.slogan": "为本地商家、线上品牌与创作者制作可直接使用的视觉素材。",
@@ -221,6 +230,8 @@ let translations = {
     "business.mcn.item2": "可展示旗下艺人与频道成绩",
     "business.mcn.item3": "重点是内容成长与专业形象",
     "business.mcn.cta": "进入 MCN 页面",
+    "home.about.copy": "想先了解 FGESTUDIO 的公司背景与发展方向？",
+    "home.about.cta": "查看公司介绍 →",
     "aboutTimeline.kicker": "公司时间线",
     "aboutTimeline.title": "从创作者孵化出发，逐步扩展到视觉设计与未来游戏开发。",
     "aboutTimeline.copy": "FGESTUDIO 会把每个阶段的业务方向分清楚，让客户、创作者和未来合作伙伴都能更快理解我们正在做什么、接下来期待做什么。",
@@ -268,6 +279,8 @@ let translations = {
     "footer.terms": "服务条款",
   },
   en: {
+    "metaTitle.home": "{company} (FGESTUDIO) | Graphic Design & Gaming Creator MCN",
+    "metaDescription.home": "{company}, known as FGESTUDIO, provides graphic design services and MCN support for gaming content creators. Choose the business division you need.",
     "metaTitle.design": "{company} (FGESTUDIO) | Graphic Design Services",
     "metaDescription.design": "{company}, also known as FGESTUDIO, provides posters, social media posts, ad creatives, banners, business cards, YouTube thumbnails, and monthly graphic design packages.",
     "metaTitle.mcn": "{company} (FGESTUDIO) | Gaming Creator MCN Incubation",
@@ -293,6 +306,7 @@ let translations = {
     "company.name": "{company}",
     "company.shortName": "{short}",
     "company.subtitle": "{cnName}",
+    "nav.home": "Home",
     "nav.design": "Design",
     "nav.pricing": "Packages",
     "nav.portfolio": "Portfolio",
@@ -301,6 +315,12 @@ let translations = {
     "nav.about": "About",
     "nav.business": "Business Lines",
     "nav.contact": "Contact",
+    "hero.home.kicker": "FGESTUDIO Official Website",
+    "hero.home.title": "Creative design and creator growth, brought together at one starting point.",
+    "hero.home.copy": "Choose the business division you need and enter its dedicated site for services, work, and collaboration details.",
+    "hero.home.ctaDesign": "Enter Design Website",
+    "hero.home.ctaMcn": "Enter MCN Website",
+    "hero.home.scroll": "Explore Our Two Divisions",
     "hero.design.kicker": "Graphic Design Services",
     "hero.design.title": "Clearer, sharper, publish-ready visuals for your brand.",
     "hero.design.slogan": "Practical visual assets for local businesses, online brands, and creators.",
@@ -472,6 +492,8 @@ let translations = {
     "business.mcn.item2": "Show signed artists and channel performance",
     "business.mcn.item3": "Focused on content growth and professional identity",
     "business.mcn.cta": "Enter MCN Page",
+    "home.about.copy": "Want to understand FGESTUDIO's background and direction first?",
+    "home.about.cta": "View Company Profile →",
     "aboutTimeline.kicker": "Company Timeline",
     "aboutTimeline.title": "Starting from creator incubation, then expanding into visual design and future game development.",
     "aboutTimeline.copy": "FGESTUDIO keeps each stage of the business clearly separated, so clients, creators, and future partners can quickly understand what we do now and what we are looking forward to next.",
@@ -519,6 +541,8 @@ let translations = {
     "footer.terms": "Terms of Service",
   },
   bm: {
+    "metaTitle.home": "{company} (FGESTUDIO) | Reka Bentuk Grafik & MCN Pencipta Gaming",
+    "metaDescription.home": "{company}, dikenali sebagai FGESTUDIO, menyediakan servis reka bentuk grafik dan sokongan MCN untuk pencipta kandungan gaming. Pilih bahagian perniagaan yang anda perlukan.",
     "metaTitle.design": "{company} (FGESTUDIO) | Servis Reka Bentuk Grafik",
     "metaDescription.design": "{company}, juga dikenali sebagai FGESTUDIO, menyediakan poster, hantaran media sosial, grafik iklan, banner, kad nama, thumbnail YouTube, dan pakej reka bentuk bulanan.",
     "metaTitle.mcn": "{company} (FGESTUDIO) | Inkubasi MCN Pencipta Gaming",
@@ -544,6 +568,7 @@ let translations = {
     "company.name": "{company}",
     "company.shortName": "{short}",
     "company.subtitle": "{cnName}",
+    "nav.home": "Utama",
     "nav.design": "Reka Bentuk",
     "nav.pricing": "Pakej",
     "nav.portfolio": "Portfolio",
@@ -552,6 +577,12 @@ let translations = {
     "nav.about": "Tentang",
     "nav.business": "Cabang Bisnes",
     "nav.contact": "Hubungi",
+    "hero.home.kicker": "Laman Rasmi FGESTUDIO",
+    "hero.home.title": "Reka bentuk kreatif dan pertumbuhan pencipta, bermula di satu tempat.",
+    "hero.home.copy": "Pilih bahagian perniagaan yang anda perlukan dan masuk ke laman khas untuk melihat servis, hasil kerja, dan cara kerjasama.",
+    "hero.home.ctaDesign": "Masuk Laman Reka Bentuk",
+    "hero.home.ctaMcn": "Masuk Laman MCN",
+    "hero.home.scroll": "Lihat Dua Bahagian Perniagaan",
     "hero.design.kicker": "Servis Reka Bentuk Grafik",
     "hero.design.title": "Visual jenama yang lebih jelas, profesional, dan sedia diterbitkan.",
     "hero.design.slogan": "Aset visual praktikal untuk bisnes tempatan, jenama online, dan pencipta.",
@@ -723,6 +754,8 @@ let translations = {
     "business.mcn.item2": "Memaparkan artis dan pencapaian channel",
     "business.mcn.item3": "Fokus pada pertumbuhan kandungan dan identiti profesional",
     "business.mcn.cta": "Masuk Halaman MCN",
+    "home.about.copy": "Mahu kenali latar belakang dan hala tuju FGESTUDIO terlebih dahulu?",
+    "home.about.cta": "Lihat Profil Syarikat →",
     "aboutTimeline.kicker": "Garis Masa Syarikat",
     "aboutTimeline.title": "Bermula daripada inkubasi pencipta, kemudian berkembang ke reka bentuk visual dan pembangunan game pada masa depan.",
     "aboutTimeline.copy": "FGESTUDIO memisahkan setiap fasa bisnes dengan jelas supaya pelanggan, pencipta, dan rakan kerjasama masa depan boleh memahami apa yang kami lakukan sekarang dan apa yang kami nantikan seterusnya.",
@@ -896,6 +929,7 @@ function getEmailRole(element) {
   if (explicitRole) return explicitRole;
 
   const pageRoleMap = {
+    home: "general",
     design: "design",
     mcn: "creators",
     about: "general",
@@ -1003,7 +1037,8 @@ function renderEditableContent() {
     const path = element.getAttribute("data-content-src");
     const value = getNestedValue(editableContent, path);
     if (value) {
-      element.setAttribute("src", value);
+      const source = typeof value === "string" && value.startsWith("images/") ? `/${value}` : value;
+      element.setAttribute("src", source);
     }
   });
 }
