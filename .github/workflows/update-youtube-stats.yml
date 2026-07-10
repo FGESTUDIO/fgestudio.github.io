@@ -23,7 +23,12 @@ jobs:
           node-version: 20
 
       - name: Fetch current YouTube statistics
-        run: node scripts/update-youtube-stats.mjs
+        run: |
+          if [ -z "${YOUTUBE_API_KEY}" ]; then
+            echo "YOUTUBE_API_KEY is not configured yet; skipping this scheduled update."
+            exit 0
+          fi
+          node scripts/update-youtube-stats.mjs
         env:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
           CHANNEL_HANDLE: "@yinsi_gaming"
