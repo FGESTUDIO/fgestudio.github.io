@@ -1,0 +1,75 @@
+name: Apply SSM footer to all pages
+
+on:
+  push:
+    paths:
+      - "ssm-footer-trigger.txt"
+
+permissions:
+  contents: write
+
+jobs:
+  apply-footer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Add static SSM registration to every public page
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          pages = [
+              Path("index.html"),
+              Path("design/index.html"),
+              Path("mcn/index.html"),
+              Path("about/index.html"),
+              Path("privacy-policy/index.html"),
+              Path("terms-and-conditions/index.html"),
+          ]
+
+          registration = "202603071810 (RA0133617-K)"
+          pattern = re.compile(
+              r'^(?P<indent>\s*)<p data-i18n="footer\.rights">(?P<text>.*?)</p>\s*$',
+              re.MULTILINE,
+          )
+
+          for page in pages:
+              text = page.read_text(encoding="utf-8")
+              if registration in text:
+                  continue
+
+              def replacement(match):
+                  indent = match.group("indent")
+                  rights_text = match.group("text")
+                  return (
+                      f'{indent}<div class="footer-legal">\n'
+                      f'{indent}  <p data-i18n="footer.rights">{rights_text}</p>\n'
+                      f'{indent}  <p class="footer-registration" '
+                      f'style="margin: 4px 0 0; font-size: 0.86rem; color: rgba(224, 235, 255, 0.72);">\n'
+                      f'{indent}    SSM Registration No.: {registration}\n'
+                      f'{indent}  </p>\n'
+                      f'{indent}</div>'
+                  )
+
+              updated, count = pattern.subn(replacement, text, count=1)
+              if count != 1:
+                  raise RuntimeError(f"Could not find footer rights line in {page}")
+              page.write_text(updated, encoding="utf-8")
+          PY
+
+      - name: Commit updated pages
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html design/index.html mcn/index.html about/index.html privacy-policy/index.html terms-and-conditions/index.html
+          if git diff --cached --quiet; then
+            echo "No page changes were needed."
+            exit 0
+          fi
+          git commit -m "Add SSM registration number to all website pages"
+          git push origin HEAD:main
