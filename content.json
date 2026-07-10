@@ -16,7 +16,11 @@
       { "name": "平价活动宣传配套", "price": "RM329", "originalPrice": "RM350" },
       { "name": "企业基础形象配套", "price": "RM449", "originalPrice": "RM480" }
     ],
-    "monthlySocialMedia": ["RM289/月", "RM529/月", "RM729/月"],
+    "monthlySocialMedia": [
+      { "name": "社媒轻量月配套", "price": "RM289/月", "image": "images/packages/social-media-lite-package.png" },
+      { "name": "社媒标准月配套", "price": "RM529/月", "image": "images/packages/social-media-standard-package.png" },
+      { "name": "社媒进阶月配套", "price": "RM729/月", "image": "images/packages/social-media-advanced-package.png" }
+    ],
     "monthlyYouTubeThumbnail": ["RM329/月", "RM589/月", "RM889/月"]
   },
   "translations": {
