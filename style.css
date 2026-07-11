@@ -1561,38 +1561,30 @@ button {
 }
 
 .portfolio-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
 }
 
 .portfolio-card {
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.055);
 }
 
-.portfolio-card img {
-  width: 100%;
-  aspect-ratio: 1.35;
-  object-fit: cover;
-  background: #070b1a;
-}
+.portfolio-card-visual { overflow: hidden; background: #070b1a; }
+.portfolio-card--business-card .portfolio-card-visual { aspect-ratio: 1.6 / 1; }
+.portfolio-card--social-post .portfolio-card-visual { aspect-ratio: 4 / 5; }
+.portfolio-card--poster .portfolio-card-visual { aspect-ratio: 3 / 4; }
+.portfolio-card--banner .portfolio-card-visual { aspect-ratio: 16 / 9; }
 
-.portfolio-card-body {
-  padding: 22px;
-}
-
-.portfolio-card-body p {
-  margin: 0 0 8px;
-  color: var(--cyan);
-  font-size: 0.82rem;
-  font-weight: 900;
-  text-transform: uppercase;
-}
-
-.portfolio-card-body span {
-  display: block;
-  margin-top: 10px;
-  color: var(--muted);
-}
+.portfolio-card img { display: block; width: 100%; height: 100%; object-fit: cover; background: #070b1a; }
+.portfolio-card-body { display: flex; flex: 1; flex-direction: column; padding: 22px; }
+.portfolio-card-meta { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.portfolio-card-body p { margin: 0; color: var(--cyan); font-size: 0.82rem; font-weight: 900; text-transform: uppercase; }
+.portfolio-concept-label { display: inline-flex; flex: 0 0 auto; align-items: center; min-height: 24px; padding: 3px 8px; border: 1px solid rgba(24, 232, 255, 0.28); border-radius: 999px; color: #cffaff; background: rgba(24, 232, 255, 0.08); font-size: 0.7rem; font-weight: 800; white-space: nowrap; }
+.portfolio-card-body > span { display: block; margin-top: 10px; color: var(--muted); }
+.portfolio-card-action { width: 100%; min-height: 46px; margin-top: auto; padding: 11px 16px; text-align: center; }
 
 .process-list {
   display: grid;
@@ -2134,10 +2126,6 @@ button {
     grid-template-columns: 1fr;
   }
 
-  .portfolio-grid {
-    grid-template-columns: 1fr;
-  }
-
   .hero-logo-stage {
     right: 24px;
     width: min(40vw, 310px);
@@ -2150,6 +2138,8 @@ button {
 }
 
 @media (max-width: 700px) {
+  .portfolio-grid { grid-template-columns: 1fr; }
+
   .pricing-grid {
     grid-template-columns: 1fr;
   }
