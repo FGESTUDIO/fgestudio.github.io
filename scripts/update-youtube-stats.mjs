@@ -3,6 +3,7 @@ import { mkdir, writeFile } from "node:fs/promises";
 const apiKey = process.env.YOUTUBE_API_KEY;
 const channelHandle = process.env.CHANNEL_HANDLE || "@yinsi_gaming";
 const outputPath = "data/youtube-stats.json";
+const normalVideoMinimumSeconds = 181;
 
 if (!apiKey) {
   throw new Error("Missing YOUTUBE_API_KEY. Add it as a GitHub repository secret.");
@@ -36,6 +37,22 @@ function toNumber(value) {
   return Number.isFinite(number) ? number : null;
 }
 
+function durationToSeconds(duration) {
+  const match = /^PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?$/.exec(duration || "");
+  if (!match) return 0;
+
+  const [, hours = "0", minutes = "0", seconds = "0"] = match;
+  return Number(hours) * 3600 + Number(minutes) * 60 + Number(seconds);
+}
+
+function isNormalPublicVideo(video) {
+  const titleAndDescription = `${video.snippet?.title || ""} ${video.snippet?.description || ""}`;
+  const isShort = durationToSeconds(video.contentDetails?.duration) < normalVideoMinimumSeconds || /#shorts\b/i.test(titleAndDescription);
+  const isLivestreamReplay = Boolean(video.liveStreamingDetails?.actualStartTime) || /直播回放|直播存档|live\s*(?:stream)?\s*replay|stream\s*archive/i.test(titleAndDescription);
+
+  return video.status?.privacyStatus === "public" && !isShort && !isLivestreamReplay;
+}
+
 const stats = channel.statistics || {};
 const uploadsPlaylistId = channel.contentDetails?.relatedPlaylists?.uploads;
 let videos = [];
@@ -45,7 +62,7 @@ if (uploadsPlaylistId) {
   videosEndpoint.search = new URLSearchParams({
     part: "snippet,contentDetails",
     playlistId: uploadsPlaylistId,
-    maxResults: "3",
+    maxResults: "50",
     key: apiKey,
   }).toString();
 
@@ -63,7 +80,7 @@ if (uploadsPlaylistId) {
   if (videoIds.length) {
     const detailsEndpoint = new URL("https://www.googleapis.com/youtube/v3/videos");
     detailsEndpoint.search = new URLSearchParams({
-      part: "snippet,status",
+      part: "snippet,status,contentDetails,liveStreamingDetails",
       id: videoIds.join(","),
       key: apiKey,
     }).toString();
@@ -78,7 +95,7 @@ if (uploadsPlaylistId) {
 
     const publicVideos = new Map(
       (detailsPayload.items || [])
-        .filter((video) => video.status?.privacyStatus === "public")
+        .filter(isNormalPublicVideo)
         .map((video) => [video.id, video])
     );
 
@@ -100,7 +117,8 @@ if (uploadsPlaylistId) {
           publishedAt: snippet.publishedAt || item.contentDetails?.videoPublishedAt || "",
         };
       })
-      .filter(Boolean);
+      .filter(Boolean)
+      .slice(0, 3);
   }
 }
 
