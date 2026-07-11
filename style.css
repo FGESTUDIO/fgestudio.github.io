@@ -301,15 +301,22 @@ button {
   justify-content: space-between;
   gap: 22px;
   padding-inline: clamp(18px, 5vw, 56px);
-  background: rgba(5, 8, 22, 0.8);
+  background: #050816;
   border-bottom: 1px solid rgba(24, 232, 255, 0.14);
+  opacity: 1;
+  -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   transition: box-shadow 180ms ease, background 180ms ease;
 }
 
 .site-header.is-scrolled {
-  background: rgba(5, 8, 22, 0.94);
+  background: #050816;
   box-shadow: 0 12px 34px rgba(0, 0, 0, 0.28);
+}
+
+.site-header,
+.site-header.is-scrolled {
+  background-color: #050816;
 }
 
 .scroll-progress {
@@ -1189,6 +1196,40 @@ button {
   padding: 28px;
 }
 
+.public-service-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.public-service-card {
+  min-height: 0;
+}
+
+.public-service-image {
+  aspect-ratio: 16 / 10;
+  margin: -12px -12px 22px;
+  overflow: hidden;
+  border: 1px solid rgba(24, 232, 255, 0.22);
+  border-radius: 14px;
+  background: #080d21;
+}
+
+.public-service-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--motion-med) var(--ease-smooth);
+}
+
+.public-service-card:hover .public-service-image img {
+  transform: scale(1.03);
+}
+
+.public-service-card .price {
+  margin: 12px 0 24px;
+}
+
 .pricing-label {
   margin: 0 0 10px;
   color: var(--cyan);
@@ -1631,6 +1672,35 @@ button {
 
 .portfolio-section[hidden] {
   display: none;
+}
+
+.portfolio-library-page {
+  min-height: 100vh;
+  color: var(--ink);
+  background: var(--bg);
+}
+
+.portfolio-library[hidden] {
+  display: none;
+}
+
+.portfolio-library-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.portfolio-library-slot {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 5;
+  margin: 0;
+  border: 1px dashed rgba(24, 232, 255, 0.36);
+  border-radius: var(--radius);
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 0.82rem;
+  font-weight: 800;
 }
 
 .portfolio-gallery {
@@ -2259,6 +2329,11 @@ button {
 }
 
 @media (max-width: 700px) {
+  .public-service-grid,
+  .portfolio-library-grid {
+    grid-template-columns: 1fr;
+  }
+
   .pricing-grid {
     grid-template-columns: 1fr;
   }

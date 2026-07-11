@@ -1506,7 +1506,7 @@ function updatePackageCopy(lang) {
     },
   };
   const copy = packageCopy[lang];
-  const panel = document.querySelector(`[data-lang-panel="${lang}"]`);
+  const panel = document.querySelector(`.package-language[data-lang-panel="${lang}"]`);
   if (!copy || !panel) return;
 
   const heading = panel.querySelector(".section-heading");
