@@ -125,16 +125,19 @@
 
 .privacy-request-steps li {
   counter-increment: privacy-step;
-  display: grid;
-  grid-template-columns: 34px minmax(0, 1fr);
-  gap: 12px;
-  align-items: start;
+  position: relative;
+  display: block;
   min-width: 0;
   margin: 0;
+  padding-left: 46px;
+  overflow-wrap: anywhere;
 }
 
 .privacy-request-steps li::before {
   content: counter(privacy-step);
+  position: absolute;
+  top: 0;
+  left: 0;
   display: grid;
   place-items: center;
   width: 32px;
@@ -144,6 +147,11 @@
   background: var(--cyan);
   font-size: 0.82rem;
   font-weight: 900;
+}
+
+.privacy-request-steps a {
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 @media (max-width: 900px) {
