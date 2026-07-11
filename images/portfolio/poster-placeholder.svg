@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 1000" role="img" aria-label="Poster concept placeholder">
+  <rect width="750" height="1000" fill="#050816"/>
+  <rect x="58" y="56" width="634" height="888" rx="30" fill="#1a2462"/>
+  <path d="M90 670C210 490 384 788 660 420V914H90Z" fill="#9b3dff" opacity=".72"/>
+  <rect x="112" y="144" width="220" height="24" rx="12" fill="#18e8ff"/>
+  <rect x="112" y="204" width="432" height="82" rx="18" fill="#fff" opacity=".92"/>
+  <rect x="112" y="318" width="304" height="20" rx="10" fill="#fff" opacity=".56"/>
+  <circle cx="540" cy="510" r="92" fill="#18e8ff" opacity=".88"/>
+  <text x="375" y="885" fill="#fff" font-family="Arial, sans-serif" font-size="20" font-weight="700" text-anchor="middle" letter-spacing="3">CONCEPT PLACEHOLDER</text>
+</svg>

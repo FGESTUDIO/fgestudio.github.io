@@ -37,7 +37,7 @@
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <link rel="stylesheet" href="../style.css?v=20260711-site-audit" />
+    <link rel="stylesheet" href="../style.css?v=20260712-interactions" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -132,7 +132,6 @@
       <nav class="main-nav" id="mainNav" aria-label="Main navigation">
         <a href="#services" data-nav-page="design" data-i18n="nav.design">设计服务</a>
         <a href="#pricing" data-i18n="nav.pricing">价格配套</a>
-        <a href="#portfolio" data-i18n="nav.portfolio">作品集</a>
         <a href="../mcn/" data-nav-page="mcn" data-i18n="nav.mcn">MCN 业务</a>
         <a href="../mcn/#creators" data-i18n="nav.creators">旗下创作者</a>
         <a href="#contact" data-i18n="nav.contact">联系</a>
@@ -298,53 +297,27 @@
         </div>
       </section>
 
-      <section class="section section-dark" id="portfolio" aria-labelledby="portfolioTitle">
+      <!--
+        Portfolio is intentionally hidden until more completed client works are ready.
+        The horizontal gallery below is prepared for 20–30 items; remove `hidden` to publish it.
+      -->
+      <section class="section section-dark portfolio-section" id="portfolio" aria-labelledby="portfolioTitle" hidden>
         <div class="container">
-          <div class="section-heading reveal">
-            <p class="section-kicker" data-i18n="portfolio.kicker">作品集</p>
-            <h2 id="portfolioTitle" data-i18n="portfolio.title">这里之后可以换成你的真实设计作品。</h2>
-            <p data-i18n="portfolio.copy">目前先放 placeholder，之后可以替换成海报、广告图、banner、缩略图或品牌视觉案例。</p>
+          <div class="section-heading">
+            <p class="section-kicker">作品集</p>
+            <h2 id="portfolioTitle">设计作品</h2>
           </div>
-          <div class="portfolio-grid">
-            <article class="portfolio-card reveal">
-              <img
-                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 560'%3E%3Crect width='800' height='560' fill='%23050816'/%3E%3Crect x='78' y='78' width='644' height='404' rx='28' fill='%23112a72'/%3E%3Crect x='130' y='132' width='330' height='44' rx='12' fill='%2318e8ff'/%3E%3Crect x='130' y='214' width='440' height='26' rx='10' fill='%23ffffff' opacity='.86'/%3E%3Crect x='130' y='264' width='360' height='20' rx='10' fill='%23ffffff' opacity='.54'/%3E%3Ccircle cx='620' cy='206' r='74' fill='%239b3dff' opacity='.82'/%3E%3Cpath d='M594 348l50-104 60 104h-44l-16 36-16-36z' fill='%2318e8ff'/%3E%3C/svg%3E"
-                alt="Brand poster placeholder"
-                data-content-src="portfolioImages.item1"
-                data-i18n-attr="alt:portfolio.item1.alt"
-              />
-              <div class="portfolio-card-body">
-                <p data-i18n="portfolio.item1.type">品牌视觉</p>
-                <h3 data-i18n="portfolio.item1.title">Campaign Visual Placeholder</h3>
-                <span data-i18n="portfolio.item1.copy">用于活动宣传、社交媒体推广和商业视觉。</span>
-              </div>
-            </article>
-            <article class="portfolio-card reveal">
-              <img
-                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 560'%3E%3Crect width='800' height='560' fill='%23050816'/%3E%3Crect x='72' y='70' width='656' height='420' rx='28' fill='%23131325'/%3E%3Crect x='116' y='118' width='568' height='320' rx='24' fill='%232b5dff'/%3E%3Crect x='158' y='158' width='350' height='56' rx='14' fill='%23ffffff'/%3E%3Crect x='158' y='250' width='230' height='30' rx='12' fill='%23050816' opacity='.85'/%3E%3Cpath d='M532 330l52-112 70 112h-48l-20 42-20-42z' fill='%239b3dff'/%3E%3Ccircle cx='584' cy='220' r='42' fill='%2318e8ff'/%3E%3C/svg%3E"
-                alt="Social media visual placeholder"
-                data-content-src="portfolioImages.item2"
-                data-i18n-attr="alt:portfolio.item2.alt"
-              />
-              <div class="portfolio-card-body">
-                <p data-i18n="portfolio.item2.type">社媒设计</p>
-                <h3 data-i18n="portfolio.item2.title">Social Post Placeholder</h3>
-                <span data-i18n="portfolio.item2.copy">适合 Facebook、Instagram、广告图和日常内容发布。</span>
-              </div>
-            </article>
-            <article class="portfolio-card reveal">
-              <img
-                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 560'%3E%3Crect width='800' height='560' fill='%23050816'/%3E%3Crect x='88' y='98' width='624' height='114' rx='26' fill='%2318e8ff'/%3E%3Crect x='88' y='252' width='292' height='210' rx='28' fill='%23131325'/%3E%3Crect x='420' y='252' width='292' height='210' rx='28' fill='%239b3dff'/%3E%3Crect x='130' y='134' width='326' height='28' rx='10' fill='%23050816' opacity='.9'/%3E%3Ccircle cx='514' cy='357' r='58' fill='%23ffffff' opacity='.82'/%3E%3Cpath d='M200 392l54-92 54 92h-36l-18 34-18-34z' fill='%2318e8ff'/%3E%3C/svg%3E"
-                alt="Banner design placeholder"
-                data-content-src="portfolioImages.item3"
-                data-i18n-attr="alt:portfolio.item3.alt"
-              />
-              <div class="portfolio-card-body">
-                <p data-i18n="portfolio.item3.type">Banner 视觉</p>
-                <h3 data-i18n="portfolio.item3.title">Banner Design Placeholder</h3>
-                <span data-i18n="portfolio.item3.copy">用于网站横幅、活动主视觉、频道封面和品牌宣传。</span>
-              </div>
-            </article>
+          <div class="portfolio-gallery" data-portfolio-gallery>
+            <div class="portfolio-gallery-controls" aria-label="作品集浏览控制">
+              <button class="gallery-arrow" type="button" data-gallery-direction="previous" aria-label="查看上一张作品">←</button>
+              <button class="gallery-arrow" type="button" data-gallery-direction="next" aria-label="查看下一张作品">→</button>
+            </div>
+            <div class="portfolio-track" tabindex="0" aria-label="FGESTUDIO 设计作品图库">
+              <figure class="portfolio-slide"><img src="../images/portfolio/fgestudio/business-card-mockup.png" alt="FGESTUDIO 名片设计展示" loading="lazy" /></figure>
+              <figure class="portfolio-slide"><img src="../images/portfolio/fgestudio/graphic-design-service.png" alt="FGESTUDIO 平面设计服务宣传图" loading="lazy" /></figure>
+              <figure class="portfolio-slide"><img src="../images/portfolio/fgestudio/poster-design-service.png" alt="FGESTUDIO 海报设计服务宣传图" loading="lazy" /></figure>
+              <figure class="portfolio-slide"><img src="../images/portfolio/fgestudio/banner-design-service.png" alt="FGESTUDIO 横幅设计服务宣传图" loading="lazy" /></figure>
+            </div>
           </div>
         </div>
       </section>
@@ -529,6 +502,6 @@
       </div>
     </footer>
 
-    <script src="../script.js?v=20260711-site-audit"></script>
+    <script src="../script.js?v=20260712-interactions"></script>
   </body>
 </html>

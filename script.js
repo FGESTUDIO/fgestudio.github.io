@@ -233,8 +233,8 @@ let translations = {
     "home.about.copy": "想先了解 FGESTUDIO 的公司背景与发展方向？",
     "home.about.cta": "查看公司介绍 →",
     "aboutTimeline.kicker": "公司时间线",
-    "aboutTimeline.title": "从创作者孵化出发，逐步扩展到视觉设计与未来游戏开发。",
-    "aboutTimeline.copy": "FGESTUDIO 会把每个阶段的业务方向分清楚，让客户、创作者和未来合作伙伴都能更快理解我们正在做什么、接下来期待做什么。",
+    "aboutTimeline.title": "从创作者孵化出发，逐步扩展到视觉设计服务。",
+    "aboutTimeline.copy": "FGESTUDIO 专注把现有的业务方向与合作方式说明清楚，让客户和创作者更快理解我们现在能提供什么。",
     "aboutTimeline.item1.title": "公司成立",
     "aboutTimeline.item1.copy": "FANTASY GENESIS ENTERTAINMENT STUDIO 成立，并以游戏内容创作者 MCN 孵化与创作者成长支持作为起点。",
     "aboutTimeline.item2.title": "开拓平面设计业务",
@@ -495,8 +495,8 @@ let translations = {
     "home.about.copy": "Want to understand FGESTUDIO's background and direction first?",
     "home.about.cta": "View Company Profile →",
     "aboutTimeline.kicker": "Company Timeline",
-    "aboutTimeline.title": "Starting from creator incubation, then expanding into visual design and future game development.",
-    "aboutTimeline.copy": "FGESTUDIO keeps each stage of the business clearly separated, so clients, creators, and future partners can quickly understand what we do now and what we are looking forward to next.",
+    "aboutTimeline.title": "Starting from creator incubation, then expanding into visual design services.",
+    "aboutTimeline.copy": "FGESTUDIO keeps its active business directions and ways of working clear, so clients and creators can quickly understand what we offer today.",
     "aboutTimeline.item1.title": "Company Founded",
     "aboutTimeline.item1.copy": "FANTASY GENESIS ENTERTAINMENT STUDIO was founded, starting with gaming creator MCN incubation and creator growth support.",
     "aboutTimeline.item2.title": "Graphic Design Business Expanded",
@@ -757,8 +757,8 @@ let translations = {
     "home.about.copy": "Mahu kenali latar belakang dan hala tuju FGESTUDIO terlebih dahulu?",
     "home.about.cta": "Lihat Profil Syarikat →",
     "aboutTimeline.kicker": "Garis Masa Syarikat",
-    "aboutTimeline.title": "Bermula daripada inkubasi pencipta, kemudian berkembang ke reka bentuk visual dan pembangunan game pada masa depan.",
-    "aboutTimeline.copy": "FGESTUDIO memisahkan setiap fasa bisnes dengan jelas supaya pelanggan, pencipta, dan rakan kerjasama masa depan boleh memahami apa yang kami lakukan sekarang dan apa yang kami nantikan seterusnya.",
+    "aboutTimeline.title": "Bermula daripada inkubasi pencipta, kemudian berkembang ke servis reka bentuk visual.",
+    "aboutTimeline.copy": "FGESTUDIO menerangkan hala tuju bisnes dan cara kerjasama yang aktif dengan jelas supaya pelanggan dan pencipta memahami apa yang kami tawarkan sekarang.",
     "aboutTimeline.item1.title": "Syarikat Ditubuhkan",
     "aboutTimeline.item1.copy": "FANTASY GENESIS ENTERTAINMENT STUDIO ditubuhkan dengan permulaan dalam inkubasi MCN pencipta gaming dan sokongan pertumbuhan pencipta.",
     "aboutTimeline.item2.title": "Mengembangkan Servis Reka Bentuk Grafik",
@@ -910,8 +910,8 @@ Object.assign(translations.cn, {
   "business.mcn.cta": "了解合作方式",
   "home.about.copy": "想知道 FGESTUDIO 是怎样开始、现在在做什么？",
   "home.about.cta": "认识 FGESTUDIO →",
-  "aboutTimeline.title": "从游戏内容项目起步，再把设计服务带进工作室。",
-  "aboutTimeline.copy": "我们会清楚说明已经在做的事，也会把仍在准备中的方向如实标注。",
+  "aboutTimeline.title": "从创作者孵化出发，逐步扩展到视觉设计服务。",
+  "aboutTimeline.copy": "FGESTUDIO 专注把现有的业务方向与合作方式说明清楚，让客户和创作者更快理解我们现在能提供什么。",
   "aboutTimeline.item1.title": "创作者项目开始",
   "aboutTimeline.item1.copy": "团队从游戏内容与创作者合作方向起步，累积频道经营与内容制作经验。",
   "aboutTimeline.item2.title": "FGESTUDIO 正式注册并扩展设计业务",
@@ -1021,7 +1021,8 @@ Object.assign(translations.en, {
   "business.mcn.cta": "How collaboration works",
   "home.about.copy": "Want to know how FGESTUDIO started and what we do today?",
   "home.about.cta": "Meet FGESTUDIO →",
-  "aboutTimeline.title": "Starting with gaming content projects, then bringing design services into the studio.",
+  "aboutTimeline.title": "Starting from creator incubation, then expanding into visual design services.",
+  "aboutTimeline.copy": "FGESTUDIO keeps its active business directions and ways of working clear, so clients and creators can quickly understand what we offer today.",
   "aboutTimeline.item1.title": "Creator projects begin",
   "aboutTimeline.item1.copy": "The team began with gaming content and creator collaboration, building experience in channel operation and content production.",
   "aboutTimeline.item2.title": "FGESTUDIO registers and expands into design",
@@ -1128,7 +1129,8 @@ Object.assign(translations.bm, {
   "business.mcn.cta": "Cara kerjasama",
   "home.about.copy": "Mahu tahu bagaimana FGESTUDIO bermula dan apa yang kami buat sekarang?",
   "home.about.cta": "Kenali FGESTUDIO →",
-  "aboutTimeline.title": "Bermula dengan projek kandungan gaming, kemudian membawa servis reka bentuk ke dalam studio.",
+  "aboutTimeline.title": "Bermula daripada inkubasi pencipta, kemudian berkembang ke servis reka bentuk visual.",
+  "aboutTimeline.copy": "FGESTUDIO menerangkan hala tuju bisnes dan cara kerjasama yang aktif dengan jelas supaya pelanggan dan pencipta memahami apa yang kami tawarkan sekarang.",
   "aboutTimeline.item1.title": "Projek pencipta bermula",
   "aboutTimeline.item1.copy": "Pasukan bermula dengan kandungan gaming dan kerjasama pencipta, sambil membina pengalaman dalam pengurusan channel dan penghasilan kandungan.",
   "aboutTimeline.item2.title": "FGESTUDIO didaftarkan dan mengembangkan reka bentuk",
@@ -1656,15 +1658,18 @@ function initFaq() {
 function initRevealAnimations() {
   const elements = document.querySelectorAll(".reveal");
   const groupedElements = document.querySelectorAll("main section .reveal");
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   groupedElements.forEach((element, index) => {
     element.style.setProperty("--reveal-delay", `${Math.min(index % 8, 7) * 45}ms`);
   });
 
-  if (!("IntersectionObserver" in window)) {
+  if (!("IntersectionObserver" in window) || prefersReducedMotion) {
     elements.forEach((element) => element.classList.add("is-visible"));
     return;
   }
+
+  document.body.classList.add("motion-ready");
 
   const observer = new IntersectionObserver(
     (entries) => {
@@ -1684,6 +1689,7 @@ function initRevealAnimations() {
 function initInteractiveSurfaces() {
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (prefersReducedMotion) return;
+  const supportsFineHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
   const selector = [
     ".btn",
@@ -1706,11 +1712,71 @@ function initInteractiveSurfaces() {
       const y = ((event.clientY - rect.top) / rect.height) * 100;
       element.style.setProperty("--pointer-x", `${x.toFixed(1)}%`);
       element.style.setProperty("--pointer-y", `${y.toFixed(1)}%`);
+
+      if (supportsFineHover) {
+        const rotateY = ((x - 50) / 50) * 1.8;
+        const rotateX = ((50 - y) / 50) * 1.8;
+        element.style.setProperty("--surface-transform", `perspective(900px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg)`);
+      }
     });
 
     element.addEventListener("pointerleave", () => {
       element.style.removeProperty("--pointer-x");
       element.style.removeProperty("--pointer-y");
+      element.style.removeProperty("--surface-transform");
+    });
+  });
+}
+
+function initScrollProgress() {
+  const indicator = document.createElement("div");
+  indicator.className = "scroll-progress";
+  indicator.setAttribute("aria-hidden", "true");
+  indicator.innerHTML = "<span></span>";
+  document.body.append(indicator);
+
+  const progress = indicator.firstElementChild;
+  const updateProgress = () => {
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    const value = maxScroll > 0 ? Math.min(window.scrollY / maxScroll, 1) : 0;
+    progress.style.transform = `scaleX(${value})`;
+  };
+
+  updateProgress();
+  window.addEventListener("scroll", updateProgress, { passive: true });
+  window.addEventListener("resize", updateProgress);
+}
+
+function initHeroParallax() {
+  const hero = document.querySelector(".hero");
+  const supportsFineHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!hero || !supportsFineHover || prefersReducedMotion) return;
+
+  hero.addEventListener("pointermove", (event) => {
+    const rect = hero.getBoundingClientRect();
+    const x = ((event.clientX - rect.left) / rect.width - 0.5) * 16;
+    const y = ((event.clientY - rect.top) / rect.height - 0.5) * 12;
+    hero.style.setProperty("--hero-parallax-x", `${x.toFixed(1)}px`);
+    hero.style.setProperty("--hero-parallax-y", `${y.toFixed(1)}px`);
+  });
+
+  hero.addEventListener("pointerleave", () => {
+    hero.style.removeProperty("--hero-parallax-x");
+    hero.style.removeProperty("--hero-parallax-y");
+  });
+}
+
+function initPortfolioGallery() {
+  document.querySelectorAll("[data-portfolio-gallery]").forEach((gallery) => {
+    const track = gallery.querySelector(".portfolio-track");
+    if (!track) return;
+
+    gallery.querySelectorAll("[data-gallery-direction]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const direction = button.dataset.galleryDirection === "next" ? 1 : -1;
+        track.scrollBy({ left: direction * Math.max(track.clientWidth * 0.78, 280), behavior: "smooth" });
+      });
     });
   });
 }
@@ -1894,6 +1960,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   initFaq();
   initRevealAnimations();
   initInteractiveSurfaces();
+  initScrollProgress();
+  initHeroParallax();
+  initPortfolioGallery();
   initActiveNav();
   initHeroCanvas();
 });
