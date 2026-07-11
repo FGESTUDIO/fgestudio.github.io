@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Banner concept placeholder">
+  <rect width="1280" height="720" fill="#050816"/>
+  <rect x="62" y="62" width="1156" height="596" rx="34" fill="#142b68"/>
+  <circle cx="962" cy="332" r="176" fill="#9b3dff" opacity=".78"/>
+  <circle cx="1042" cy="434" r="122" fill="#18e8ff" opacity=".72"/>
+  <rect x="136" y="194" width="260" height="24" rx="12" fill="#18e8ff"/>
+  <rect x="136" y="252" width="500" height="72" rx="18" fill="#fff" opacity=".93"/>
+  <rect x="136" y="354" width="390" height="20" rx="10" fill="#fff" opacity=".56"/>
+  <text x="640" y="594" fill="#cffaff" font-family="Arial, sans-serif" font-size="23" font-weight="700" text-anchor="middle" letter-spacing="4">CONCEPT PLACEHOLDER</text>
+</svg>
