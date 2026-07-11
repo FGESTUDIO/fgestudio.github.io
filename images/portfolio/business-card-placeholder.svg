@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-label="Business card concept placeholder">
+  <rect width="960" height="600" fill="#050816"/>
+  <rect x="92" y="116" width="500" height="300" rx="26" fill="#173778" transform="rotate(-8 342 266)"/>
+  <rect x="364" y="184" width="500" height="300" rx="26" fill="#101a41" transform="rotate(8 614 334)"/>
+  <rect x="143" y="178" width="190" height="20" rx="10" fill="#18e8ff"/>
+  <rect x="143" y="222" width="270" height="40" rx="12" fill="#fff" opacity=".9"/>
+  <rect x="143" y="286" width="185" height="16" rx="8" fill="#fff" opacity=".55"/>
+  <circle cx="751" cy="287" r="70" fill="#9b3dff" opacity=".82"/>
+  <text x="480" y="550" fill="#cffaff" font-family="Arial, sans-serif" font-size="22" font-weight="700" text-anchor="middle" letter-spacing="3">CONCEPT PLACEHOLDER</text>
+</svg>
