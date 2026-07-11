@@ -868,7 +868,23 @@ Object.assign(translations.cn, {
   "mcnServices.item6.title": "按频道阶段调整",
   "mcnServices.item6.copy": "频道变化后，再一起调整内容、视觉或合作重点；不承诺固定的增长结果。",
   "creators.title": "旗下创作者",
-  "creators.copy": "频道数据定期更新，实际数据以 YouTube 频道显示为准。",
+  "creators.kicker": "FGESTUDIO CREATOR NETWORK",
+  "creators.copy": "汇聚游戏内容创作者，连接优质内容、观众与品牌合作机会。",
+  "creators.tag.minecraft": "Minecraft",
+  "creators.tag.anime": "二次元游戏",
+  "creators.tag.guides": "游戏攻略",
+  "creators.tag.live": "游戏直播",
+  "creators.yinsi.cooperationCta": "洽谈品牌合作",
+  "creators.yinsi.cooperationMessage": "您好，我想咨询与 YinSi Gaming / 饮思YS 的品牌合作。",
+  "creators.stats.subscribers": "YouTube 订阅者",
+  "creators.stats.views": "累计观看次数",
+  "creators.stats.videos": "公开视频",
+  "creators.updatedAt": "数据更新于 {date}",
+  "creators.featuredKicker": "YINSI GAMING",
+  "creators.featuredTitle": "代表内容",
+  "creators.video.open": "在 YouTube 打开视频",
+  "creators.video.thumbnail": "视频缩略图",
+  "creators.cooperationTypes": "品牌推广 · 游戏合作 · 内容植入 · 直播合作",
   "mcnProcess.kicker": "合作方式",
   "mcnProcess.title": "先了解频道现况，再决定下一步要做什么。",
   "mcnProcess.step1.copy": "先看频道现有内容、发布平台和创作者目前遇到的问题。",
@@ -973,7 +989,23 @@ Object.assign(translations.en, {
   "mcnServices.item6.title": "Adjust as the channel changes",
   "mcnServices.item6.copy": "Update the content, visuals or collaboration focus as the channel develops. No fixed-growth promises.",
   "creators.title": "Featured creators",
-  "creators.copy": "Channel data is updated regularly. Please refer to the YouTube channel for the latest figures.",
+  "creators.kicker": "FGESTUDIO CREATOR NETWORK",
+  "creators.copy": "Bringing gaming creators, quality content, audiences and brand opportunities together.",
+  "creators.tag.minecraft": "Minecraft",
+  "creators.tag.anime": "Anime Games",
+  "creators.tag.guides": "Game Guides",
+  "creators.tag.live": "Game Livestreams",
+  "creators.yinsi.cooperationCta": "Discuss Brand Collaboration",
+  "creators.yinsi.cooperationMessage": "Hello, I would like to discuss a brand collaboration with YinSi Gaming / 饮思YS.",
+  "creators.stats.subscribers": "YouTube Subscribers",
+  "creators.stats.views": "Total Views",
+  "creators.stats.videos": "Public Videos",
+  "creators.updatedAt": "Updated {date}",
+  "creators.featuredKicker": "YINSI GAMING",
+  "creators.featuredTitle": "Featured Content",
+  "creators.video.open": "Open video on YouTube",
+  "creators.video.thumbnail": "Video thumbnail",
+  "creators.cooperationTypes": "Brand Promotion · Game Collaboration · Sponsored Content · Livestream Collaboration",
   "mcnProcess.kicker": "How we work",
   "mcnProcess.title": "Understand the channel first, then decide what to improve next.",
   "mcnProcess.step5.title": "Review and adjust",
@@ -1064,7 +1096,23 @@ Object.assign(translations.bm, {
   "mcnServices.item6.title": "Laraskan apabila channel berubah",
   "mcnServices.item6.copy": "Laraskan kandungan, visual atau fokus kerjasama mengikut perkembangan channel. Tiada janji pertumbuhan tetap.",
   "creators.title": "Pencipta pilihan",
-  "creators.copy": "Data channel dikemas kini secara berkala. Sila rujuk channel YouTube untuk angka terkini.",
+  "creators.kicker": "FGESTUDIO CREATOR NETWORK",
+  "creators.copy": "Menghubungkan pencipta gaming, kandungan berkualiti, penonton dan peluang kerjasama jenama.",
+  "creators.tag.minecraft": "Minecraft",
+  "creators.tag.anime": "Game Anime",
+  "creators.tag.guides": "Panduan Game",
+  "creators.tag.live": "Livestream Game",
+  "creators.yinsi.cooperationCta": "Bincang Kerjasama Jenama",
+  "creators.yinsi.cooperationMessage": "Hai, saya ingin bertanya tentang kerjasama jenama dengan YinSi Gaming / 饮思YS.",
+  "creators.stats.subscribers": "Subscriber YouTube",
+  "creators.stats.views": "Jumlah Tontonan",
+  "creators.stats.videos": "Video Awam",
+  "creators.updatedAt": "Dikemas kini {date}",
+  "creators.featuredKicker": "YINSI GAMING",
+  "creators.featuredTitle": "Kandungan Pilihan",
+  "creators.video.open": "Buka video di YouTube",
+  "creators.video.thumbnail": "Thumbnail video",
+  "creators.cooperationTypes": "Promosi Jenama · Kerjasama Game · Kandungan Tajaan · Kerjasama Livestream",
   "mcnProcess.kicker": "Cara kami bekerja",
   "mcnProcess.title": "Fahami channel dahulu, kemudian tentukan perkara seterusnya yang perlu diperbaiki.",
   "mcnProcess.step5.title": "Semak dan laraskan",
@@ -1354,7 +1402,7 @@ function renderYouTubeStats(stats) {
   });
 
   if (stats.channelUrl) {
-    document.querySelector(".creator-link")?.setAttribute("href", stats.channelUrl);
+    document.querySelector(".creator-channel-link")?.setAttribute("href", stats.channelUrl);
   }
 
   const note = document.querySelector("[data-youtube-updated]");
@@ -1364,6 +1412,60 @@ function renderYouTubeStats(stats) {
   note.textContent = updatedDate
     ? getText(activeLanguage, "creators.updatedAt").replace("{date}", updatedDate)
     : getText(activeLanguage, "creators.updated");
+
+  renderFeaturedVideos(stats.videos);
+}
+
+function renderFeaturedVideos(videos) {
+  const section = document.querySelector("[data-featured-content]");
+  const grid = document.querySelector("[data-featured-video-grid]");
+  if (!section || !grid) return;
+
+  const validVideos = Array.isArray(videos)
+    ? videos.filter((video) => video?.title && video?.thumbnail && video?.url).slice(0, 3)
+    : [];
+
+  if (!validVideos.length) {
+    grid.replaceChildren();
+    section.hidden = true;
+    return;
+  }
+
+  const openLabel = getText(activeLanguage, "creators.video.open");
+  const thumbnailLabel = getText(activeLanguage, "creators.video.thumbnail");
+  const fragment = document.createDocumentFragment();
+
+  validVideos.forEach((video) => {
+    const link = document.createElement("a");
+    link.className = "featured-video-card";
+    link.href = video.url;
+    link.target = "_blank";
+    link.rel = "noopener";
+    link.setAttribute("aria-label", `${openLabel}: ${video.title}`);
+
+    const thumbnail = document.createElement("span");
+    thumbnail.className = "featured-video-thumbnail";
+    const image = document.createElement("img");
+    image.src = video.thumbnail;
+    image.alt = `${thumbnailLabel}: ${video.title}`;
+    image.loading = "lazy";
+    thumbnail.append(image);
+
+    const play = document.createElement("span");
+    play.className = "featured-video-play";
+    play.setAttribute("aria-hidden", "true");
+    play.textContent = "▶";
+    thumbnail.append(play);
+
+    const title = document.createElement("p");
+    title.className = "featured-video-title";
+    title.textContent = video.title;
+    link.append(thumbnail, title);
+    fragment.append(link);
+  });
+
+  grid.replaceChildren(fragment);
+  section.hidden = false;
 }
 
 async function loadYouTubeStats() {
@@ -1471,7 +1573,9 @@ function applyTranslations(lang) {
   });
 
   document.querySelectorAll("[data-whatsapp]").forEach((link) => {
-    const message = encodeURIComponent(getPackageWhatsappMessage(link, activeLanguage));
+    const messageKey = link.dataset.whatsappMessage;
+    const rawMessage = messageKey ? getText(activeLanguage, messageKey) : getPackageWhatsappMessage(link, activeLanguage);
+    const message = encodeURIComponent(rawMessage);
     const whatsappUrl = `https://wa.me/${contactSettings.whatsappNumber}?text=${message}`;
     link.setAttribute("href", whatsappUrl);
     link.setAttribute("target", "_blank");
@@ -1590,8 +1694,6 @@ function initInteractiveSurfaces() {
     ".timeline-item",
     ".process-list li",
     ".faq-item",
-    ".creator-link",
-    ".creator-stats div",
     ".contact-link",
     ".contact-email-card",
     ".contact-action"
