@@ -1,6 +1,7 @@
 let contactSettings = {
   companyName: "FANTASY GENESIS ENTERTAINMENT STUDIO",
   shortName: "FGESTUDIO",
+  siteName: "FGESTUDIO（梦幻起源欢娱工作室）",
   chineseName: "梦幻起源欢娱工作室",
   whatsappNumber: "60172599400",
   email: "contact@fgestudio.my",
@@ -1540,14 +1541,14 @@ function applyTranslations(lang) {
 
   const title = getPageText(activeLanguage, "metaTitle");
   const description = getPageText(activeLanguage, "metaDescription");
-  const imageAlt = `${contactSettings.shortName} studio logo and visual identity`;
+  const imageAlt = `${contactSettings.siteName} studio logo and visual identity`;
 
   document.title = title;
   setMeta('meta[name="description"]', description);
   setMeta('meta[name="author"]', contactSettings.companyName);
   setMeta('meta[property="og:title"]', title);
   setMeta('meta[property="og:description"]', description);
-  setMeta('meta[property="og:site_name"]', contactSettings.companyName);
+  setMeta('meta[property="og:site_name"]', contactSettings.siteName);
   setMeta('meta[property="og:locale"]', localeMap[activeLanguage] || "zh_CN");
   setMeta('meta[property="og:image:alt"]', imageAlt);
   setMeta('meta[name="twitter:title"]', title);
