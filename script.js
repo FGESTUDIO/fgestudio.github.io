@@ -1809,6 +1809,106 @@ function initPortfolioGallery() {
   });
 }
 
+function initPackageNavigation() {
+  const panels = Array.from(document.querySelectorAll(".package-language[data-lang-panel]"));
+  if (!panels.length) return;
+
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let updateFrame = 0;
+
+  function getVisiblePanel() {
+    return panels.find((panel) => !panel.hidden && panel.offsetParent !== null);
+  }
+
+  function setActiveLink(panel, targetId, shouldCenter = true) {
+    const nav = panel.querySelector(".package-jump-nav");
+    if (!nav || !targetId) return;
+
+    const links = Array.from(nav.querySelectorAll('a[href^="#"]'));
+    const activeLink = links.find((link) => link.getAttribute("href") === `#${targetId}`);
+    if (!activeLink) return;
+
+    const didChange = nav.dataset.activeTarget !== targetId;
+    links.forEach((link) => {
+      const isActive = link === activeLink;
+      link.classList.toggle("is-active", isActive);
+      if (isActive) {
+        link.setAttribute("aria-current", "location");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+    nav.dataset.activeTarget = targetId;
+
+    if (!shouldCenter || !didChange || nav.scrollWidth <= nav.clientWidth) return;
+
+    const desiredLeft = activeLink.offsetLeft - (nav.clientWidth - activeLink.offsetWidth) / 2;
+    const maxLeft = Math.max(0, nav.scrollWidth - nav.clientWidth);
+    const left = Math.min(maxLeft, Math.max(0, desiredLeft));
+
+    if (typeof nav.scrollTo === "function") {
+      nav.scrollTo({ left, behavior: prefersReducedMotion ? "auto" : "smooth" });
+    } else {
+      nav.scrollLeft = left;
+    }
+  }
+
+  function updateActiveLink() {
+    updateFrame = 0;
+    const panel = getVisiblePanel();
+    if (!panel) return;
+
+    const nav = panel.querySelector(".package-jump-nav");
+    const shell = panel.querySelector(".package-jump-shell");
+    if (!nav || !shell) return;
+
+    const items = Array.from(nav.querySelectorAll('a[href^="#"]'))
+      .map((link) => {
+        const targetId = link.getAttribute("href").slice(1);
+        const heading = document.getElementById(targetId);
+        return heading ? { targetId, group: heading.closest(".package-group") } : null;
+      })
+      .filter((item) => item?.group);
+
+    if (!items.length) return;
+
+    const headerHeight = document.querySelector("[data-header]")?.getBoundingClientRect().height || 0;
+    const threshold = headerHeight + shell.getBoundingClientRect().height + 24;
+    let activeItem = items[0];
+
+    items.forEach((item) => {
+      if (item.group.getBoundingClientRect().top <= threshold) {
+        activeItem = item;
+      }
+    });
+
+    setActiveLink(panel, activeItem.targetId);
+  }
+
+  function scheduleUpdate() {
+    if (updateFrame) return;
+    updateFrame = window.requestAnimationFrame(updateActiveLink);
+  }
+
+  panels.forEach((panel) => {
+    panel.querySelectorAll('.package-jump-nav a[href^="#"]').forEach((link) => {
+      link.addEventListener("click", () => {
+        setActiveLink(panel, link.getAttribute("href").slice(1));
+      });
+    });
+  });
+
+  const panelObserver = new MutationObserver(scheduleUpdate);
+  panels.forEach((panel) => {
+    panelObserver.observe(panel, { attributes: true, attributeFilter: ["hidden"] });
+  });
+
+  window.addEventListener("scroll", scheduleUpdate, { passive: true });
+  window.addEventListener("resize", scheduleUpdate);
+  window.addEventListener("hashchange", scheduleUpdate);
+  scheduleUpdate();
+}
+
 function initActiveNav() {
   const sections = document.querySelectorAll("main section[id]");
   const navLinks = document.querySelectorAll(".main-nav a");
@@ -2004,6 +2104,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initScrollProgress();
   initHeroParallax();
   initPortfolioGallery();
+  initPackageNavigation();
   initActiveNav();
   initHeroCanvas();
 
