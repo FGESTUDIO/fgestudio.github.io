@@ -26,6 +26,62 @@
   outline-offset: 3px;
 }
 
+.skip-link {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+  padding: 10px 14px;
+  border-radius: 8px;
+  color: #03101b;
+  background: var(--cyan);
+  font-weight: 850;
+  transform: translateY(-160%);
+  transition: transform var(--motion-fast) ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.error-main {
+  display: grid;
+  min-height: calc(100svh - var(--header-height));
+  place-items: center;
+  padding: clamp(80px, 12vw, 150px) 0;
+  background:
+    radial-gradient(circle at 78% 22%, rgba(24, 232, 255, 0.18), transparent 28rem),
+    radial-gradient(circle at 12% 74%, rgba(155, 61, 255, 0.2), transparent 30rem),
+    linear-gradient(135deg, #050816, #08142c 58%, #160920);
+}
+
+.error-content {
+  max-width: 860px;
+}
+
+.error-content h1 {
+  max-width: 760px;
+  margin: 14px 0 22px;
+  color: var(--white);
+  font-size: clamp(3.3rem, 9vw, 7.8rem);
+  line-height: 0.94;
+}
+
+.error-content > p:not(.section-kicker) {
+  max-width: 650px;
+  color: #c5d2ef;
+  font-size: 1.05rem;
+}
+
+.error-content .hero-actions {
+  margin-top: 30px;
+}
+
+.error-help {
+  margin-top: 28px;
+  font-size: 0.88rem !important;
+}
+
 .legal-hero {
   position: relative;
   overflow: hidden;
@@ -1182,6 +1238,7 @@ button {
 
 .package-group {
   margin-top: 54px;
+  scroll-margin-top: calc(var(--header-height) + 88px);
 }
 
 .package-group-title {
@@ -1209,18 +1266,69 @@ button {
 .public-service-image {
   display: grid;
   place-items: center;
+  aspect-ratio: 4 / 3;
   margin: -12px -12px 22px;
   overflow: hidden;
   border: 1px solid rgba(24, 232, 255, 0.22);
   border-radius: 14px;
-  background: #080d21;
+  background:
+    radial-gradient(circle at 72% 18%, rgba(24, 232, 255, 0.14), transparent 42%),
+    linear-gradient(145deg, #080d21, #101a35);
 }
 
 .public-service-image img {
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: contain;
   transition: transform var(--motion-med) var(--ease-smooth);
+}
+
+.package-jump-nav {
+  position: sticky;
+  top: calc(var(--header-height) + 12px);
+  z-index: 6;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: fit-content;
+  max-width: 100%;
+  margin: 28px 0 16px;
+  padding: 10px;
+  border: 1px solid rgba(24, 232, 255, 0.22);
+  border-radius: 14px;
+  background: rgba(5, 8, 22, 0.9);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.24);
+  backdrop-filter: blur(18px);
+}
+
+.package-jump-nav a {
+  padding: 9px 13px;
+  border-radius: 9px;
+  color: #dce8ff;
+  background: rgba(255, 255, 255, 0.055);
+  font-size: 0.88rem;
+  font-weight: 800;
+}
+
+.package-jump-nav a:hover,
+.package-jump-nav a:focus-visible {
+  color: #03101b;
+  background: var(--cyan);
+}
+
+body[data-page="design"] .public-service-card,
+body[data-page="design"] .pricing-card {
+  border-radius: 18px;
+}
+
+body[data-page="about"] .hero h1 {
+  max-width: 780px;
+  font-size: clamp(2.55rem, 5.4vw, 5rem);
+  line-height: 1.02;
+}
+
+.mobile-contact-cta {
+  display: none;
 }
 
 .public-service-card:hover .public-service-image img {
@@ -2337,6 +2445,59 @@ button {
 
   .pricing-grid {
     grid-template-columns: 1fr;
+  }
+
+  body[data-page="design"] .package-group .pricing-grid {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: min(86vw, 350px);
+    align-items: stretch;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    padding: 4px 2px 18px;
+    scroll-padding-inline: 2px;
+    scroll-snap-type: inline mandatory;
+    scrollbar-color: var(--cyan) rgba(255, 255, 255, 0.08);
+  }
+
+  body[data-page="design"] .package-group .pricing-card {
+    scroll-snap-align: start;
+  }
+
+  .package-jump-nav {
+    flex-wrap: nowrap;
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .mobile-contact-cta {
+    position: fixed;
+    right: 14px;
+    bottom: calc(14px + env(safe-area-inset-bottom));
+    left: 14px;
+    z-index: 90;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 52px;
+    padding: 12px 18px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 14px;
+    color: #03101b;
+    background: linear-gradient(135deg, #4dffae, #18e8ff);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.38);
+    font-weight: 900;
+  }
+
+  .mobile-contact-cta img {
+    width: 22px;
+    height: 22px;
+  }
+
+  body[data-page="design"] .site-footer {
+    padding-bottom: 86px;
   }
 
   .package-group {
