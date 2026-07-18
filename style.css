@@ -1284,22 +1284,28 @@ button {
   transition: transform var(--motion-med) var(--ease-smooth);
 }
 
-.package-jump-nav {
+.package-jump-shell {
   position: sticky;
   top: calc(var(--header-height) + 12px);
-  z-index: 6;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  z-index: 80;
   width: fit-content;
   max-width: 100%;
   margin: 28px 0 16px;
   padding: 10px;
   border: 1px solid rgba(24, 232, 255, 0.22);
   border-radius: 14px;
-  background: rgba(5, 8, 22, 0.9);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.24);
+  background: rgba(5, 8, 22, 0.94);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.32);
+  -webkit-backdrop-filter: blur(18px);
   backdrop-filter: blur(18px);
+}
+
+.package-jump-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: fit-content;
+  max-width: 100%;
 }
 
 .package-jump-nav a {
@@ -1309,12 +1315,20 @@ button {
   background: rgba(255, 255, 255, 0.055);
   font-size: 0.88rem;
   font-weight: 800;
+  transition: color 160ms ease, background 160ms ease, box-shadow 160ms ease;
 }
 
 .package-jump-nav a:hover,
-.package-jump-nav a:focus-visible {
+.package-jump-nav a.is-active,
+.package-jump-nav a[aria-current="location"] {
   color: #03101b;
   background: var(--cyan);
+  box-shadow: 0 0 18px rgba(24, 232, 255, 0.28);
+}
+
+.package-jump-nav a:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 2px;
 }
 
 body[data-page="design"] .public-service-card,
@@ -2465,11 +2479,34 @@ body[data-page="about"] .hero h1 {
     scroll-snap-align: start;
   }
 
+  .package-jump-shell {
+    top: calc(var(--header-height) + 8px);
+    width: 100%;
+    margin-block: 20px 14px;
+    padding: 8px;
+  }
+
   .package-jump-nav {
     flex-wrap: nowrap;
     width: 100%;
     overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    padding: 2px;
+    scroll-behavior: smooth;
+    scroll-padding-inline: 8px;
+    scroll-snap-type: inline proximity;
+    scrollbar-width: none;
     white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .package-jump-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .package-jump-nav a {
+    flex: 0 0 auto;
+    scroll-snap-align: center;
   }
 
   .mobile-contact-cta {
