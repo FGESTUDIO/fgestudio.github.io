@@ -4,10 +4,17 @@
   "channelId": "UCRVp_Tpzm6REWPKIoEOf6PA",
   "title": "饮思YS",
   "subscriberCount": 920,
-  "viewCount": 802275,
-  "videoCount": 462,
+  "viewCount": 802611,
+  "videoCount": 463,
   "hiddenSubscriberCount": false,
   "videos": [
+    {
+      "id": "WDvI9LyQu04",
+      "title": "躲个猫猫开抓不到几久就被抓了 #异环",
+      "thumbnail": "https://i.ytimg.com/vi/WDvI9LyQu04/maxresdefault.jpg",
+      "url": "https://www.youtube.com/watch?v=WDvI9LyQu04",
+      "publishedAt": "2026-07-17T13:10:53Z"
+    },
     {
       "id": "esooKDzsA6s",
       "title": "米哈游为什么告 B 站？真正的答案还没公开",
@@ -21,15 +28,8 @@
       "thumbnail": "https://i.ytimg.com/vi/ZDbiiJZ2Z3c/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=ZDbiiJZ2Z3c",
       "publishedAt": "2026-07-11T04:46:38Z"
-    },
-    {
-      "id": "n7Ddm5EgJmo",
-      "title": "【异环】1.2抽卡前必须先想清楚这个问题！真红和伊洛伊到底该怎么选？平民玩家别被节奏带跑",
-      "thumbnail": "https://i.ytimg.com/vi/n7Ddm5EgJmo/maxresdefault.jpg",
-      "url": "https://www.youtube.com/watch?v=n7Ddm5EgJmo",
-      "publishedAt": "2026-07-02T14:01:30Z"
     }
   ],
-  "updatedAt": "2026-07-17T09:44:04.300Z",
+  "updatedAt": "2026-07-18T07:10:51.988Z",
   "source": "YouTube Data API v3"
 }
