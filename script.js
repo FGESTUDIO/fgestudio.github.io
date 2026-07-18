@@ -14,6 +14,8 @@ let contactSettings = {
   facebookUrl: "https://www.facebook.com/fantasygenesisentertainmentstudio/",
 };
 
+const DEFAULT_WHATSAPP_URL = `https://wa.me/${contactSettings.whatsappNumber}`;
+
 const currentYear = new Date().getFullYear();
 
 let translations = {
@@ -45,6 +47,7 @@ let translations = {
     "company.name": "{company}",
     "company.shortName": "{short}",
     "company.subtitle": "{cnName}",
+    "a11y.skip": "跳到主要内容",
     "nav.home": "首页",
     "nav.design": "设计服务",
     "nav.pricing": "价格配套",
@@ -307,6 +310,7 @@ let translations = {
     "company.name": "{company}",
     "company.shortName": "{short}",
     "company.subtitle": "{cnName}",
+    "a11y.skip": "Skip to main content",
     "nav.home": "Home",
     "nav.design": "Design",
     "nav.pricing": "Packages",
@@ -569,6 +573,7 @@ let translations = {
     "company.name": "{company}",
     "company.shortName": "{short}",
     "company.subtitle": "{cnName}",
+    "a11y.skip": "Langkau ke kandungan utama",
     "nav.home": "Utama",
     "nav.design": "Reka Bentuk",
     "nav.pricing": "Pakej",
@@ -843,7 +848,7 @@ Object.assign(translations.cn, {
   "hero.mcn.ctaEmail": "提交频道资料",
   "hero.mcn.badge1": "频道定位",
   "hero.mcn.badge2": "内容与封面",
-  "hero.about.title": "梦幻起源欢娱工作室（FGESTUDIO）是一间来自马来西亚的线上创意工作室。",
+  "hero.about.title": "来自马来西亚，专注设计与游戏创作者合作。",
   "hero.about.slogan": "为商家做平面设计，也与游戏内容创作者一起经营频道。",
   "hero.about.copy": "梦幻起源欢娱工作室（FGESTUDIO）以线上方式运作，支持中文、英文和马来文沟通，并分别提供平面设计服务与游戏内容创作者合作支持。",
   "services.title": "从一张宣传图，到持续更新的社媒内容。",
@@ -882,7 +887,7 @@ Object.assign(translations.cn, {
   "creators.stats.videos": "公开视频",
   "creators.updatedAt": "数据更新于 {date}",
   "creators.featuredKicker": "YINSI GAMING",
-  "creators.featuredTitle": "代表内容",
+  "creators.featuredTitle": "最新公开视频",
   "creators.video.open": "在 YouTube 打开视频",
   "creators.video.thumbnail": "视频缩略图",
   "creators.cooperationTypes": "品牌推广 · 游戏合作 · 内容植入 · 直播合作",
@@ -969,7 +974,7 @@ Object.assign(translations.en, {
   "hero.mcn.ctaEmail": "Submit channel details",
   "hero.mcn.badge1": "Channel direction",
   "hero.mcn.badge2": "Content & thumbnails",
-  "hero.about.title": "FGESTUDIO is a Malaysian online creative studio.",
+  "hero.about.title": "A Malaysian studio for design and gaming creators.",
   "hero.about.slogan": "Graphic design for businesses, and channel support for gaming creators.",
   "hero.about.copy": "We work online in Chinese, English and Malay. Design and creator support sit in the same studio because both need clear content, visuals and outward-facing materials.",
   "services.title": "From a single campaign visual to social content that keeps moving.",
@@ -1003,7 +1008,7 @@ Object.assign(translations.en, {
   "creators.stats.videos": "Public Videos",
   "creators.updatedAt": "Updated {date}",
   "creators.featuredKicker": "YINSI GAMING",
-  "creators.featuredTitle": "Featured Content",
+  "creators.featuredTitle": "Latest Public Videos",
   "creators.video.open": "Open video on YouTube",
   "creators.video.thumbnail": "Video thumbnail",
   "creators.cooperationTypes": "Brand Promotion · Game Collaboration · Sponsored Content · Livestream Collaboration",
@@ -1077,7 +1082,7 @@ Object.assign(translations.bm, {
   "hero.mcn.ctaEmail": "Hantar maklumat channel",
   "hero.mcn.badge1": "Arah channel",
   "hero.mcn.badge2": "Kandungan & thumbnail",
-  "hero.about.title": "FGESTUDIO ialah studio kreatif online dari Malaysia.",
+  "hero.about.title": "Studio Malaysia untuk reka bentuk dan pencipta gaming.",
   "hero.about.slogan": "Reka bentuk grafik untuk bisnes, dan sokongan channel untuk pencipta gaming.",
   "hero.about.copy": "Kami beroperasi secara online dalam Bahasa Cina, English dan Bahasa Melayu. Reka bentuk serta sokongan pencipta berada dalam satu studio kerana kedua-duanya memerlukan kandungan, visual dan bahan luaran yang jelas.",
   "services.title": "Daripada satu visual promosi hingga kandungan sosial yang dikemas kini secara berterusan.",
@@ -1111,7 +1116,7 @@ Object.assign(translations.bm, {
   "creators.stats.videos": "Video Awam",
   "creators.updatedAt": "Dikemas kini {date}",
   "creators.featuredKicker": "YINSI GAMING",
-  "creators.featuredTitle": "Kandungan Pilihan",
+  "creators.featuredTitle": "Video Awam Terkini",
   "creators.video.open": "Buka video di YouTube",
   "creators.video.thumbnail": "Thumbnail video",
   "creators.cooperationTypes": "Promosi Jenama · Kerjasama Game · Kandungan Tajaan · Kerjasama Livestream",
@@ -1223,10 +1228,10 @@ function getNestedValue(source, path) {
   }, source);
 }
 
-async function fetchJsonFrom(paths) {
+async function fetchJsonFrom(paths, fetchOptions = {}) {
   for (const path of paths) {
     try {
-      const response = await fetch(path, { cache: "no-store" });
+      const response = await fetch(path, { cache: "default", ...fetchOptions });
       if (response.ok) {
         return await response.json();
       }
@@ -1239,7 +1244,7 @@ async function fetchJsonFrom(paths) {
 }
 
 async function loadContentOverrides() {
-  const content = await fetchJsonFrom(["content.json", "../content.json", "/content.json"]);
+  const content = await fetchJsonFrom(["/content.json", "content.json", "../content.json"]);
   if (!content) return;
 
   contactSettings = deepMerge(contactSettings, content.contactSettings || {});
@@ -1472,7 +1477,10 @@ function renderFeaturedVideos(videos) {
 }
 
 async function loadYouTubeStats() {
-  latestYouTubeStats = await fetchJsonFrom(["data/youtube-stats.json", "../data/youtube-stats.json", "/data/youtube-stats.json"]);
+  latestYouTubeStats = await fetchJsonFrom(
+    ["/data/youtube-stats.json", "data/youtube-stats.json", "../data/youtube-stats.json"],
+    { cache: "no-cache" }
+  );
   if (latestYouTubeStats) {
     renderYouTubeStats(latestYouTubeStats);
   }
@@ -1490,19 +1498,19 @@ function updatePackageCopy(lang) {
     cn: {
       title: "从开业宣传到持续更新内容，选择合适的设计配套。",
       copy: "制作时间、修改范围和交付安排，可通过 WhatsApp 确认。",
-      names: ["开业宣传组合", "活动推广组合", "基础品牌组合", "社媒轻量月配套", "社媒常规月配套", "社媒高频月配套", "YouTube 轻量封面月配套", "YouTube 常规封面月配套", "YouTube 高频封面月配套"],
+      names: ["平价开业宣传配套", "平价活动宣传配套", "企业基础形象配套", "社媒轻量月配套", "社媒标准月配套", "社媒进阶月配套", "视频封面设计轻量月配套", "视频封面设计标准月配套", "视频封面标题进阶月配套"],
       cta: "询问这个配套",
     },
     en: {
       title: "Choose a package for a launch, campaign, or ongoing content.",
       copy: "Timelines, revision scope, and delivery arrangements can be confirmed on WhatsApp.",
-      names: ["Launch Promotion Bundle", "Event Promotion Bundle", "Brand Essentials Bundle", "Lite Social Media Package", "Regular Social Media Package", "High-Frequency Social Media Package", "Lite YouTube Thumbnail Package", "Regular YouTube Thumbnail Package", "High-Frequency YouTube Thumbnail Package"],
+      names: ["Affordable Launch Promotion Package", "Affordable Event Promotion Package", "Business Essentials Package", "Lite Social Media Package", "Standard Social Media Package", "Advanced Social Media Package", "Lite YouTube Thumbnail Package", "Standard YouTube Thumbnail Package", "Advanced YouTube Thumbnail Package"],
       cta: "Ask about this package",
     },
     bm: {
       title: "Pilih pakej untuk pembukaan, kempen atau kandungan berterusan.",
       copy: "Tempoh kerja, skop pindaan dan penghantaran boleh disahkan melalui WhatsApp.",
-      names: ["Pakej Promosi Pembukaan", "Pakej Promosi Acara", "Pakej Asas Jenama", "Pakej Media Sosial Ringan", "Pakej Media Sosial Biasa", "Pakej Media Sosial Kerap", "Pakej Thumbnail YouTube Ringan", "Pakej Thumbnail YouTube Biasa", "Pakej Thumbnail YouTube Kerap"],
+      names: ["Pakej Promosi Pembukaan Mampu Milik", "Pakej Promosi Aktiviti Mampu Milik", "Pakej Imej Asas Perniagaan", "Pakej Media Sosial Ringan", "Pakej Media Sosial Standard", "Pakej Media Sosial Lanjutan", "Pakej Thumbnail YouTube Ringan", "Pakej Thumbnail YouTube Standard", "Pakej Thumbnail YouTube Lanjutan"],
       cta: "Tanya pakej ini",
     },
   };
@@ -1579,7 +1587,9 @@ function applyTranslations(lang) {
     const messageKey = link.dataset.whatsappMessage;
     const rawMessage = messageKey ? getText(activeLanguage, messageKey) : getPackageWhatsappMessage(link, activeLanguage);
     const message = encodeURIComponent(rawMessage);
-    const whatsappUrl = `https://wa.me/${contactSettings.whatsappNumber}?text=${message}`;
+    const whatsappUrl = contactSettings.whatsappNumber
+      ? `https://wa.me/${contactSettings.whatsappNumber}?text=${message}`
+      : DEFAULT_WHATSAPP_URL;
     link.setAttribute("href", whatsappUrl);
     link.setAttribute("target", "_blank");
     link.setAttribute("rel", "noopener");
@@ -1648,10 +1658,15 @@ function initMobileMenu() {
 
 function initFaq() {
   document.querySelectorAll(".faq-question").forEach((button) => {
+    const answerId = button.getAttribute("aria-controls");
+    const answer = answerId ? document.getElementById(answerId) : button.nextElementSibling;
+    answer?.setAttribute("aria-hidden", "true");
+
     button.addEventListener("click", () => {
       const item = button.closest(".faq-item");
       const isOpen = item.classList.toggle("is-open");
       button.setAttribute("aria-expanded", String(isOpen));
+      answer?.setAttribute("aria-hidden", String(!isOpen));
     });
   });
 }
@@ -1660,12 +1675,14 @@ function initRevealAnimations() {
   const elements = document.querySelectorAll(".reveal");
   const groupedElements = document.querySelectorAll("main section .reveal");
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const isSmallScreen = window.matchMedia("(max-width: 700px)").matches;
+  const shouldRevealImmediately = prefersReducedMotion || isSmallScreen || Boolean(window.location.hash);
 
   groupedElements.forEach((element, index) => {
     element.style.setProperty("--reveal-delay", `${Math.min(index % 8, 7) * 45}ms`);
   });
 
-  if (!("IntersectionObserver" in window) || prefersReducedMotion) {
+  if (!("IntersectionObserver" in window) || shouldRevealImmediately) {
     elements.forEach((element) => element.classList.add("is-visible"));
     return;
   }
@@ -1681,16 +1698,28 @@ function initRevealAnimations() {
         }
       });
     },
-    { threshold: 0.14 }
+    { rootMargin: "0px 0px 8%", threshold: 0.06 }
   );
 
-  elements.forEach((element) => observer.observe(element));
+  elements.forEach((element) => {
+    const rect = element.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 1.05 && rect.bottom > 0) {
+      element.classList.add("is-visible");
+    } else {
+      observer.observe(element);
+    }
+  });
+
+  window.setTimeout(() => {
+    elements.forEach((element) => element.classList.add("is-visible"));
+    observer.disconnect();
+  }, 1800);
 }
 
 function initInteractiveSurfaces() {
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (prefersReducedMotion) return;
   const supportsFineHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  if (prefersReducedMotion || !supportsFineHover) return;
 
   const selector = [
     ".btn",
@@ -1714,11 +1743,9 @@ function initInteractiveSurfaces() {
       element.style.setProperty("--pointer-x", `${x.toFixed(1)}%`);
       element.style.setProperty("--pointer-y", `${y.toFixed(1)}%`);
 
-      if (supportsFineHover) {
-        const rotateY = ((x - 50) / 50) * 1.8;
-        const rotateX = ((50 - y) / 50) * 1.8;
-        element.style.setProperty("--surface-transform", `perspective(900px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg)`);
-      }
+      const rotateY = ((x - 50) / 50) * 1.8;
+      const rotateX = ((50 - y) / 50) * 1.8;
+      element.style.setProperty("--surface-transform", `perspective(900px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg)`);
     });
 
     element.addEventListener("pointerleave", () => {
@@ -1814,10 +1841,14 @@ function initHeroCanvas() {
 
   const ctx = canvas.getContext("2d");
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const isSmallScreen = window.matchMedia("(max-width: 900px)").matches;
+  const savesData = navigator.connection?.saveData === true;
+  const shouldAnimate = !prefersReducedMotion && !isSmallScreen && !savesData;
   let width = 0;
   let height = 0;
   let frame = 0;
   let animationId;
+  let isAnimating = false;
 
   function resize() {
     const ratio = Math.min(window.devicePixelRatio || 1, 2);
@@ -1916,24 +1947,34 @@ function initHeroCanvas() {
   }
 
   function animate() {
+    if (!isAnimating) return;
     frame += 1;
     draw();
     animationId = window.requestAnimationFrame(animate);
   }
 
-  resize();
-  window.addEventListener("resize", resize);
-
-  if (!prefersReducedMotion) {
+  function startAnimation() {
+    if (!shouldAnimate || isAnimating) return;
+    isAnimating = true;
     animate();
   }
 
+  function stopAnimation() {
+    isAnimating = false;
+    window.cancelAnimationFrame(animationId);
+  }
+
+  resize();
+  window.addEventListener("resize", resize);
+
+  startAnimation();
+
   document.addEventListener("visibilitychange", () => {
-    if (prefersReducedMotion) return;
+    if (!shouldAnimate) return;
     if (document.hidden) {
-      window.cancelAnimationFrame(animationId);
+      stopAnimation();
     } else {
-      animate();
+      startAnimation();
     }
   });
 }
@@ -1949,11 +1990,10 @@ function cleanLegacyHtmlUrl() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", async () => {
+document.addEventListener("DOMContentLoaded", () => {
   if (document.body?.dataset.admin === "true") return;
 
   cleanLegacyHtmlUrl();
-  await loadContentOverrides();
   initLanguageSwitcher();
   initEmailCopyFeedback();
   loadYouTubeStats();
@@ -1966,4 +2006,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   initPortfolioGallery();
   initActiveNav();
   initHeroCanvas();
+
+  loadContentOverrides().then(() => {
+    applyTranslations(activeLanguage);
+  });
 });

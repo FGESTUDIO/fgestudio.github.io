@@ -16,12 +16,14 @@
     <meta property="og:site_name" content="FGESTUDIO（梦幻起源欢娱工作室）" />
     <meta property="og:locale" content="zh_CN" />
     <meta property="og:url" content="https://fgestudio.my/mcn/" />
-    <meta property="og:image" content="https://fgestudio.my/images/fgestudio-logo-social.png" />
-    <meta property="og:image:alt" content="FGESTUDIO studio logo and visual identity" />
+    <meta property="og:image" content="https://fgestudio.my/images/social/mcn-og.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="FGESTUDIO gaming creator collaboration" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="游戏创作者合作与频道支持 | 梦幻起源欢娱工作室（FGESTUDIO）" />
     <meta name="twitter:description" content="梦幻起源欢娱工作室（FGESTUDIO）与游戏创作者一起整理频道定位、视觉包装、缩略图、内容栏目与商业合作资料。" />
-    <meta name="twitter:image" content="https://fgestudio.my/images/fgestudio-logo-social.png" />
+    <meta name="twitter:image" content="https://fgestudio.my/images/social/mcn-og.jpg" />
     <meta name="twitter:image:alt" content="FGESTUDIO studio logo and visual identity" />
     <meta name="theme-color" content="#050816" />
     <link rel="canonical" href="https://fgestudio.my/mcn/" />
@@ -30,12 +32,13 @@
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <link rel="stylesheet" href="../style.css?v=20260712-interactions" />
+    <link rel="stylesheet" href="../style.css?v=20260718-v25" />
   </head>
   <body data-page="mcn">
+    <a class="skip-link" href="#main-content" data-i18n="a11y.skip">跳到主要内容</a>
     <header class="site-header" data-header>
       <a class="brand" href="../" aria-label="梦幻起源欢娱工作室（FGESTUDIO）">
-        <img class="brand-logo" src="../images/fgestudio-logo-transparent.png" alt="FGESTUDIO（梦幻起源欢娱工作室）logo" />
+        <img decoding="async" class="brand-logo" src="../images/fgestudio-logo-transparent.webp" width="611" height="640" alt="FGESTUDIO（梦幻起源欢娱工作室）logo" />
         <span class="brand-text">
           <strong data-i18n="company.name">FANTASY GENESIS ENTERTAINMENT STUDIO</strong>
           <span data-i18n="company.subtitle">梦幻起源欢娱工作室</span>
@@ -64,12 +67,12 @@
       </div>
     </header>
 
-    <main>
+    <main id="main-content">
       <section class="hero" id="home" aria-labelledby="heroTitle">
         <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
         <div class="hero-shade" aria-hidden="true"></div>
         <figure class="hero-logo-stage reveal" aria-label="FGESTUDIO logo showcase">
-          <img src="../images/fgestudio-logo-transparent.png" alt="FANTASY GENESIS ENTERTAINMENT STUDIO logo" />
+          <img decoding="async" src="../images/fgestudio-logo-transparent.webp" width="611" height="640" alt="FANTASY GENESIS ENTERTAINMENT STUDIO logo" />
         </figure>
         <div class="container hero-content reveal">
           <p class="section-kicker" data-i18n="hero.mcn.kicker">游戏创作者合作</p>
@@ -86,7 +89,7 @@
             </a>
             <a class="btn btn-secondary" href="mailto:creators@fgestudio.my" data-email="creators">
               <span class="btn-icon" aria-hidden="true">
-                <img src="../images/icons/email.svg?v=20260705-clean" alt="" />
+                <img decoding="async" src="../images/icons/email.svg?v=20260705-clean" alt="" />
               </span>
               <span data-i18n="hero.mcn.ctaEmail">提交频道资料</span>
             </a>
@@ -151,7 +154,7 @@
           <article class="creator-card reveal">
             <div class="creator-visual">
               <div class="creator-avatar">
-                <img src="../images/creators/yinsi-avatar.png" alt="YinSi Gaming / 饮思YS channel avatar" />
+                <img decoding="async" loading="lazy" src="../images/creators/yinsi-avatar.webp" width="480" height="480" alt="YinSi Gaming / 饮思YS channel avatar" />
               </div>
             </div>
             <div class="creator-profile">
@@ -171,7 +174,7 @@
                   <a class="creator-link creator-channel-link" href="https://www.youtube.com/@yinsi_gaming" target="_blank" rel="noopener">
                     <span data-i18n="creators.yinsi.cta">查看 YouTube 频道</span>
                   </a>
-                  <a class="creator-link creator-cooperation-link" href="#" data-whatsapp data-whatsapp-message="creators.yinsi.cooperationMessage" target="_blank" rel="noopener">
+                  <a class="creator-link creator-cooperation-link" href="https://wa.me/60172599400" data-whatsapp data-whatsapp-message="creators.yinsi.cooperationMessage" target="_blank" rel="noopener">
                     <span data-i18n="creators.yinsi.cooperationCta">洽谈品牌合作</span>
                   </a>
                 </div>
@@ -196,13 +199,13 @@
           <section class="featured-content reveal" data-featured-content hidden aria-labelledby="featuredContentTitle">
             <div class="featured-content-heading">
               <p class="section-kicker" data-i18n="creators.featuredKicker">YINSI GAMING</p>
-              <h3 id="featuredContentTitle" data-i18n="creators.featuredTitle">代表内容</h3>
+              <h3 id="featuredContentTitle" data-i18n="creators.featuredTitle">最新公开视频</h3>
             </div>
             <div class="featured-video-grid" data-featured-video-grid aria-live="polite"></div>
           </section>
           <aside class="creator-partnership reveal" aria-label="Brand collaboration">
             <p data-i18n="creators.cooperationTypes">品牌推广 · 游戏合作 · 内容植入 · 直播合作</p>
-            <a class="btn btn-secondary creator-partnership-link" href="#" data-whatsapp data-whatsapp-message="creators.yinsi.cooperationMessage" target="_blank" rel="noopener">
+            <a class="btn btn-secondary creator-partnership-link" href="https://wa.me/60172599400" data-whatsapp data-whatsapp-message="creators.yinsi.cooperationMessage" target="_blank" rel="noopener">
               <span data-i18n="creators.yinsi.cooperationCta">洽谈品牌合作</span>
             </a>
           </aside>
@@ -258,7 +261,7 @@
             <article class="contact-email-card">
               <div class="contact-card-head">
                 <span class="contact-icon" aria-hidden="true">
-                  <img src="../images/icons/email.svg?v=20260705-clean" alt="" />
+                  <img decoding="async" src="../images/icons/email.svg?v=20260705-clean" alt="" />
                 </span>
                 <div class="contact-email-content">
                   <strong data-i18n="contact.emailCreators">MCN 创作者合作</strong>
@@ -273,7 +276,7 @@
             <article class="contact-email-card">
               <div class="contact-card-head">
                 <span class="contact-icon" aria-hidden="true">
-                  <img src="../images/icons/email.svg?v=20260705-clean" alt="" />
+                  <img decoding="async" src="../images/icons/email.svg?v=20260705-clean" alt="" />
                 </span>
                 <div class="contact-email-content">
                   <strong data-i18n="contact.emailBusiness">品牌广告合作</strong>
@@ -304,6 +307,6 @@
       </div>
     </footer>
 
-    <script src="../script.js?v=20260717-chinese-seo-v2"></script>
+    <script src="../script.js?v=20260718-v25"></script>
   </body>
 </html>

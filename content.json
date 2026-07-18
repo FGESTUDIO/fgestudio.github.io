@@ -10,21 +10,21 @@
     }
   },
   "packageCatalog": {
-    "updated": "2026-07-10",
+    "updated": "2026-07-18",
     "oneOffPromotion": [
-      { "name": "开业宣传组合", "price": "RM239", "originalPrice": "RM250" },
-      { "name": "活动推广组合", "price": "RM329", "originalPrice": "RM350" },
-      { "name": "基础品牌组合", "price": "RM449", "originalPrice": "RM480" }
+      { "name": "平价开业宣传配套", "price": "RM239", "originalPrice": "RM250" },
+      { "name": "平价活动宣传配套", "price": "RM329", "originalPrice": "RM350" },
+      { "name": "企业基础形象配套", "price": "RM449", "originalPrice": "RM480" }
     ],
     "monthlySocialMedia": [
-      { "name": "社媒轻量月配套", "price": "RM289/月", "image": "images/packages/social-media-lite-package.png" },
-      { "name": "社媒常规月配套", "price": "RM529/月", "image": "images/packages/social-media-standard-package.png" },
-      { "name": "社媒高频月配套", "price": "RM729/月", "image": "images/packages/social-media-advanced-package.png" }
+      { "name": "社媒轻量月配套", "price": "RM289/月", "image": "images/packages/social-media-lite-package.webp" },
+      { "name": "社媒标准月配套", "price": "RM529/月", "image": "images/packages/social-media-standard-package.webp" },
+      { "name": "社媒进阶月配套", "price": "RM729/月", "image": "images/packages/social-media-advanced-package.webp" }
     ],
     "monthlyYouTubeThumbnail": [
-      { "name": "YouTube 轻量封面月配套", "price": "RM329/月", "image": "images/packages/youtube-thumbnail-lite-package.png" },
-      { "name": "YouTube 常规封面月配套", "price": "RM589/月", "image": "images/packages/youtube-thumbnail-standard-package.png" },
-      { "name": "YouTube 高频封面月配套", "price": "RM889/月", "image": "images/packages/youtube-thumbnail-advanced-package.png" }
+      { "name": "视频封面设计轻量月配套", "price": "RM329/月", "image": "images/packages/youtube-thumbnail-lite-package.webp" },
+      { "name": "视频封面设计标准月配套", "price": "RM589/月", "image": "images/packages/youtube-thumbnail-standard-package.webp" },
+      { "name": "视频封面标题进阶月配套", "price": "RM889/月", "image": "images/packages/youtube-thumbnail-advanced-package.webp" }
     ]
   },
   "translations": {
@@ -45,9 +45,9 @@
       "pricing.standard.item3": "社媒进阶月配套｜RM729/月：自媒体帖子设计 ×12，适合餐饮、美容、补习、旅行、汽车服务与房产等行业",
       "pricing.monthly.label": "适合 YouTube 创作者与频道",
       "pricing.monthly.title": "YouTube 视频封面月配套",
-      "pricing.monthly.item1": "视频封面轻量月配套｜RM329/月：封面设计 ×4、封面标题优化 ×4",
-      "pricing.monthly.item2": "视频封面标准月配套｜RM589/月：封面设计 ×8、封面标题优化 ×8",
-      "pricing.monthly.item3": "视频封面进阶月配套｜RM889/月：封面设计 ×12、封面标题优化 ×12，赠送自媒体帖子 ×1",
+      "pricing.monthly.item1": "视频封面设计轻量月配套｜RM329/月：封面设计 ×4、封面标题优化 ×4",
+      "pricing.monthly.item2": "视频封面设计标准月配套｜RM589/月：封面设计 ×8、封面标题优化 ×8",
+      "pricing.monthly.item3": "视频封面标题进阶月配套｜RM889/月：封面设计 ×12、封面标题优化 ×12，赠送自媒体帖子 ×1",
       "pricing.cta": "询问这个配套"
     },
     "en": {
