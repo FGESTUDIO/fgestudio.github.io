@@ -10,7 +10,7 @@
     }
   },
   "packageCatalog": {
-    "updated": "2026-07-18",
+    "updated": "2026-07-21",
     "oneOffPromotion": [
       { "name": "平价开业宣传配套", "price": "RM239", "originalPrice": "RM250" },
       { "name": "平价活动宣传配套", "price": "RM329", "originalPrice": "RM350" },
@@ -26,6 +26,48 @@
       { "name": "视频封面设计标准月配套", "price": "RM589/月", "image": "images/packages/youtube-thumbnail-standard-package.webp" },
       { "name": "视频封面标题进阶月配套", "price": "RM889/月", "image": "images/packages/youtube-thumbnail-advanced-package.webp" }
     ]
+  },
+  "marketPricing": {
+    "malaysia": {
+      "currency": "MYR",
+      "services": {
+        "poster": { "price": "RM120" },
+        "social": { "price": "RM80" },
+        "businessCard": { "price": "RM50" },
+        "banner": { "price": "RM150" }
+      },
+      "packages": {
+        "launch": { "price": "RM239", "originalPrice": "RM250" },
+        "event": { "price": "RM329", "originalPrice": "RM350" },
+        "business": { "price": "RM449", "originalPrice": "RM480" },
+        "socialLite": { "price": "RM289/月" },
+        "socialStandard": { "price": "RM529/月" },
+        "socialAdvanced": { "price": "RM729/月" },
+        "youtubeLite": { "price": "RM329/月" },
+        "youtubeStandard": { "price": "RM589/月" },
+        "youtubeAdvanced": { "price": "RM889/月" }
+      }
+    },
+    "international": {
+      "currency": "USD",
+      "services": {
+        "poster": { "price": "US$49" },
+        "social": { "price": "US$29" },
+        "businessCard": { "price": "US$25" },
+        "banner": { "price": "US$59" }
+      },
+      "packages": {
+        "launch": { "price": "US$99", "originalPrice": "US$109" },
+        "event": { "price": "US$129", "originalPrice": "US$149" },
+        "business": { "price": "US$179", "originalPrice": "US$199" },
+        "socialLite": { "price": "US$119/month" },
+        "socialStandard": { "price": "US$219/month" },
+        "socialAdvanced": { "price": "US$299/month" },
+        "youtubeLite": { "price": "US$149/month" },
+        "youtubeStandard": { "price": "US$279/month" },
+        "youtubeAdvanced": { "price": "US$399/month" }
+      }
+    }
   },
   "translations": {
     "cn": {
