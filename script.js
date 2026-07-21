@@ -936,6 +936,10 @@ Object.assign(translations.cn, {
   "contact.mcn.copy": "创作者可发送频道链接、内容类型和目前想改善的部分到 creators@fgestudio.my；品牌合作请联系 business@fgestudio.my。",
   "contact.design.whatsapp": "发送设计需求",
   "contact.whatsapp": "WhatsApp 联系我们",
+  "language.toggle": "切换语言",
+  "language.menu": "选择语言",
+  "pricing.market.malaysia": "马来西亚价格（MYR）",
+  "pricing.market.international": "国际价格（USD）",
 });
 
 Object.assign(translations.en, {
@@ -1044,6 +1048,10 @@ Object.assign(translations.en, {
   "contact.mcn.title": "Want to discuss your gaming channel? Send us the channel details.",
   "contact.design.whatsapp": "Send a design brief",
   "contact.whatsapp": "Message us on WhatsApp",
+  "language.toggle": "Change language",
+  "language.menu": "Choose a language",
+  "pricing.market.malaysia": "Malaysia pricing (MYR)",
+  "pricing.market.international": "International pricing (USD)",
 });
 
 Object.assign(translations.bm, {
@@ -1152,6 +1160,10 @@ Object.assign(translations.bm, {
   "contact.mcn.title": "Mahu bincang tentang channel gaming? Hantar maklumat channel kepada kami.",
   "contact.design.whatsapp": "Hantar brief reka bentuk",
   "contact.whatsapp": "Hubungi kami di WhatsApp",
+  "language.toggle": "Tukar bahasa",
+  "language.menu": "Pilih bahasa",
+  "pricing.market.malaysia": "Harga Malaysia (MYR)",
+  "pricing.market.international": "Harga antarabangsa (USD)",
 });
 
 let editableContent = {
@@ -1170,10 +1182,56 @@ let editableContent = {
   },
 };
 
+// Prices are intentionally market-specific. International rates are set as
+// standalone USD prices, not converted from Malaysian Ringgit at runtime.
+let marketPricing = {
+  malaysia: {
+    currency: "MYR",
+    services: {
+      poster: { price: "RM120" },
+      social: { price: "RM80" },
+      businessCard: { price: "RM50" },
+      banner: { price: "RM150" },
+    },
+    packages: {
+      launch: { price: "RM239", originalPrice: "RM250" },
+      event: { price: "RM329", originalPrice: "RM350" },
+      business: { price: "RM449", originalPrice: "RM480" },
+      socialLite: { price: "RM289/月" },
+      socialStandard: { price: "RM529/月" },
+      socialAdvanced: { price: "RM729/月" },
+      youtubeLite: { price: "RM329/月" },
+      youtubeStandard: { price: "RM589/月" },
+      youtubeAdvanced: { price: "RM889/月" },
+    },
+  },
+  international: {
+    currency: "USD",
+    services: {
+      poster: { price: "US$49" },
+      social: { price: "US$29" },
+      businessCard: { price: "US$25" },
+      banner: { price: "US$59" },
+    },
+    packages: {
+      launch: { price: "US$99", originalPrice: "US$109" },
+      event: { price: "US$129", originalPrice: "US$149" },
+      business: { price: "US$179", originalPrice: "US$199" },
+      socialLite: { price: "US$119/month" },
+      socialStandard: { price: "US$219/month" },
+      socialAdvanced: { price: "US$299/month" },
+      youtubeLite: { price: "US$149/month" },
+      youtubeStandard: { price: "US$279/month" },
+      youtubeAdvanced: { price: "US$399/month" },
+    },
+  },
+};
+
 const defaultContentSnapshot = {
   contactSettings: JSON.parse(JSON.stringify(contactSettings)),
   editable: JSON.parse(JSON.stringify(editableContent)),
   translations: JSON.parse(JSON.stringify(translations)),
+  marketPricing: JSON.parse(JSON.stringify(marketPricing)),
 };
 
 window.FGESTUDIO_DEFAULT_CONTENT = defaultContentSnapshot;
@@ -1197,7 +1255,27 @@ const dateLocaleMap = {
 };
 
 let activeLanguage = "cn";
+let activeMarket = "international";
 let latestYouTubeStats = null;
+
+const languageDisplayNames = {
+  cn: "CN",
+  en: "EN",
+  bm: "BM",
+};
+
+const servicePriceKeys = ["poster", "social", "businessCard", "banner"];
+const packagePriceKeys = [
+  "launch",
+  "event",
+  "business",
+  "socialLite",
+  "socialStandard",
+  "socialAdvanced",
+  "youtubeLite",
+  "youtubeStandard",
+  "youtubeAdvanced",
+];
 
 function getPageKey() {
   return document.body?.dataset.page || "design";
@@ -1250,6 +1328,7 @@ async function loadContentOverrides() {
   contactSettings = deepMerge(contactSettings, content.contactSettings || {});
   editableContent = deepMerge(editableContent, content.editable || {});
   translations = deepMerge(translations, content.translations || {});
+  marketPricing = deepMerge(marketPricing, content.marketPricing || {});
 }
 
 function formatText(value) {
@@ -1493,6 +1572,128 @@ function markCurrentPageNav() {
   });
 }
 
+function getStoredLanguage() {
+  try {
+    const savedLanguage = localStorage.getItem("manualLanguagePreference");
+    return translations[savedLanguage] ? savedLanguage : null;
+  } catch (error) {
+    return null;
+  }
+}
+
+function saveLanguagePreference(language) {
+  try {
+    localStorage.setItem("manualLanguagePreference", language);
+  } catch (error) {
+    // The site should still work when storage is unavailable.
+  }
+}
+
+function detectDeviceLanguage() {
+  const preferredLanguages = Array.isArray(navigator.languages) && navigator.languages.length
+    ? navigator.languages
+    : [navigator.language || ""];
+
+  for (const language of preferredLanguages) {
+    const normalizedLanguage = String(language || "").toLowerCase().replace("_", "-");
+    if (normalizedLanguage.startsWith("zh")) return "cn";
+    if (normalizedLanguage.startsWith("ms")) return "bm";
+    if (normalizedLanguage.startsWith("en")) return "en";
+  }
+
+  return "en";
+}
+
+function getBrowserMarketFallback() {
+  const preferredLanguages = Array.isArray(navigator.languages) && navigator.languages.length
+    ? navigator.languages
+    : [navigator.language || ""];
+  const hasMalaysiaLocale = preferredLanguages.some((language) => /(?:^|[-_])my(?:$|[-_])/i.test(String(language)));
+  if (hasMalaysiaLocale) return "malaysia";
+
+  try {
+    if (Intl.DateTimeFormat().resolvedOptions().timeZone === "Asia/Kuala_Lumpur") {
+      return "malaysia";
+    }
+  } catch (error) {
+    // Fall back to the international price list when the browser hides its time zone.
+  }
+
+  return "international";
+}
+
+function setPriceCardValue(priceElement, price) {
+  if (!priceElement || !price?.price) return;
+
+  const currentPrice = document.createElement("span");
+  currentPrice.textContent = price.price;
+  priceElement.replaceChildren(currentPrice);
+
+  if (price.originalPrice) {
+    const originalPrice = document.createElement("del");
+    originalPrice.textContent = price.originalPrice;
+    priceElement.append(" ", originalPrice);
+  }
+}
+
+function applyMarketPrices(panelSelector, priceKeys, prices) {
+  document.querySelectorAll(panelSelector).forEach((panel) => {
+    const cards = Array.from(panel.querySelectorAll(".pricing-card"));
+    priceKeys.forEach((key, index) => {
+      const priceElement = cards[index]?.querySelector(".price");
+      setPriceCardValue(priceElement, prices?.[key]);
+    });
+  });
+}
+
+function renderMarketPricing(market = activeMarket) {
+  activeMarket = marketPricing[market] ? market : "international";
+  const priceList = marketPricing[activeMarket];
+  if (!priceList) return;
+
+  document.documentElement.dataset.market = activeMarket;
+  applyMarketPrices(".public-service-language", servicePriceKeys, priceList.services);
+  applyMarketPrices(".package-language", packagePriceKeys, priceList.packages);
+
+  const marketLabel = getText(activeLanguage, `pricing.market.${activeMarket}`);
+  document.querySelectorAll("[data-market-pricing-note]").forEach((note) => {
+    note.textContent = marketLabel;
+  });
+}
+
+function getCloudflareCountry(traceText) {
+  const match = String(traceText || "").match(/^loc=([A-Z]{2})$/m);
+  return match?.[1] || "";
+}
+
+async function initLocalizedPricing() {
+  if (!document.querySelector(".public-service-language, .package-language")) return;
+
+  renderMarketPricing(getBrowserMarketFallback());
+
+  try {
+    const response = await fetch("/cdn-cgi/trace", { cache: "no-store" });
+    if (!response.ok) return;
+
+    const visitorCountry = getCloudflareCountry(await response.text());
+    renderMarketPricing(visitorCountry === "MY" ? "malaysia" : "international");
+  } catch (error) {
+    // If Cloudflare country detection is unavailable, keep the locale/time-zone fallback.
+  }
+}
+
+function updateLanguageControls() {
+  document.querySelectorAll("[data-language-current]").forEach((label) => {
+    label.textContent = languageDisplayNames[activeLanguage] || languageDisplayNames.en;
+  });
+
+  document.querySelectorAll(".lang-btn").forEach((button) => {
+    const isActive = button.dataset.lang === activeLanguage;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-checked", String(isActive));
+  });
+}
+
 function updatePackageCopy(lang) {
   const packageCopy = {
     cn: {
@@ -1605,26 +1806,46 @@ function applyTranslations(lang) {
     element.textContent = getEmailAddress(getEmailRole(element));
   });
 
-  document.querySelectorAll(".lang-btn").forEach((button) => {
-    const isActive = button.dataset.lang === activeLanguage;
-    button.classList.toggle("is-active", isActive);
-    button.setAttribute("aria-pressed", String(isActive));
-  });
-
+  updateLanguageControls();
   markCurrentPageNav();
   renderEditableContent();
   renderYouTubeStats(latestYouTubeStats);
-  localStorage.setItem("preferredLanguage", activeLanguage);
+  renderMarketPricing(activeMarket);
 }
 
 function initLanguageSwitcher() {
-  const savedLang = localStorage.getItem("preferredLanguage");
-  const defaultLang = translations[savedLang] ? savedLang : "cn";
+  const switcher = document.querySelector("[data-language-switcher]");
+  const toggle = switcher?.querySelector("[data-lang-toggle]");
+  const menu = switcher?.querySelector(".language-menu");
+  const defaultLang = getStoredLanguage() || detectDeviceLanguage();
+
+  function setMenuOpen(isOpen) {
+    if (!switcher || !toggle || !menu) return;
+    switcher.classList.toggle("is-open", isOpen);
+    menu.hidden = !isOpen;
+    toggle.setAttribute("aria-expanded", String(isOpen));
+  }
+
+  toggle?.addEventListener("click", () => {
+    setMenuOpen(menu?.hidden !== false);
+  });
 
   document.querySelectorAll(".lang-btn").forEach((button) => {
     button.addEventListener("click", () => {
       applyTranslations(button.dataset.lang);
+      saveLanguagePreference(activeLanguage);
+      setMenuOpen(false);
     });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (switcher && !switcher.contains(event.target)) setMenuOpen(false);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape" || menu?.hidden) return;
+    setMenuOpen(false);
+    toggle?.focus();
   });
 
   applyTranslations(defaultLang);
@@ -2094,6 +2315,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (document.body?.dataset.admin === "true") return;
 
   cleanLegacyHtmlUrl();
+  initLocalizedPricing();
   initLanguageSwitcher();
   initEmailCopyFeedback();
   loadYouTubeStats();

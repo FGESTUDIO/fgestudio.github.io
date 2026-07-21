@@ -27,17 +27,17 @@ python3 -m http.server 8080
 
 ## 内容与联系方式
 
-- `script.js`：三语文案、语言切换、WhatsApp、Email、动画和互动逻辑
-- `content.json`：可覆盖的联系资料与部分公共文案
-- `design/index.html`：公开价格、配套内容与结构化数据
+- `script.js`：三语文案、语言按钮、设备语言识别、地区价格、WhatsApp、Email、动画和互动逻辑
+- `content.json`：可覆盖的联系资料、马来西亚／国际价格与部分公共文案
+- `design/index.html`：公开服务与配套结构，以及马来西亚价格的结构化数据
 - `data/youtube-stats.json`：已保存的 YouTube 公开频道数据
 
 修改公开价格或配套名称时，必须同步检查：
 
-1. `design/index.html` 的中文、英文和马来文配套卡片。
-2. 同一文件中的 `OfferCatalog` JSON-LD。
-3. `script.js` 的 `updatePackageCopy()`。
-4. `content.json` 的配套摘要。
+1. `content.json` 的 `marketPricing.malaysia` 与 `marketPricing.international`。
+2. `design/index.html` 的中文、英文和马来文服务／配套卡片结构。
+3. 同一文件中的 `OfferCatalog` JSON-LD（该结构化数据保留马来西亚 MYR 定价）。
+4. `script.js` 的 `marketPricing` 默认值与 `updatePackageCopy()`。
 
 所有 WhatsApp 按钮在 HTML 中都有可用的备用网址；JavaScript 加载后会加入对应语言和服务名称。
 
@@ -74,7 +74,8 @@ jq empty content.json data/youtube-stats.json
 
 并确认：
 
-- 中文、English、Bahasa Melayu 均能切换。
+- 中文、English、Bahasa Melayu 可通过语言按钮切换；首次访问会按设备语言选定可用语言。
+- 马来西亚访问显示 MYR，其他国家显示独立设定的 USD 价格。
 - WhatsApp、Email、Facebook 和内部链接可用。
 - 手机菜单、配套横向浏览、FAQ 与固定咨询按钮可用。
 - `/404.html`、旧网址跳转、Canonical、robots 与 sitemap 正确。

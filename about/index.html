@@ -32,7 +32,7 @@
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <link rel="stylesheet" href="../style.css?v=20260718-v26" />
+    <link rel="stylesheet" href="../style.css?v=20260721-i18n-market-1" />
   </head>
   <body data-page="about">
     <a class="skip-link" href="#main-content" data-i18n="a11y.skip">跳到主要内容</a>
@@ -54,10 +54,26 @@
       </nav>
 
       <div class="header-actions">
-        <div class="language-switcher" aria-label="Language switcher">
-          <button type="button" class="lang-btn is-active" data-lang="cn">CN</button>
-          <button type="button" class="lang-btn" data-lang="en">EN</button>
-          <button type="button" class="lang-btn" data-lang="bm">BM</button>
+        <div class="language-switcher" data-language-switcher>
+          <button
+            class="language-toggle"
+            type="button"
+            aria-haspopup="menu"
+            aria-expanded="false"
+            aria-controls="languageMenu"
+            aria-label="切换语言"
+            data-i18n-attr="aria-label:language.toggle"
+            data-lang-toggle
+          >
+            <span class="language-toggle-icon" aria-hidden="true"></span>
+            <span class="language-toggle-label" data-language-current>CN</span>
+            <span class="language-toggle-chevron" aria-hidden="true"></span>
+          </button>
+          <div class="language-menu" id="languageMenu" role="menu" aria-label="选择语言" data-i18n-attr="aria-label:language.menu" hidden>
+            <button type="button" class="lang-btn" data-lang="cn" role="menuitemradio" aria-checked="true">简体中文</button>
+            <button type="button" class="lang-btn" data-lang="en" role="menuitemradio" aria-checked="false">English</button>
+            <button type="button" class="lang-btn" data-lang="bm" role="menuitemradio" aria-checked="false">Bahasa Melayu</button>
+          </div>
         </div>
         <button class="nav-toggle" type="button" aria-controls="mainNav" aria-expanded="false" aria-label="Open menu" data-menu-toggle>
           <span></span>
@@ -283,6 +299,6 @@
       </div>
     </footer>
 
-    <script src="../script.js?v=20260718-v25-1"></script>
+    <script src="../script.js?v=20260721-i18n-market-1"></script>
   </body>
 </html>

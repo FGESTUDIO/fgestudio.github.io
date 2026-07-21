@@ -39,7 +39,7 @@
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <link rel="stylesheet" href="../style.css?v=20260719-v28" />
+    <link rel="stylesheet" href="../style.css?v=20260721-i18n-market-1" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -144,10 +144,26 @@
       </nav>
 
       <div class="header-actions">
-        <div class="language-switcher" aria-label="Language switcher">
-          <button type="button" class="lang-btn is-active" data-lang="cn">CN</button>
-          <button type="button" class="lang-btn" data-lang="en">EN</button>
-          <button type="button" class="lang-btn" data-lang="bm">BM</button>
+        <div class="language-switcher" data-language-switcher>
+          <button
+            class="language-toggle"
+            type="button"
+            aria-haspopup="menu"
+            aria-expanded="false"
+            aria-controls="languageMenu"
+            aria-label="切换语言"
+            data-i18n-attr="aria-label:language.toggle"
+            data-lang-toggle
+          >
+            <span class="language-toggle-icon" aria-hidden="true"></span>
+            <span class="language-toggle-label" data-language-current>CN</span>
+            <span class="language-toggle-chevron" aria-hidden="true"></span>
+          </button>
+          <div class="language-menu" id="languageMenu" role="menu" aria-label="选择语言" data-i18n-attr="aria-label:language.menu" hidden>
+            <button type="button" class="lang-btn" data-lang="cn" role="menuitemradio" aria-checked="true">简体中文</button>
+            <button type="button" class="lang-btn" data-lang="en" role="menuitemradio" aria-checked="false">English</button>
+            <button type="button" class="lang-btn" data-lang="bm" role="menuitemradio" aria-checked="false">Bahasa Melayu</button>
+          </div>
         </div>
         <button
           class="nav-toggle"
@@ -243,6 +259,7 @@
               <h2 id="pricingTitle">从开业宣传到长期内容更新，选择适合你的设计配套。</h2>
               <p>具体制作时间、修改范围与交付安排，可通过 WhatsApp 确认。</p>
             </div>
+            <p class="pricing-market-note" data-market-pricing-note>马来西亚价格（MYR）</p>
             <div class="package-jump-shell">
               <nav class="package-jump-nav" aria-label="快速查看设计配套">
                 <a href="#oneOffCn">一次性宣传</a>
@@ -271,6 +288,7 @@
           </div>
           <div class="package-language" data-lang-panel="en" hidden>
             <div class="section-heading reveal"><p class="section-kicker">Graphic Design Packages</p><h2>Choose a design package for one-off promotions or ongoing content.</h2><p>Timelines, revision scope, and delivery arrangements can be confirmed through WhatsApp.</p></div>
+            <p class="pricing-market-note" data-market-pricing-note>Malaysia pricing (MYR)</p>
             <div class="package-jump-shell">
               <nav class="package-jump-nav" aria-label="Quick package navigation">
                 <a href="#oneOffEn">One-off promotion</a>
@@ -296,6 +314,7 @@
           </div>
           <div class="package-language" data-lang-panel="bm" hidden>
             <div class="section-heading reveal"><p class="section-kicker">Pakej Reka Bentuk Grafik</p><h2>Pilih pakej reka bentuk untuk promosi sekali atau kandungan berterusan.</h2><p>Tempoh kerja, skop pindaan, dan penghantaran boleh disahkan melalui WhatsApp.</p></div>
+            <p class="pricing-market-note" data-market-pricing-note>Harga Malaysia (MYR)</p>
             <div class="package-jump-shell">
               <nav class="package-jump-nav" aria-label="Navigasi pantas pakej">
                 <a href="#oneOffBm">Promosi sekali</a>
@@ -508,6 +527,6 @@
       </div>
     </footer>
 
-    <script src="../script.js?v=20260718-v25-2"></script>
+    <script src="../script.js?v=20260721-i18n-market-1"></script>
   </body>
 </html>
