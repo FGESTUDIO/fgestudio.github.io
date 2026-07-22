@@ -1254,7 +1254,9 @@ const dateLocaleMap = {
   bm: "ms-MY",
 };
 
-let activeLanguage = "cn";
+const DEFAULT_LANGUAGE = "en";
+
+let activeLanguage = DEFAULT_LANGUAGE;
 let activeMarket = "international";
 let latestYouTubeStats = null;
 
@@ -1589,21 +1591,6 @@ function saveLanguagePreference(language) {
   }
 }
 
-function detectDeviceLanguage() {
-  const preferredLanguages = Array.isArray(navigator.languages) && navigator.languages.length
-    ? navigator.languages
-    : [navigator.language || ""];
-
-  for (const language of preferredLanguages) {
-    const normalizedLanguage = String(language || "").toLowerCase().replace("_", "-");
-    if (normalizedLanguage.startsWith("zh")) return "cn";
-    if (normalizedLanguage.startsWith("ms")) return "bm";
-    if (normalizedLanguage.startsWith("en")) return "en";
-  }
-
-  return "en";
-}
-
 function getBrowserMarketFallback() {
   const preferredLanguages = Array.isArray(navigator.languages) && navigator.languages.length
     ? navigator.languages
@@ -1745,8 +1732,8 @@ function getPackageWhatsappMessage(link, lang) {
 }
 
 function applyTranslations(lang) {
-  activeLanguage = translations[lang] ? lang : "cn";
-  document.documentElement.lang = langMap[activeLanguage] || "zh-Hans";
+  activeLanguage = translations[lang] ? lang : DEFAULT_LANGUAGE;
+  document.documentElement.lang = langMap[activeLanguage] || langMap[DEFAULT_LANGUAGE];
 
   const title = getPageText(activeLanguage, "metaTitle");
   const description = getPageText(activeLanguage, "metaDescription");
@@ -1817,7 +1804,7 @@ function initLanguageSwitcher() {
   const switcher = document.querySelector("[data-language-switcher]");
   const toggle = switcher?.querySelector("[data-lang-toggle]");
   const menu = switcher?.querySelector(".language-menu");
-  const defaultLang = getStoredLanguage() || detectDeviceLanguage();
+  const defaultLang = getStoredLanguage() || DEFAULT_LANGUAGE;
 
   function setMenuOpen(isOpen) {
     if (!switcher || !toggle || !menu) return;
