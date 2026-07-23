@@ -1,0 +1,132 @@
+media:
+  - name: portfolio_media
+    label: 作品图片
+    input: works-2026
+    output: /works-2026
+    extensions: [png, jpg, jpeg, webp]
+    rename: random
+
+content:
+  - name: portfolio_works
+    label: FGESTUDIO 作品集
+    type: file
+    path: works-2026/works.json
+    format: json
+    fields:
+      - name: works
+        label: 作品
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title_en} · {category}"
+        fields:
+          - name: id
+            label: 作品 ID
+            type: uuid
+            required: true
+            readonly: true
+            options:
+              editable: false
+          - name: published
+            label: 在作品集中显示
+            type: boolean
+            default: true
+            description: 关闭后作品资料仍会保留，但客户看不到。
+          - name: category
+            label: 分类
+            type: select
+            required: true
+            options:
+              values:
+                - name: social
+                  label: 社交媒体视觉
+                - name: poster
+                  label: 海报设计
+                - name: business-card
+                  label: 名片设计
+                - name: banner
+                  label: 横幅设计
+          - name: image
+            label: 作品图片
+            type: image
+            required: true
+            description: 请先遮住客户私人电话号码；建议上传 JPG、PNG 或 WebP。
+            options:
+              media: portfolio_media
+              path: uploads
+              extensions: [jpg, jpeg, png, webp]
+              rename: random
+
+          - name: title_en
+            label: 英文标题
+            type: string
+            required: true
+          - name: industry_en
+            label: 英文行业
+            type: string
+            required: true
+          - name: format_en
+            label: 英文设计形式
+            type: string
+            required: true
+          - name: focus_en
+            label: 英文设计重点
+            type: text
+            required: true
+          - name: alt_en
+            label: 英文图片说明
+            type: string
+            description: 供无障碍阅读使用；留空时会使用英文标题。
+
+          - name: title_cn
+            label: 中文标题
+            type: string
+            description: 留空时会显示英文。
+          - name: industry_cn
+            label: 中文行业
+            type: string
+            description: 留空时会显示英文。
+          - name: format_cn
+            label: 中文设计形式
+            type: string
+            description: 留空时会显示英文。
+          - name: focus_cn
+            label: 中文设计重点
+            type: text
+            description: 留空时会显示英文。
+          - name: alt_cn
+            label: 中文图片说明
+            type: string
+            description: 留空时会使用中文标题或英文标题。
+
+          - name: title_bm
+            label: 马来文标题
+            type: string
+            description: 留空时会显示英文。
+          - name: industry_bm
+            label: 马来文行业
+            type: string
+            description: 留空时会显示英文。
+          - name: format_bm
+            label: 马来文设计形式
+            type: string
+            description: 留空时会显示英文。
+          - name: focus_bm
+            label: 马来文设计重点
+            type: text
+            description: 留空时会显示英文。
+          - name: alt_bm
+            label: 马来文图片说明
+            type: string
+            description: 留空时会使用马来文标题或英文标题。
+
+settings:
+  hide: true
+  commit:
+    identity: app
+    templates:
+      create: "portfolio: add {path}"
+      update: "portfolio: update {path}"
+      delete: "portfolio: remove {path}"
+      rename: "portfolio: rename {oldPath} to {newPath}"
