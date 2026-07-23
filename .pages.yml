@@ -1,6 +1,6 @@
 media:
   - name: portfolio_media
-    label: 作品图片
+    label: 作品原图上传区
     input: works-2026
     output: /works-2026
     extensions: [png, jpg, jpeg, webp]
@@ -19,7 +19,7 @@ content:
         list:
           collapsible:
             collapsed: true
-            summary: "{title_en} · {category}"
+            summary: "{title_cn} · {category}"
         fields:
           - name: id
             label: 作品 ID
@@ -47,79 +47,108 @@ content:
                   label: 名片设计
                 - name: banner
                   label: 横幅设计
-          - name: image
-            label: 作品图片
+
+          - name: source_image
+            label: 上传原图／替换图片
             type: image
-            required: true
-            description: 请先遮住客户私人电话号码；建议上传 JPG、PNG 或 WebP。
+            description: 上传后保存即可。系统会自动生成带 FGESTUDIO 水印的网页预览图，处理完成后这里会自动清空。水印不会自动遮住电话号码，请勿上传含第三方私人联络资料的图片。
             options:
               media: portfolio_media
               path: uploads
               extensions: [jpg, jpeg, png, webp]
               rename: random
 
-          - name: title_en
-            label: 英文标题
+          - name: image
+            label: 当前水印预览图
+            type: image
+            readonly: true
+            description: 客户作品集实际显示的安全预览图；由系统自动生成。
+            options:
+              media: portfolio_media
+
+          - name: watermark_status
+            label: 图片处理状态
             type: string
-            required: true
-          - name: industry_en
-            label: 英文行业
-            type: string
-            required: true
-          - name: format_en
-            label: 英文设计形式
-            type: string
-            required: true
-          - name: focus_en
-            label: 英文设计重点
-            type: text
-            required: true
-          - name: alt_en
-            label: 英文图片说明
-            type: string
-            description: 供无障碍阅读使用；留空时会使用英文标题。
+            readonly: true
 
           - name: title_cn
             label: 中文标题
             type: string
-            description: 留空时会显示英文。
+            required: true
           - name: industry_cn
             label: 中文行业
             type: string
-            description: 留空时会显示英文。
+            required: true
           - name: format_cn
             label: 中文设计形式
             type: string
-            description: 留空时会显示英文。
+            required: true
           - name: focus_cn
             label: 中文设计重点
             type: text
-            description: 留空时会显示英文。
+            required: true
           - name: alt_cn
             label: 中文图片说明
             type: string
-            description: 留空时会使用中文标题或英文标题。
+            description: 供无障碍阅读使用；留空时会自动使用中文标题。
+
+          - name: keep_manual_translations
+            label: 保留手动翻译
+            type: boolean
+            default: false
+            description: 通常保持关闭。若你手动修改了英文／马来文，并且以后改中文时也不想重新自动翻译，才打开此项。
+
+          - name: translation_status
+            label: 自动翻译状态
+            type: string
+            readonly: true
+
+          - name: title_en
+            label: 自动英文标题（可修改）
+            type: string
+          - name: industry_en
+            label: 自动英文行业（可修改）
+            type: string
+          - name: format_en
+            label: 自动英文设计形式（可修改）
+            type: string
+          - name: focus_en
+            label: 自动英文设计重点（可修改）
+            type: text
+          - name: alt_en
+            label: 自动英文图片说明（可修改）
+            type: string
 
           - name: title_bm
-            label: 马来文标题
+            label: 自动马来文标题（可修改）
             type: string
-            description: 留空时会显示英文。
           - name: industry_bm
-            label: 马来文行业
+            label: 自动马来文行业（可修改）
             type: string
-            description: 留空时会显示英文。
           - name: format_bm
-            label: 马来文设计形式
+            label: 自动马来文设计形式（可修改）
             type: string
-            description: 留空时会显示英文。
           - name: focus_bm
-            label: 马来文设计重点
+            label: 自动马来文设计重点（可修改）
             type: text
-            description: 留空时会显示英文。
           - name: alt_bm
-            label: 马来文图片说明
+            label: 自动马来文图片说明（可修改）
             type: string
-            description: 留空时会使用马来文标题或英文标题。
+
+          - name: translation_source_hash
+            label: 翻译版本
+            type: string
+            hidden: true
+
+    actions:
+      - name: process_portfolio
+        label: 重新执行自动翻译和水印
+        workflow: process-portfolio.yml
+        ref: current
+        confirm:
+          title: 重新处理作品？
+          message: 系统会检查尚未完成的中文翻译和图片水印，不会重复处理已完成的作品。
+          button: 开始处理
 
 settings:
   hide: true
