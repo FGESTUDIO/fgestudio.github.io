@@ -35,7 +35,7 @@
     <link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png" />
     <link rel="stylesheet" href="../style.css?v=20260722-language-en-1" />
-    <link rel="stylesheet" href="portfolio.css?v=20260723-3" />
+    <link rel="stylesheet" href="portfolio.css?v=20260723-cms-1" />
   </head>
   <body class="works-page">
     <a class="skip-link" href="#portfolioGallery" data-l10n="skip">Skip to selected works</a>
@@ -134,8 +134,10 @@
 
           <div class="works-filters" role="group" data-l10n-attr="aria-label:filterLabel">
             <button class="works-filter is-active" type="button" data-filter="all" aria-pressed="true" data-l10n="filterAll">All work</button>
-            <button class="works-filter" type="button" data-filter="social" aria-pressed="false" data-l10n="filterSocial">Social media visuals</button>
-            <button class="works-filter" type="button" data-filter="poster" aria-pressed="false" data-l10n="filterPoster">Poster design</button>
+            <button class="works-filter" type="button" data-filter="social" data-category-filter="social" aria-pressed="false" data-l10n="filterSocial">Social media visuals</button>
+            <button class="works-filter" type="button" data-filter="poster" data-category-filter="poster" aria-pressed="false" data-l10n="filterPoster">Poster design</button>
+            <button class="works-filter" type="button" data-filter="business-card" data-category-filter="business-card" aria-pressed="false" data-l10n="filterBusinessCard" hidden>Business card design</button>
+            <button class="works-filter" type="button" data-filter="banner" data-category-filter="banner" aria-pressed="false" data-l10n="filterBanner" hidden>Banner design</button>
           </div>
 
           <ol class="works-grid" id="worksGrid" aria-live="polite" data-l10n-attr="aria-label:galleryLabel"></ol>
@@ -208,6 +210,6 @@
     <noscript>
       <div class="works-noscript">JavaScript is required to display and filter the portfolio works.</div>
     </noscript>
-    <script src="portfolio.js?v=20260723-3"></script>
+    <script src="portfolio.js?v=20260723-cms-1"></script>
   </body>
 </html>
