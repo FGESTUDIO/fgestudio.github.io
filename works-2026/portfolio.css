@@ -336,6 +336,10 @@
   transition: color 160ms ease, border-color 160ms ease, background 160ms ease;
 }
 
+.works-filter[hidden] {
+  display: none;
+}
+
 .works-filter:hover {
   border-color: rgba(24, 232, 255, 0.5);
   color: var(--works-white);
