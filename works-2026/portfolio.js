@@ -1,106 +1,226 @@
 (() => {
+  const works = [
+    {
+      id: "mobile-repair",
+      category: "social",
+      image: "images/mobile-repair-social.webp",
+      width: 1200,
+      height: 1200,
+      titleKey: "work1Title",
+      altKey: "work1Alt",
+      typeKey: "socialType",
+      industryKey: "work1Industry",
+      formatKey: "squareFormat",
+      focusKey: "work1Focus",
+      openKey: "work1Open",
+    },
+    {
+      id: "automotive-service",
+      category: "social",
+      image: "images/automotive-service-social.webp",
+      width: 1200,
+      height: 1200,
+      titleKey: "work2Title",
+      altKey: "work2Alt",
+      typeKey: "socialType",
+      industryKey: "work2Industry",
+      formatKey: "squareFormat",
+      focusKey: "work2Focus",
+      openKey: "work2Open",
+    },
+    {
+      id: "skincare-product",
+      category: "poster",
+      image: "images/skincare-product-poster.webp",
+      width: 960,
+      height: 1200,
+      titleKey: "work3Title",
+      altKey: "work3Alt",
+      typeKey: "posterType",
+      industryKey: "work3Industry",
+      formatKey: "portraitFormat",
+      focusKey: "work3Focus",
+      openKey: "work3Open",
+    },
+  ];
+
   const translations = {
     cn: {
-      title: "海报设计作品集 | FGESTUDIO",
+      title: "客户专属设计作品集 | FGESTUDIO",
       skip: "跳到精选作品",
       homeLabel: "前往 FGESTUDIO 首页",
       brandSub: "梦幻起源欢娱工作室",
       backToDesign: "返回设计服务",
       languageToggle: "切换语言",
-      heroKicker: "FGESTUDIO · 精选作品",
-      heroTitle: "海报设计作品集",
-      heroLead: "近期完成的宣传海报设计精选，涵盖本地服务宣传与产品视觉。",
-      summaryLabel: "作品集摘要",
-      statLabel: "精选海报作品",
-      statNote: "服务宣传 · 产品视觉",
-      galleryKicker: "海报设计",
-      galleryTitle: "精选项目",
-      galleryHint: "点击作品即可查看完整尺寸。",
-      galleryLabel: "精选海报设计作品",
-      workType: "海报设计",
+      heroKicker: "FGESTUDIO · 客户专属作品集",
+      heroTitle: "为真实商业需求而设计。",
+      heroLead: "精选社交媒体视觉与宣传海报，专门分享给你查看。",
+      privacyLabel: "作品集隐私说明",
+      privacyTitle: "客户专属预览",
+      privacyText: "此页面不会列在公开网站或搜索引擎中；网页预览版已隐藏第三方联络资料。",
+      galleryKicker: "精选设计作品",
+      galleryTitle: "按设计形式浏览",
+      galleryHint: "选择分类，或打开任一作品查看完整设计。",
+      galleryLabel: "精选设计作品",
+      filterLabel: "筛选作品分类",
+      filterAll: "全部作品",
+      filterSocial: "社交媒体视觉",
+      filterPoster: "海报设计",
+      socialType: "社交媒体视觉",
+      posterType: "海报设计",
+      industryLabel: "行业",
+      formatLabel: "形式",
+      focusLabel: "设计重点",
+      squareFormat: "1:1 社交媒体贴文",
+      portraitFormat: "竖版产品宣传海报",
       work1Title: "手机维修服务宣传",
       work2Title: "汽车维修服务宣传",
-      work3Title: "护肤产品视觉",
-      work1Alt: "手机维修服务宣传海报",
-      work2Alt: "汽车维修服务宣传海报",
-      work3Alt: "护肤产品宣传海报",
-      work1Open: "查看手机维修服务宣传海报完整尺寸",
-      work2Open: "查看汽车维修服务宣传海报完整尺寸",
-      work3Open: "查看护肤产品宣传海报完整尺寸",
-      viewWork: "查看完整作品 ↗",
+      work3Title: "护肤产品上市视觉",
+      work1Industry: "手机与电子设备服务",
+      work2Industry: "汽车维修与保养",
+      work3Industry: "美容与护肤产品",
+      work1Focus: "通过清晰的服务层级，让顾客快速了解维修项目与宣传重点。",
+      work2Focus: "把汽车维修、换油、刹车与电池检查整理成容易扫读的宣传视觉。",
+      work3Focus: "以干净、轻盈的画面突出补水修护定位与产品上市信息。",
+      work1Alt: "手机维修服务社交媒体宣传设计",
+      work2Alt: "汽车维修服务社交媒体宣传设计",
+      work3Alt: "护肤产品竖版宣传海报",
+      work1Open: "打开手机维修服务宣传设计",
+      work2Open: "打开汽车维修服务宣传设计",
+      work3Open: "打开护肤产品宣传海报",
+      viewWork: "查看完整作品",
+      noWorks: "此分类暂时没有作品。",
       ctaKicker: "你的下一次宣传",
-      ctaTitle: "需要为你的生意做一张海报吗？",
+      ctaTitle: "需要为你的生意设计宣传视觉吗？",
+      ctaText: "告诉我们你的行业、用途、尺寸与截止日期，我们会建议适合的设计服务。",
       ctaButton: "发送设计需求",
       footerHome: "FGESTUDIO 首页",
+      mobileActionsLabel: "作品集快捷操作",
+      mobileBack: "设计服务",
+      mobileEnquire: "咨询设计",
       closeLabel: "关闭作品预览",
+      previousLabel: "查看上一个作品",
+      nextLabel: "查看下一个作品",
+      previousWork: "上一个",
+      nextWork: "下一个",
     },
     en: {
-      title: "Selected Poster Design Works | FGESTUDIO",
+      title: "Private Design Portfolio | FGESTUDIO",
       skip: "Skip to selected works",
       homeLabel: "Go to FGESTUDIO home",
       brandSub: "FGESTUDIO",
       backToDesign: "Back to design services",
       languageToggle: "Switch language",
-      heroKicker: "FGESTUDIO · SELECTED WORKS",
-      heroTitle: "Poster Design Portfolio",
-      heroLead: "A curated selection of recent promotional poster designs for local services and product campaigns.",
-      summaryLabel: "Portfolio summary",
-      statLabel: "Selected poster works",
-      statNote: "Service promotion · Product visual",
-      galleryKicker: "POSTER DESIGN",
-      galleryTitle: "Selected projects",
-      galleryHint: "Select a work to view it in full.",
-      galleryLabel: "Selected poster design works",
-      workType: "Poster design",
+      heroKicker: "FGESTUDIO · PRIVATE PORTFOLIO",
+      heroTitle: "Design work made for real business needs.",
+      heroLead: "A focused selection of social media visuals and promotional posters, shared directly for your review.",
+      privacyLabel: "Portfolio privacy note",
+      privacyTitle: "Shared client preview",
+      privacyText: "This page is not listed on the public website or search engines. Third-party contact details are hidden in web previews.",
+      galleryKicker: "SELECTED DESIGN WORK",
+      galleryTitle: "Explore by format",
+      galleryHint: "Choose a category or open any work for a closer look.",
+      galleryLabel: "Selected design works",
+      filterLabel: "Filter portfolio categories",
+      filterAll: "All work",
+      filterSocial: "Social media visuals",
+      filterPoster: "Poster design",
+      socialType: "Social media visual",
+      posterType: "Poster design",
+      industryLabel: "Industry",
+      formatLabel: "Format",
+      focusLabel: "Design focus",
+      squareFormat: "1:1 social media post",
+      portraitFormat: "Portrait product poster",
       work1Title: "Mobile repair service promotion",
       work2Title: "Automotive service promotion",
-      work3Title: "Skincare product visual",
-      work1Alt: "Mobile repair service promotional poster",
-      work2Alt: "Automotive service promotional poster",
-      work3Alt: "Skincare product promotional poster",
-      work1Open: "View full mobile repair service promotional poster",
-      work2Open: "View full automotive service promotional poster",
-      work3Open: "View full skincare product promotional poster",
-      viewWork: "View full work ↗",
+      work3Title: "Skincare product launch visual",
+      work1Industry: "Mobile and device services",
+      work2Industry: "Automotive repair and maintenance",
+      work3Industry: "Beauty and skincare",
+      work1Focus: "A clear service hierarchy helps customers understand the repair offer and key message quickly.",
+      work2Focus: "Repair, oil change, brake and battery services are organised into an easy-to-scan promotional visual.",
+      work3Focus: "A clean, light composition highlights the hydration positioning and product-launch message.",
+      work1Alt: "Social media design promoting a mobile repair service",
+      work2Alt: "Social media design promoting an automotive service",
+      work3Alt: "Portrait promotional poster for a skincare product",
+      work1Open: "Open the mobile repair service design",
+      work2Open: "Open the automotive service design",
+      work3Open: "Open the skincare product poster",
+      viewWork: "View full work",
+      noWorks: "No work is available in this category yet.",
       ctaKicker: "YOUR NEXT CAMPAIGN",
-      ctaTitle: "Need a poster for your business?",
+      ctaTitle: "Need visuals designed for your business?",
+      ctaText: "Tell us your industry, purpose, size and deadline. We will recommend the most suitable design service.",
       ctaButton: "Send a design enquiry",
       footerHome: "FGESTUDIO Home",
+      mobileActionsLabel: "Portfolio quick actions",
+      mobileBack: "Design services",
+      mobileEnquire: "Enquire",
       closeLabel: "Close work preview",
+      previousLabel: "View previous work",
+      nextLabel: "View next work",
+      previousWork: "Previous",
+      nextWork: "Next",
     },
     bm: {
-      title: "Portfolio Reka Bentuk Poster | FGESTUDIO",
+      title: "Portfolio Reka Bentuk Peribadi | FGESTUDIO",
       skip: "Lompat ke hasil karya pilihan",
       homeLabel: "Pergi ke laman utama FGESTUDIO",
       brandSub: "FGESTUDIO",
       backToDesign: "Kembali ke servis reka bentuk",
       languageToggle: "Tukar bahasa",
-      heroKicker: "FGESTUDIO · KARYA PILIHAN",
-      heroTitle: "Portfolio Reka Bentuk Poster",
-      heroLead: "Pilihan poster promosi terkini untuk perkhidmatan tempatan dan kempen produk.",
-      summaryLabel: "Ringkasan portfolio",
-      statLabel: "Hasil poster pilihan",
-      statNote: "Promosi servis · Visual produk",
-      galleryKicker: "REKA BENTUK POSTER",
-      galleryTitle: "Projek pilihan",
-      galleryHint: "Pilih hasil karya untuk melihat saiz penuh.",
-      galleryLabel: "Hasil reka bentuk poster pilihan",
-      workType: "Reka bentuk poster",
+      heroKicker: "FGESTUDIO · PORTFOLIO PERIBADI",
+      heroTitle: "Reka bentuk untuk keperluan perniagaan sebenar.",
+      heroLead: "Pilihan visual media sosial dan poster promosi yang dikongsi secara terus untuk semakan anda.",
+      privacyLabel: "Nota privasi portfolio",
+      privacyTitle: "Pratonton khas pelanggan",
+      privacyText: "Halaman ini tidak disenaraikan pada laman awam atau enjin carian. Maklumat hubungan pihak ketiga disembunyikan dalam pratonton web.",
+      galleryKicker: "HASIL REKA BENTUK PILIHAN",
+      galleryTitle: "Terokai mengikut format",
+      galleryHint: "Pilih kategori atau buka mana-mana hasil untuk melihat dengan lebih dekat.",
+      galleryLabel: "Hasil reka bentuk pilihan",
+      filterLabel: "Tapis kategori portfolio",
+      filterAll: "Semua hasil",
+      filterSocial: "Visual media sosial",
+      filterPoster: "Reka bentuk poster",
+      socialType: "Visual media sosial",
+      posterType: "Reka bentuk poster",
+      industryLabel: "Industri",
+      formatLabel: "Format",
+      focusLabel: "Fokus reka bentuk",
+      squareFormat: "Kiriman media sosial 1:1",
+      portraitFormat: "Poster produk menegak",
       work1Title: "Promosi servis pembaikan telefon",
       work2Title: "Promosi servis automotif",
-      work3Title: "Visual produk penjagaan kulit",
-      work1Alt: "Poster promosi servis pembaikan telefon",
-      work2Alt: "Poster promosi servis automotif",
-      work3Alt: "Poster promosi produk penjagaan kulit",
-      work1Open: "Lihat poster promosi servis pembaikan telefon pada saiz penuh",
-      work2Open: "Lihat poster promosi servis automotif pada saiz penuh",
-      work3Open: "Lihat poster promosi produk penjagaan kulit pada saiz penuh",
-      viewWork: "Lihat hasil penuh ↗",
+      work3Title: "Visual pelancaran produk penjagaan kulit",
+      work1Industry: "Servis telefon dan peranti",
+      work2Industry: "Pembaikan dan penyelenggaraan automotif",
+      work3Industry: "Kecantikan dan penjagaan kulit",
+      work1Focus: "Hierarki servis yang jelas membantu pelanggan memahami tawaran pembaikan dan mesej utama dengan cepat.",
+      work2Focus: "Servis pembaikan, penukaran minyak, brek dan bateri disusun dalam visual promosi yang mudah dibaca.",
+      work3Focus: "Komposisi yang bersih dan ringan menyerlahkan kedudukan hidrasi serta mesej pelancaran produk.",
+      work1Alt: "Reka bentuk media sosial untuk promosi servis pembaikan telefon",
+      work2Alt: "Reka bentuk media sosial untuk promosi servis automotif",
+      work3Alt: "Poster promosi menegak untuk produk penjagaan kulit",
+      work1Open: "Buka reka bentuk servis pembaikan telefon",
+      work2Open: "Buka reka bentuk servis automotif",
+      work3Open: "Buka poster produk penjagaan kulit",
+      viewWork: "Lihat hasil penuh",
+      noWorks: "Belum ada hasil dalam kategori ini.",
       ctaKicker: "KEMPEN SETERUSNYA",
-      ctaTitle: "Perlukan poster untuk perniagaan anda?",
+      ctaTitle: "Perlukan visual untuk perniagaan anda?",
+      ctaText: "Beritahu kami industri, tujuan, saiz dan tarikh akhir anda. Kami akan cadangkan servis reka bentuk yang sesuai.",
       ctaButton: "Hantar pertanyaan reka bentuk",
       footerHome: "Laman Utama FGESTUDIO",
+      mobileActionsLabel: "Tindakan pantas portfolio",
+      mobileBack: "Servis reka bentuk",
+      mobileEnquire: "Tanya kami",
       closeLabel: "Tutup pratonton hasil karya",
+      previousLabel: "Lihat hasil sebelumnya",
+      nextLabel: "Lihat hasil seterusnya",
+      previousWork: "Sebelumnya",
+      nextWork: "Seterusnya",
     },
   };
 
@@ -108,6 +228,8 @@
   const htmlLanguages = { cn: "zh-Hans", en: "en", bm: "ms" };
   const languageStorageKey = "manualLanguagePreference";
   let activeLanguage = "en";
+  let activeFilter = "all";
+  let currentWorkId = null;
 
   const getStoredLanguage = () => {
     try {
@@ -130,6 +252,7 @@
   };
 
   const getText = (key) => translations[activeLanguage]?.[key] || translations.en[key] || "";
+  const getVisibleWorks = () => works.filter((work) => activeFilter === "all" || work.category === activeFilter);
 
   const updateTextAttributes = () => {
     document.querySelectorAll("[data-l10n-attr]").forEach((element) => {
@@ -138,10 +261,6 @@
         const [attribute, key] = rule.split(":");
         if (attribute && key) element.setAttribute(attribute, getText(key));
       });
-    });
-
-    document.querySelectorAll("[data-l10n-alt]").forEach((image) => {
-      image.alt = getText(image.dataset.l10nAlt);
     });
   };
 
@@ -156,6 +275,154 @@
     });
   };
 
+  const createMetaRow = (labelKey, valueKey) => {
+    const row = document.createElement("span");
+    row.className = "works-card-meta-row";
+
+    const label = document.createElement("span");
+    label.textContent = getText(labelKey);
+    const value = document.createElement("strong");
+    value.textContent = getText(valueKey);
+    row.append(label, value);
+    return row;
+  };
+
+  const createWorkCard = (work, index) => {
+    const item = document.createElement("li");
+    item.className = `works-card works-card--${work.category}`;
+    item.dataset.workId = work.id;
+
+    const article = document.createElement("article");
+
+    const previewButton = document.createElement("button");
+    previewButton.className = "works-preview-button";
+    previewButton.type = "button";
+    previewButton.dataset.openWork = work.id;
+    previewButton.setAttribute("aria-label", getText(work.openKey));
+
+    const figure = document.createElement("figure");
+    figure.className = "works-preview";
+    figure.style.setProperty("--work-ratio", `${work.width} / ${work.height}`);
+
+    const image = document.createElement("img");
+    image.decoding = "async";
+    image.loading = index === 0 ? "eager" : "lazy";
+    if (index === 0) image.setAttribute("fetchpriority", "high");
+    image.src = work.image;
+    image.width = work.width;
+    image.height = work.height;
+    image.alt = getText(work.altKey);
+
+    const zoom = document.createElement("span");
+    zoom.className = "works-preview-zoom";
+    zoom.setAttribute("aria-hidden", "true");
+    zoom.textContent = "↗";
+    figure.append(image, zoom);
+    previewButton.append(figure);
+
+    const content = document.createElement("div");
+    content.className = "works-card-content";
+
+    const kicker = document.createElement("span");
+    kicker.className = "works-card-kicker";
+    kicker.textContent = getText(work.typeKey);
+
+    const title = document.createElement("h3");
+    title.className = "works-card-title";
+    title.textContent = getText(work.titleKey);
+
+    const meta = document.createElement("span");
+    meta.className = "works-card-meta";
+    meta.append(createMetaRow("industryLabel", work.industryKey), createMetaRow("formatLabel", work.formatKey));
+
+    const focus = document.createElement("p");
+    focus.className = "works-card-focus";
+    focus.textContent = getText(work.focusKey);
+
+    const viewButton = document.createElement("button");
+    viewButton.className = "works-card-view";
+    viewButton.type = "button";
+    viewButton.dataset.openWork = work.id;
+    viewButton.setAttribute("aria-label", getText(work.openKey));
+    viewButton.textContent = getText("viewWork");
+    const arrow = document.createElement("span");
+    arrow.setAttribute("aria-hidden", "true");
+    arrow.textContent = "↗";
+    viewButton.append(" ", arrow);
+
+    content.append(kicker, title, meta, focus, viewButton);
+    article.append(previewButton, content);
+    item.append(article);
+    return item;
+  };
+
+  const bindWorkButtons = () => {
+    document.querySelectorAll("[data-open-work]").forEach((button) => {
+      button.addEventListener("click", () => openWork(button.dataset.openWork));
+    });
+  };
+
+  const renderGallery = () => {
+    const grid = document.getElementById("worksGrid");
+    if (!grid) return;
+
+    const visibleWorks = getVisibleWorks();
+    grid.replaceChildren();
+
+    if (!visibleWorks.length) {
+      const empty = document.createElement("li");
+      empty.className = "works-empty";
+      empty.textContent = getText("noWorks");
+      grid.append(empty);
+      return;
+    }
+
+    visibleWorks.forEach((work, index) => grid.append(createWorkCard(work, index)));
+    bindWorkButtons();
+  };
+
+  const updateLightbox = () => {
+    if (!currentWorkId) return;
+    const work = works.find((item) => item.id === currentWorkId);
+    if (!work) return;
+
+    const image = document.getElementById("lightboxImage");
+    const title = document.getElementById("lightboxTitle");
+    const type = document.getElementById("lightboxType");
+    const focus = document.getElementById("lightboxFocus");
+    if (!image || !title || !type || !focus) return;
+
+    image.src = work.image;
+    image.alt = getText(work.altKey);
+    image.width = work.width;
+    image.height = work.height;
+    title.textContent = getText(work.titleKey);
+    type.textContent = getText(work.typeKey);
+    focus.textContent = `${getText("focusLabel")}: ${getText(work.focusKey)}`;
+
+    const disabled = getVisibleWorks().length < 2;
+    document.querySelector("[data-lightbox-previous]")?.toggleAttribute("disabled", disabled);
+    document.querySelector("[data-lightbox-next]")?.toggleAttribute("disabled", disabled);
+  };
+
+  const openWork = (workId) => {
+    const dialog = document.getElementById("worksLightbox");
+    if (!dialog || !works.some((work) => work.id === workId)) return;
+    currentWorkId = workId;
+    updateLightbox();
+    if (typeof dialog.showModal === "function") dialog.showModal();
+    else dialog.setAttribute("open", "");
+  };
+
+  const moveLightbox = (direction) => {
+    const visibleWorks = getVisibleWorks();
+    if (visibleWorks.length < 2) return;
+    const currentIndex = visibleWorks.findIndex((work) => work.id === currentWorkId);
+    const nextIndex = (currentIndex + direction + visibleWorks.length) % visibleWorks.length;
+    currentWorkId = visibleWorks[nextIndex].id;
+    updateLightbox();
+  };
+
   const applyLanguage = (language, persist = false) => {
     activeLanguage = translations[language] ? language : "en";
     document.documentElement.lang = htmlLanguages[activeLanguage];
@@ -165,6 +432,8 @@
     });
     updateTextAttributes();
     updateLanguageControls();
+    renderGallery();
+    updateLightbox();
 
     if (persist) {
       try {
@@ -211,10 +480,23 @@
     });
   };
 
+  const initFilters = () => {
+    document.querySelectorAll("[data-filter]").forEach((button) => {
+      button.addEventListener("click", () => {
+        activeFilter = button.dataset.filter;
+        document.querySelectorAll("[data-filter]").forEach((filterButton) => {
+          const selected = filterButton === button;
+          filterButton.classList.toggle("is-active", selected);
+          filterButton.setAttribute("aria-pressed", String(selected));
+        });
+        renderGallery();
+      });
+    });
+  };
+
   const initLightbox = () => {
     const dialog = document.getElementById("worksLightbox");
     const image = document.getElementById("lightboxImage");
-    const title = document.getElementById("lightboxTitle");
     const closeButton = dialog?.querySelector("[data-lightbox-close]");
 
     const close = () => {
@@ -223,26 +505,27 @@
       else dialog.removeAttribute("open");
     };
 
-    document.querySelectorAll("[data-work-image]").forEach((button) => {
-      button.addEventListener("click", () => {
-        if (!dialog || !image || !title) return;
-        image.src = button.dataset.workImage;
-        image.alt = getText(button.dataset.workAlt);
-        title.textContent = getText(button.dataset.workTitle);
-        if (typeof dialog.showModal === "function") dialog.showModal();
-        else dialog.setAttribute("open", "");
-      });
-    });
-
     closeButton?.addEventListener("click", close);
     dialog?.addEventListener("click", (event) => {
       if (event.target === dialog) close();
+    });
+    dialog?.addEventListener("close", () => {
+      currentWorkId = null;
+      image?.removeAttribute("src");
+    });
+    dialog?.querySelector("[data-lightbox-previous]")?.addEventListener("click", () => moveLightbox(-1));
+    dialog?.querySelector("[data-lightbox-next]")?.addEventListener("click", () => moveLightbox(1));
+    document.addEventListener("keydown", (event) => {
+      if (!dialog?.open) return;
+      if (event.key === "ArrowLeft") moveLightbox(-1);
+      if (event.key === "ArrowRight") moveLightbox(1);
     });
   };
 
   document.addEventListener("DOMContentLoaded", () => {
     applyLanguage(getStoredLanguage() || getBrowserLanguage());
     initLanguageSwitcher();
+    initFilters();
     initLightbox();
   });
 })();
