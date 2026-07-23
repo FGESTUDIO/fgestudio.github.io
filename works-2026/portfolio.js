@@ -1,48 +1,7 @@
 (() => {
-  const works = [
-    {
-      id: "mobile-repair",
-      category: "social",
-      image: "images/mobile-repair-social.webp",
-      width: 1200,
-      height: 1200,
-      titleKey: "work1Title",
-      altKey: "work1Alt",
-      typeKey: "socialType",
-      industryKey: "work1Industry",
-      formatKey: "squareFormat",
-      focusKey: "work1Focus",
-      openKey: "work1Open",
-    },
-    {
-      id: "automotive-service",
-      category: "social",
-      image: "images/automotive-service-social.webp",
-      width: 1200,
-      height: 1200,
-      titleKey: "work2Title",
-      altKey: "work2Alt",
-      typeKey: "socialType",
-      industryKey: "work2Industry",
-      formatKey: "squareFormat",
-      focusKey: "work2Focus",
-      openKey: "work2Open",
-    },
-    {
-      id: "skincare-product",
-      category: "poster",
-      image: "images/skincare-product-poster.webp",
-      width: 960,
-      height: 1200,
-      titleKey: "work3Title",
-      altKey: "work3Alt",
-      typeKey: "posterType",
-      industryKey: "work3Industry",
-      formatKey: "portraitFormat",
-      focusKey: "work3Focus",
-      openKey: "work3Open",
-    },
-  ];
+  let works = [];
+  let isLoadingWorks = true;
+  let worksLoadFailed = false;
 
   const translations = {
     cn: {
@@ -66,8 +25,12 @@
       filterAll: "全部作品",
       filterSocial: "社交媒体视觉",
       filterPoster: "海报设计",
+      filterBusinessCard: "名片设计",
+      filterBanner: "横幅设计",
       socialType: "社交媒体视觉",
       posterType: "海报设计",
+      businessCardType: "名片设计",
+      bannerType: "横幅设计",
       industryLabel: "行业",
       formatLabel: "形式",
       focusLabel: "设计重点",
@@ -88,8 +51,11 @@
       work1Open: "打开手机维修服务宣传设计",
       work2Open: "打开汽车维修服务宣传设计",
       work3Open: "打开护肤产品宣传海报",
+      openWork: "打开作品",
       viewWork: "查看完整作品",
+      loadingWorks: "正在载入作品…",
       noWorks: "此分类暂时没有作品。",
+      loadError: "作品暂时无法载入，请稍后刷新页面。",
       ctaKicker: "你的下一次宣传",
       ctaTitle: "需要为你的生意设计宣传视觉吗？",
       ctaText: "告诉我们你的行业、用途、尺寸与截止日期，我们会建议适合的设计服务。",
@@ -125,8 +91,12 @@
       filterAll: "All work",
       filterSocial: "Social media visuals",
       filterPoster: "Poster design",
+      filterBusinessCard: "Business card design",
+      filterBanner: "Banner design",
       socialType: "Social media visual",
       posterType: "Poster design",
+      businessCardType: "Business card design",
+      bannerType: "Banner design",
       industryLabel: "Industry",
       formatLabel: "Format",
       focusLabel: "Design focus",
@@ -147,8 +117,11 @@
       work1Open: "Open the mobile repair service design",
       work2Open: "Open the automotive service design",
       work3Open: "Open the skincare product poster",
+      openWork: "Open work",
       viewWork: "View full work",
+      loadingWorks: "Loading portfolio works…",
       noWorks: "No work is available in this category yet.",
+      loadError: "The portfolio could not be loaded. Please refresh and try again.",
       ctaKicker: "YOUR NEXT CAMPAIGN",
       ctaTitle: "Need visuals designed for your business?",
       ctaText: "Tell us your industry, purpose, size and deadline. We will recommend the most suitable design service.",
@@ -184,8 +157,12 @@
       filterAll: "Semua hasil",
       filterSocial: "Visual media sosial",
       filterPoster: "Reka bentuk poster",
+      filterBusinessCard: "Reka bentuk kad nama",
+      filterBanner: "Reka bentuk sepanduk",
       socialType: "Visual media sosial",
       posterType: "Reka bentuk poster",
+      businessCardType: "Reka bentuk kad nama",
+      bannerType: "Reka bentuk sepanduk",
       industryLabel: "Industri",
       formatLabel: "Format",
       focusLabel: "Fokus reka bentuk",
@@ -206,8 +183,11 @@
       work1Open: "Buka reka bentuk servis pembaikan telefon",
       work2Open: "Buka reka bentuk servis automotif",
       work3Open: "Buka poster produk penjagaan kulit",
+      openWork: "Buka hasil karya",
       viewWork: "Lihat hasil penuh",
+      loadingWorks: "Memuatkan hasil portfolio…",
       noWorks: "Belum ada hasil dalam kategori ini.",
+      loadError: "Portfolio tidak dapat dimuatkan. Sila muat semula dan cuba lagi.",
       ctaKicker: "KEMPEN SETERUSNYA",
       ctaTitle: "Perlukan visual untuk perniagaan anda?",
       ctaText: "Beritahu kami industri, tujuan, saiz dan tarikh akhir anda. Kami akan cadangkan servis reka bentuk yang sesuai.",
@@ -226,6 +206,13 @@
 
   const languageCodes = { cn: "CN", en: "EN", bm: "BM" };
   const htmlLanguages = { cn: "zh-Hans", en: "en", bm: "ms" };
+  const categoryTextKeys = {
+    social: "socialType",
+    poster: "posterType",
+    "business-card": "businessCardType",
+    banner: "bannerType",
+  };
+  const validCategories = new Set(Object.keys(categoryTextKeys));
   const languageStorageKey = "manualLanguagePreference";
   let activeLanguage = "en";
   let activeFilter = "all";
@@ -241,7 +228,54 @@
   };
 
   const getText = (key) => translations[activeLanguage]?.[key] || translations.en[key] || "";
+  const getWorkText = (work, field) => {
+    const localized = work?.[`${field}_${activeLanguage}`];
+    const english = work?.[`${field}_en`];
+    return String(localized || english || "").trim();
+  };
+  const getCategoryText = (category) => getText(categoryTextKeys[category] || "posterType");
+  const getOpenLabel = (work) => `${getText("openWork")}: ${getWorkText(work, "title")}`;
   const getVisibleWorks = () => works.filter((work) => activeFilter === "all" || work.category === activeFilter);
+
+  const loadWorks = async () => {
+    try {
+      const response = await fetch("works.json", { cache: "no-store" });
+      if (!response.ok) throw new Error(`Portfolio data request failed (${response.status})`);
+      const payload = await response.json();
+      const records = Array.isArray(payload) ? payload : payload?.works;
+      if (!Array.isArray(records)) throw new Error("Portfolio data is not an array");
+
+      works = records
+        .filter((work) => work && work.published !== false && work.image && work.title_en)
+        .map((work, index) => ({
+          ...work,
+          id: work.id || `portfolio-work-${index + 1}`,
+          category: validCategories.has(work.category) ? work.category : "poster",
+        }));
+    } catch (error) {
+      works = [];
+      worksLoadFailed = true;
+      console.error("Unable to load portfolio works.", error);
+    } finally {
+      isLoadingWorks = false;
+    }
+  };
+
+  const updateAvailableFilters = () => {
+    const availableCategories = new Set(works.map((work) => work.category));
+    document.querySelectorAll("[data-category-filter]").forEach((button) => {
+      button.hidden = !availableCategories.has(button.dataset.categoryFilter);
+    });
+
+    if (activeFilter !== "all" && !availableCategories.has(activeFilter)) {
+      activeFilter = "all";
+      document.querySelectorAll("[data-filter]").forEach((button) => {
+        const selected = button.dataset.filter === "all";
+        button.classList.toggle("is-active", selected);
+        button.setAttribute("aria-pressed", String(selected));
+      });
+    }
+  };
 
   const updateTextAttributes = () => {
     document.querySelectorAll("[data-l10n-attr]").forEach((element) => {
@@ -264,15 +298,15 @@
     });
   };
 
-  const createMetaRow = (labelKey, valueKey) => {
+  const createMetaRow = (labelKey, value) => {
     const row = document.createElement("span");
     row.className = "works-card-meta-row";
 
     const label = document.createElement("span");
     label.textContent = getText(labelKey);
-    const value = document.createElement("strong");
-    value.textContent = getText(valueKey);
-    row.append(label, value);
+    const content = document.createElement("strong");
+    content.textContent = value;
+    row.append(label, content);
     return row;
   };
 
@@ -287,20 +321,26 @@
     previewButton.className = "works-preview-button";
     previewButton.type = "button";
     previewButton.dataset.openWork = work.id;
-    previewButton.setAttribute("aria-label", getText(work.openKey));
+    previewButton.setAttribute("aria-label", getOpenLabel(work));
 
     const figure = document.createElement("figure");
     figure.className = "works-preview";
-    figure.style.setProperty("--work-ratio", `${work.width} / ${work.height}`);
+    figure.style.setProperty("--work-ratio", "4 / 5");
 
     const image = document.createElement("img");
     image.decoding = "async";
     image.loading = index === 0 ? "eager" : "lazy";
     if (index === 0) image.setAttribute("fetchpriority", "high");
     image.src = work.image;
-    image.width = work.width;
-    image.height = work.height;
-    image.alt = getText(work.altKey);
+    image.alt = getWorkText(work, "alt") || getWorkText(work, "title");
+    const updateImageRatio = () => {
+      if (!image.naturalWidth || !image.naturalHeight) return;
+      figure.style.setProperty("--work-ratio", `${image.naturalWidth} / ${image.naturalHeight}`);
+      image.width = image.naturalWidth;
+      image.height = image.naturalHeight;
+    };
+    image.addEventListener("load", updateImageRatio, { once: true });
+    if (image.complete) updateImageRatio();
 
     const zoom = document.createElement("span");
     zoom.className = "works-preview-zoom";
@@ -314,25 +354,28 @@
 
     const kicker = document.createElement("span");
     kicker.className = "works-card-kicker";
-    kicker.textContent = getText(work.typeKey);
+    kicker.textContent = getCategoryText(work.category);
 
     const title = document.createElement("h3");
     title.className = "works-card-title";
-    title.textContent = getText(work.titleKey);
+    title.textContent = getWorkText(work, "title");
 
     const meta = document.createElement("span");
     meta.className = "works-card-meta";
-    meta.append(createMetaRow("industryLabel", work.industryKey), createMetaRow("formatLabel", work.formatKey));
+    meta.append(
+      createMetaRow("industryLabel", getWorkText(work, "industry")),
+      createMetaRow("formatLabel", getWorkText(work, "format")),
+    );
 
     const focus = document.createElement("p");
     focus.className = "works-card-focus";
-    focus.textContent = getText(work.focusKey);
+    focus.textContent = getWorkText(work, "focus");
 
     const viewButton = document.createElement("button");
     viewButton.className = "works-card-view";
     viewButton.type = "button";
     viewButton.dataset.openWork = work.id;
-    viewButton.setAttribute("aria-label", getText(work.openKey));
+    viewButton.setAttribute("aria-label", getOpenLabel(work));
     viewButton.textContent = getText("viewWork");
     const arrow = document.createElement("span");
     arrow.setAttribute("aria-hidden", "true");
@@ -358,10 +401,18 @@
     const visibleWorks = getVisibleWorks();
     grid.replaceChildren();
 
+    if (isLoadingWorks) {
+      const loading = document.createElement("li");
+      loading.className = "works-empty";
+      loading.textContent = getText("loadingWorks");
+      grid.append(loading);
+      return;
+    }
+
     if (!visibleWorks.length) {
       const empty = document.createElement("li");
       empty.className = "works-empty";
-      empty.textContent = getText("noWorks");
+      empty.textContent = getText(worksLoadFailed ? "loadError" : "noWorks");
       grid.append(empty);
       return;
     }
@@ -382,12 +433,12 @@
     if (!image || !title || !type || !focus) return;
 
     image.src = work.image;
-    image.alt = getText(work.altKey);
-    image.width = work.width;
-    image.height = work.height;
-    title.textContent = getText(work.titleKey);
-    type.textContent = getText(work.typeKey);
-    focus.textContent = `${getText("focusLabel")}: ${getText(work.focusKey)}`;
+    image.alt = getWorkText(work, "alt") || getWorkText(work, "title");
+    image.removeAttribute("width");
+    image.removeAttribute("height");
+    title.textContent = getWorkText(work, "title");
+    type.textContent = getCategoryText(work.category);
+    focus.textContent = `${getText("focusLabel")}: ${getWorkText(work, "focus")}`;
 
     const disabled = getVisibleWorks().length < 2;
     document.querySelector("[data-lightbox-previous]")?.toggleAttribute("disabled", disabled);
@@ -511,10 +562,13 @@
     });
   };
 
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("DOMContentLoaded", async () => {
     applyLanguage(getStoredLanguage() || "en");
     initLanguageSwitcher();
     initFilters();
     initLightbox();
+    await loadWorks();
+    updateAvailableFilters();
+    renderGallery();
   });
 })();
