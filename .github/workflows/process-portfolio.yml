@@ -1,0 +1,79 @@
+name: Process portfolio uploads
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "works-2026/works.json"
+      - "works-2026/uploads/**"
+  workflow_dispatch:
+    inputs:
+      payload:
+        description: Pages CMS action payload
+        required: false
+        type: string
+
+permissions:
+  contents: write
+  models: read
+  pages: write
+
+concurrency:
+  group: portfolio-processing
+  cancel-in-progress: false
+
+jobs:
+  process:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out latest main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: .github/scripts/package-lock.json
+
+      - name: Install image processor
+        run: npm ci --prefix .github/scripts
+
+      - name: Translate Chinese and generate watermarked previews
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node .github/scripts/process-portfolio.mjs
+
+      - name: Commit processed portfolio
+        id: commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A -- works-2026
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "portfolio: auto-translate and watermark uploads"
+            git push origin HEAD:main
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Request deployment of processed files
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPOSITORY: ${{ github.repository }}
+        run: |
+          curl --fail-with-body --silent --show-error \
+            --request POST \
+            --header "Accept: application/vnd.github+json" \
+            --header "Authorization: Bearer $GH_TOKEN" \
+            --header "X-GitHub-Api-Version: 2022-11-28" \
+            "https://api.github.com/repos/$GH_REPOSITORY/pages/builds"
