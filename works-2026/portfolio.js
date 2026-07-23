@@ -240,17 +240,6 @@
     }
   };
 
-  const getBrowserLanguage = () => {
-    const languages = Array.isArray(navigator.languages) && navigator.languages.length
-      ? navigator.languages
-      : [navigator.language || ""];
-    const normalized = languages.map((language) => String(language).toLowerCase());
-
-    if (normalized.some((language) => language.startsWith("zh"))) return "cn";
-    if (normalized.some((language) => language.startsWith("ms"))) return "bm";
-    return "en";
-  };
-
   const getText = (key) => translations[activeLanguage]?.[key] || translations.en[key] || "";
   const getVisibleWorks = () => works.filter((work) => activeFilter === "all" || work.category === activeFilter);
 
@@ -523,7 +512,7 @@
   };
 
   document.addEventListener("DOMContentLoaded", () => {
-    applyLanguage(getStoredLanguage() || getBrowserLanguage());
+    applyLanguage(getStoredLanguage() || "en");
     initLanguageSwitcher();
     initFilters();
     initLightbox();
