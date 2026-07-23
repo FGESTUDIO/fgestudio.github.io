@@ -6,6 +6,7 @@
   --works-white: #f8fbff;
   --works-cyan: #18e8ff;
   min-height: 100vh;
+  padding-top: 0;
   color: var(--works-white);
   background:
     radial-gradient(circle at 86% 9%, rgba(43, 93, 255, 0.2), transparent 28rem),
