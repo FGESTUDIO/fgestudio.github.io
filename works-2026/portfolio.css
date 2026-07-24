@@ -457,16 +457,31 @@
   padding: 20px;
 }
 
-.works-card-kicker {
+.works-card-labels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.works-card-kicker,
+.works-card-concept {
   width: fit-content;
   border-radius: 999px;
   padding: 5px 9px;
-  color: var(--works-cyan);
-  background: rgba(24, 232, 255, 0.1);
   font-size: 0.67rem;
   font-weight: 900;
   letter-spacing: 0.07em;
   text-transform: uppercase;
+}
+
+.works-card-kicker {
+  color: var(--works-cyan);
+  background: rgba(24, 232, 255, 0.1);
+}
+
+.works-card-concept {
+  color: #f5ddff;
+  background: rgba(174, 91, 255, 0.17);
 }
 
 .works-card-title {

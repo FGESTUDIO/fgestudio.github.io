@@ -31,6 +31,7 @@
       posterType: "海报设计",
       businessCardType: "名片设计",
       bannerType: "横幅设计",
+      conceptProject: "概念作品",
       industryLabel: "行业",
       formatLabel: "形式",
       focusLabel: "设计重点",
@@ -97,6 +98,7 @@
       posterType: "Poster design",
       businessCardType: "Business card design",
       bannerType: "Banner design",
+      conceptProject: "Concept project",
       industryLabel: "Industry",
       formatLabel: "Format",
       focusLabel: "Design focus",
@@ -163,6 +165,7 @@
       posterType: "Reka bentuk poster",
       businessCardType: "Reka bentuk kad nama",
       bannerType: "Reka bentuk sepanduk",
+      conceptProject: "Projek konsep",
       industryLabel: "Industri",
       formatLabel: "Format",
       focusLabel: "Fokus reka bentuk",
@@ -356,6 +359,16 @@
     kicker.className = "works-card-kicker";
     kicker.textContent = getCategoryText(work.category);
 
+    const labels = document.createElement("span");
+    labels.className = "works-card-labels";
+    labels.append(kicker);
+    if (work.concept_project === true) {
+      const concept = document.createElement("span");
+      concept.className = "works-card-concept";
+      concept.textContent = getText("conceptProject");
+      labels.append(concept);
+    }
+
     const title = document.createElement("h3");
     title.className = "works-card-title";
     title.textContent = getWorkText(work, "title");
@@ -382,7 +395,7 @@
     arrow.textContent = "↗";
     viewButton.append(" ", arrow);
 
-    content.append(kicker, title, meta, focus, viewButton);
+    content.append(labels, title, meta, focus, viewButton);
     article.append(previewButton, content);
     item.append(article);
     return item;
@@ -437,7 +450,10 @@
     image.removeAttribute("width");
     image.removeAttribute("height");
     title.textContent = getWorkText(work, "title");
-    type.textContent = getCategoryText(work.category);
+    type.textContent =
+      work.concept_project === true
+        ? `${getCategoryText(work.category)} · ${getText("conceptProject")}`
+        : getCategoryText(work.category);
     focus.textContent = `${getText("focusLabel")}: ${getWorkText(work, "focus")}`;
 
     const disabled = getVisibleWorks().length < 2;

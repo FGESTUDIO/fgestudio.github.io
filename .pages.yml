@@ -33,6 +33,11 @@ content:
             type: boolean
             default: true
             description: 关闭后作品资料仍会保留，但客户看不到。
+          - name: concept_project
+            label: 概念作品
+            type: boolean
+            default: false
+            description: 虚构品牌练习或概念案例请打开；客户页面会显示三语「概念作品」标签。
           - name: category
             label: 分类
             type: select
