@@ -5,9 +5,16 @@
   "title": "饮思YS",
   "subscriberCount": 919,
   "viewCount": 807622,
-  "videoCount": 463,
+  "videoCount": 464,
   "hiddenSubscriberCount": false,
   "videos": [
+    {
+      "id": "VqNGzd5SP5k",
+      "title": "【崩坏：因缘精灵】二测几乎重做！米哈游终于想清楚了？",
+      "thumbnail": "https://i.ytimg.com/vi/VqNGzd5SP5k/maxresdefault.jpg",
+      "url": "https://www.youtube.com/watch?v=VqNGzd5SP5k",
+      "publishedAt": "2026-07-26T10:25:17Z"
+    },
     {
       "id": "WDvI9LyQu04",
       "title": "躲个猫猫开抓不到几久就被抓了 #异环",
@@ -21,15 +28,8 @@
       "thumbnail": "https://i.ytimg.com/vi/esooKDzsA6s/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=esooKDzsA6s",
       "publishedAt": "2026-07-16T13:11:59Z"
-    },
-    {
-      "id": "ZDbiiJZ2Z3c",
-      "title": "【异环】1.2真红攻略 | 抽前必看！培养路线、驱动块、弧盘、队伍搭配整理",
-      "thumbnail": "https://i.ytimg.com/vi/ZDbiiJZ2Z3c/maxresdefault.jpg",
-      "url": "https://www.youtube.com/watch?v=ZDbiiJZ2Z3c",
-      "publishedAt": "2026-07-11T04:46:38Z"
     }
   ],
-  "updatedAt": "2026-07-26T07:59:40.670Z",
+  "updatedAt": "2026-07-26T11:58:56.122Z",
   "source": "YouTube Data API v3"
 }
