@@ -3,28 +3,39 @@
   "channelUrl": "https://www.youtube.com/@yinsi_gaming",
   "channelId": "UCRVp_Tpzm6REWPKIoEOf6PA",
   "title": "饮思YS",
-  "subscriberCount": 920,
-  "viewCount": 808037,
+  "subscriberCount": 921,
+  "viewCount": 808406,
   "videoCount": 463,
   "hiddenSubscriberCount": false,
   "videos": [
     {
       "id": "VqNGzd5SP5k",
       "title": "【崩坏：因缘精灵】二测几乎重做！米哈游终于想清楚了？",
-      "thumbnail": "https://i.ytimg.com/vi/VqNGzd5SP5k/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=VqNGzd5SP5k",
       "publishedAt": "2026-07-26T10:25:17Z",
-      "kind": "standard"
+      "durationSeconds": 594,
+      "kind": "standard",
+      "thumbnail": "/images/creators/youtube/VqNGzd5SP5k.jpg"
     },
     {
       "id": "esooKDzsA6s",
       "title": "米哈游为什么告 B 站？真正的答案还没公开",
-      "thumbnail": "https://i.ytimg.com/vi/esooKDzsA6s/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=esooKDzsA6s",
       "publishedAt": "2026-07-16T13:11:59Z",
-      "kind": "standard"
+      "durationSeconds": 239,
+      "kind": "standard",
+      "thumbnail": "/images/creators/youtube/esooKDzsA6s.jpg"
+    },
+    {
+      "id": "ZDbiiJZ2Z3c",
+      "title": "【异环】1.2真红攻略 | 抽前必看！培养路线、驱动块、弧盘、队伍搭配整理",
+      "url": "https://www.youtube.com/watch?v=ZDbiiJZ2Z3c",
+      "publishedAt": "2026-07-11T04:46:38Z",
+      "durationSeconds": 215,
+      "kind": "standard",
+      "thumbnail": "/images/creators/youtube/ZDbiiJZ2Z3c.jpg"
     }
   ],
-  "updatedAt": "2026-07-29T10:13:17.750Z",
+  "updatedAt": "2026-07-29T16:51:22.540Z",
   "source": "YouTube Data API v3"
 }
