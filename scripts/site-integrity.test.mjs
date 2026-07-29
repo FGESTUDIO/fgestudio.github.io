@@ -38,11 +38,10 @@ function resolveLocalReference(sourceFile, rawReference) {
 }
 
 async function existsAsSiteTarget(targetPath) {
-  const candidates = [targetPath];
+  const candidates = [targetPath, path.join(targetPath, "index.html")];
   if (!path.extname(targetPath)) {
-    candidates.push(`${targetPath}.html`, path.join(targetPath, "index.html"));
+    candidates.push(`${targetPath}.html`);
   }
-  if (targetPath.endsWith(path.sep)) candidates.push(path.join(targetPath, "index.html"));
 
   for (const candidate of candidates) {
     try {
