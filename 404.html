@@ -1,38 +1,70 @@
 <!doctype html>
-<html lang="zh-Hans">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>页面未找到 | FGESTUDIO</title>
-    <meta name="description" content="你访问的 FGESTUDIO 页面不存在或已移动。" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; img-src 'self' data:; connect-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; upgrade-insecure-requests" />
+    <title>Page Not Found | FGESTUDIO</title>
+    <meta name="description" content="The FGESTUDIO page you requested does not exist or has moved." />
     <meta name="robots" content="noindex, nofollow" />
     <meta name="theme-color" content="#050816" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
-    <link rel="stylesheet" href="/style.css?v=20260718-v26" />
+    <link rel="stylesheet" href="/style.css?v=20260729-site-optimization-1" />
+    <script src="/404.js?v=20260729-site-optimization-1" defer></script>
   </head>
   <body data-page="error">
-    <a class="skip-link" href="#main-content">跳到主要内容</a>
+    <a class="skip-link" href="#main-content" data-error-i18n="skip">Skip to main content</a>
     <header class="site-header is-scrolled">
-      <a class="brand" href="/" aria-label="返回 FGESTUDIO 首页">
+      <a class="brand" href="/" aria-label="FGESTUDIO home" data-error-i18n-aria="brandLabel">
         <img decoding="async" class="brand-logo" src="/images/fgestudio-logo-transparent.webp" width="611" height="640" alt="FGESTUDIO logo" />
         <span class="brand-text">
           <strong>FANTASY GENESIS ENTERTAINMENT STUDIO</strong>
-          <span>梦幻起源欢娱工作室</span>
+          <span data-error-i18n="brandSubtitle">梦幻起源欢娱工作室</span>
         </span>
       </a>
+
+      <div class="header-actions">
+        <div class="language-switcher" data-language-switcher>
+          <button
+            class="language-toggle"
+            type="button"
+            aria-haspopup="menu"
+            aria-expanded="false"
+            aria-controls="errorLanguageMenu"
+            aria-label="Change language"
+            data-error-i18n-aria="languageToggle"
+            data-lang-toggle
+          >
+            <span class="language-toggle-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <circle cx="12" cy="12" r="8.5"></circle>
+                <path d="M3.5 12h17M12 3.5c2.2 2.3 3.4 5.2 3.4 8.5s-1.2 6.2-3.4 8.5M12 3.5C9.8 5.8 8.6 8.7 8.6 12s1.2 6.2 3.4 8.5"></path>
+              </svg>
+            </span>
+            <span class="language-toggle-label" data-language-current>EN</span>
+            <span class="language-toggle-chevron" aria-hidden="true"></span>
+          </button>
+          <div class="language-menu" id="errorLanguageMenu" role="menu" aria-label="Choose language" data-error-i18n-aria="languageMenu" hidden>
+            <button type="button" class="lang-btn" data-lang="cn" role="menuitemradio" aria-checked="false">简体中文</button>
+            <button type="button" class="lang-btn" data-lang="en" role="menuitemradio" aria-checked="true">English</button>
+            <button type="button" class="lang-btn" data-lang="bm" role="menuitemradio" aria-checked="false">Bahasa Melayu</button>
+          </div>
+        </div>
+      </div>
     </header>
 
     <main class="error-main" id="main-content">
       <div class="container error-content">
         <p class="section-kicker">ERROR 404</p>
-        <h1>这个页面不在这里。</h1>
-        <p>网址可能已经更新，或你输入的链接有误。你可以从下面重新选择要查看的内容。</p>
+        <h1 data-error-i18n="title">This page is not here.</h1>
+        <p data-error-i18n="copy">The address may have changed, or the link may be incorrect. Choose where you would like to go next.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="/">返回首页</a>
-          <a class="btn btn-secondary" href="/design/">查看设计服务</a>
-          <a class="btn btn-secondary" href="/mcn/">查看 MCN 业务</a>
+          <a class="btn btn-primary" href="/" data-error-i18n="homeCta">Return home</a>
+          <a class="btn btn-secondary" href="/design/" data-error-i18n="designCta">View design services</a>
+          <a class="btn btn-secondary" href="/mcn/" data-error-i18n="mcnCta">View MCN</a>
         </div>
-        <p class="error-help">Page not found. Return to the homepage or choose one of our main services.</p>
+        <p class="error-help" data-error-i18n="help">If you followed a saved link, update it after opening the correct page.</p>
       </div>
     </main>
   </body>

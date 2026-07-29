@@ -1,0 +1,54 @@
+name: Update sitemap dates
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/update-sitemap.yml"
+      - "scripts/update-sitemap.mjs"
+      - "index.html"
+      - "design/index.html"
+      - "mcn/index.html"
+      - "about/index.html"
+      - "privacy-policy/index.html"
+      - "terms-and-conditions/index.html"
+      - "script.js"
+      - "privacy-page.js"
+      - "terms-page.js"
+      - "style.css"
+      - "data/youtube-stats.json"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-sitemap:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out main with history
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Refresh sitemap dates
+        run: node scripts/update-sitemap.mjs
+
+      - name: Commit sitemap when changed
+        run: |
+          if git diff --quiet -- sitemap.xml; then
+            echo "Sitemap dates are already current."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add sitemap.xml
+          git commit -m "Update sitemap dates"
+          git push

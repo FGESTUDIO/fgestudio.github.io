@@ -6,26 +6,49 @@
   };
 
   const validLanguages = new Set(["cn", "en", "bm"]);
+  const titleIds = {
+    cn: "termsTitleCn",
+    en: "termsTitleEn",
+    bm: "termsTitleBm",
+  };
 
   function getPreferredLanguage() {
+    const requested = new URLSearchParams(window.location.search)
+      .get("lang")
+      ?.toLowerCase();
+    const queryLanguage = {
+      cn: "cn",
+      zh: "cn",
+      "zh-cn": "cn",
+      "zh-hans": "cn",
+      en: "en",
+      bm: "bm",
+      ms: "bm",
+      "ms-my": "bm",
+    }[requested];
+    if (validLanguages.has(queryLanguage)) return queryLanguage;
+
     try {
-      const saved = localStorage.getItem("preferredLanguage");
+      const saved = localStorage.getItem("manualLanguagePreference");
       if (validLanguages.has(saved)) return saved;
     } catch (error) {
       // Ignore storage restrictions in private or in-app browsers.
     }
 
     const activeButton = document.querySelector(".lang-btn.is-active");
-    return validLanguages.has(activeButton?.dataset.lang) ? activeButton.dataset.lang : "cn";
+    return validLanguages.has(activeButton?.dataset.lang) ? activeButton.dataset.lang : "en";
   }
 
   function applyTermsLanguage(lang) {
-    const activeLanguage = validLanguages.has(lang) ? lang : "cn";
+    const activeLanguage = validLanguages.has(lang) ? lang : "en";
 
     document.querySelectorAll("[data-terms-lang]").forEach((panel) => {
       panel.hidden = panel.dataset.termsLang !== activeLanguage;
     });
 
+    document
+      .querySelector(".legal-hero")
+      ?.setAttribute("aria-labelledby", titleIds[activeLanguage]);
     document.title = titles[activeLanguage];
   }
 
