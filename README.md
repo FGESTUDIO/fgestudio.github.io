@@ -27,7 +27,7 @@ python3 -m http.server 8080
 
 ## 内容与联系方式
 
-- `script.js`：三语文案、语言按钮、设备语言识别、地区价格、WhatsApp、Email、动画和互动逻辑
+- `script.js`：三语文案、语言按钮与偏好记忆、地区价格、WhatsApp、Email、动画和互动逻辑
 - `content.json`：可覆盖的联系资料、马来西亚／国际价格与部分公共文案
 - `design/index.html`：公开服务与配套结构，以及马来西亚价格的结构化数据
 - `data/youtube-stats.json`：已保存的 YouTube 公开频道数据
@@ -53,7 +53,7 @@ python3 -m http.server 8080
 
 ## YouTube 数据自动更新
 
-`scripts/update-youtube-stats.mjs` 会读取 YouTube Data API，并更新 `data/youtube-stats.json`。GitHub Actions workflow 位于 `.github/workflows/`。
+`scripts/update-youtube-stats.mjs` 会读取 YouTube Data API，只保留公开、已处理、超过 3 分钟且没有直播资料的普通视频，并更新 `data/youtube-stats.json`。缩略图会同步保存到 `images/creators/youtube/`，避免网页依赖 YouTube 图片域名。GitHub Actions workflow 位于 `.github/workflows/`。
 
 Repository secret：
 
@@ -69,16 +69,20 @@ YOUTUBE_API_KEY
 
 ```bash
 node --check script.js
+node --check 404.js
+node --test scripts/youtube-video-filter.test.mjs
 jq empty content.json data/youtube-stats.json
 ```
 
 并确认：
 
-- 中文、English、Bahasa Melayu 可通过语言按钮切换；首次访问会按设备语言选定可用语言。
+- 首次访问默认 English；中文、English、Bahasa Melayu 可通过语言按钮切换，选择会被记住，也可使用 `?lang=zh-Hans` 或 `?lang=ms` 直接打开指定语言。
 - 马来西亚访问显示 MYR，其他国家显示独立设定的 USD 价格。
 - WhatsApp、Email、Facebook 和内部链接可用。
 - 手机菜单、配套横向浏览、FAQ 与固定咨询按钮可用。
 - `/404.html`、旧网址跳转、Canonical、robots 与 sitemap 正确。
 - 隐私政策与实际使用的第三方服务一致。
+
+`.github/workflows/update-sitemap.yml` 会根据公开页面及共用资源的最新 Git 提交日期更新 `sitemap.xml`，无需手动维护 `lastmod`。
 
 法律条款中的订金、退款、修改次数和附加费用属于业务规则；没有负责人确认时，不要自行更改。

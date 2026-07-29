@@ -1,7 +1,7 @@
 {
   "name": "FGESTUDIO（梦幻起源欢娱工作室）",
   "short_name": "FGESTUDIO",
-  "description": "梦幻起源欢娱工作室（FGESTUDIO / FANTASY GENESIS ENTERTAINMENT STUDIO）提供平面设计服务与游戏内容创作者合作支持。",
+  "description": "FGESTUDIO is a Malaysian remote-first creative studio for graphic design and practical gaming-creator channel support.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

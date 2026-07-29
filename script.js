@@ -175,9 +175,9 @@ let translations = {
     "faq.q3": "需要多久完成设计？",
     "faq.a3": "时间会根据设计数量和复杂度而定。确认需求后会先告知预计完成时间。",
     "faq.q4": "可以修改几次？",
-    "faq.a4": "修改次数可以在确认配套时说明，范围会依设计项目或月配套而定。",
+    "faq.a4": "一般设计项目包含最多 3 轮合理修改；月配套及其他服务以书面确认内容为准。超过所含次数的修改通常按难度每次收取 RM10–RM20。",
     "faq.q5": "如何付款？",
-    "faq.a5": "付款方式可以在 WhatsApp 沟通后确认。这里暂时不放真实银行资料。",
+    "faq.a5": "为了保障付款安全，收款方式会在订单确认后通过 FGESTUDIO 官方 WhatsApp 或 Email 提供。",
     "mcnServices.kicker": "MCN 支持内容",
     "mcnServices.title": "不是单纯做图，而是协助创作者把频道经营得更清楚。",
     "mcnServices.copy": "适合 YouTube、TikTok、直播、游戏攻略、娱乐剪辑和游戏社群内容创作者。",
@@ -249,7 +249,7 @@ let translations = {
     "aboutValues.kicker": "我们的方式",
     "aboutValues.title": "视觉要好看，也要帮业务说清楚重点。",
     "aboutValues.item1.title": "线上工作室",
-    "aboutValues.item1.copy": "目前以线上沟通为主，不放实体地址，适合弹性合作。",
+    "aboutValues.item1.copy": "以线上方式处理需求、审核与交付，方便不同地区的客户与创作者合作。",
     "aboutValues.item2.title": "清楚分类",
     "aboutValues.item2.copy": "设计客户看设计服务，创作者看 MCN 页面，减少混乱。",
     "aboutValues.item3.title": "三语沟通",
@@ -438,9 +438,9 @@ let translations = {
     "faq.q3": "How long does design take?",
     "faq.a3": "It depends on quantity and complexity. We will confirm an estimated timeline after the brief.",
     "faq.q4": "How many revisions are included?",
-    "faq.a4": "Revision scope can be confirmed with the package and depends on the design type.",
+    "faq.a4": "General design projects include up to three reasonable revision rounds. Monthly packages and other services follow the written confirmation. Extra revisions usually cost RM10–RM20 each depending on difficulty.",
     "faq.q5": "How do I pay?",
-    "faq.a5": "Payment details can be confirmed through WhatsApp. Real bank details are not shown here.",
+    "faq.a5": "For payment security, payment instructions are provided only after order confirmation through FGESTUDIO's official WhatsApp or email.",
     "mcnServices.kicker": "MCN Support",
     "mcnServices.title": "Not just making images, but helping creators run a clearer channel.",
     "mcnServices.copy": "For YouTube, TikTok, livestream, gaming guides, entertainment edits, and gaming community creators.",
@@ -512,7 +512,7 @@ let translations = {
     "aboutValues.kicker": "How We Work",
     "aboutValues.title": "Visuals should look good and help the business message become clearer.",
     "aboutValues.item1.title": "Online Studio",
-    "aboutValues.item1.copy": "We currently work online without showing a physical address, making collaboration flexible.",
+    "aboutValues.item1.copy": "A remote-first workflow for clients and creators in different locations, with briefs, reviews and delivery handled online.",
     "aboutValues.item2.title": "Clear Categories",
     "aboutValues.item2.copy": "Design clients view design services; creators view the MCN page.",
     "aboutValues.item3.title": "Three-language Communication",
@@ -701,9 +701,9 @@ let translations = {
     "faq.q3": "Berapa lama masa reka bentuk diperlukan?",
     "faq.a3": "Tempoh bergantung pada kuantiti dan tahap kompleks. Anggaran masa akan diberitahu selepas brief disahkan.",
     "faq.q4": "Boleh buat berapa kali pindaan?",
-    "faq.a4": "Skop pindaan boleh disahkan bersama pakej dan bergantung pada jenis reka bentuk.",
+    "faq.a4": "Projek reka bentuk biasa merangkumi sehingga tiga pusingan pindaan munasabah. Pakej bulanan dan servis lain mengikut pengesahan bertulis. Pindaan tambahan biasanya RM10–RM20 setiap satu mengikut kesukaran.",
     "faq.q5": "Bagaimana cara bayaran?",
-    "faq.a5": "Cara bayaran boleh disahkan melalui WhatsApp. Maklumat bank sebenar belum dipaparkan di sini.",
+    "faq.a5": "Demi keselamatan bayaran, arahan pembayaran hanya diberikan selepas tempahan disahkan melalui WhatsApp atau email rasmi FGESTUDIO.",
     "mcnServices.kicker": "Sokongan MCN",
     "mcnServices.title": "Bukan sekadar buat gambar, tetapi membantu pencipta mengurus channel dengan lebih jelas.",
     "mcnServices.copy": "Untuk pencipta YouTube, TikTok, livestream, panduan gaming, edit hiburan, dan komuniti gaming.",
@@ -775,7 +775,7 @@ let translations = {
     "aboutValues.kicker": "Cara Kami Bekerja",
     "aboutValues.title": "Visual perlu nampak baik dan membantu mesej bisnes menjadi lebih jelas.",
     "aboutValues.item1.title": "Studio Online",
-    "aboutValues.item1.copy": "Kami bekerja secara online tanpa memaparkan alamat fizikal, menjadikan kerjasama lebih fleksibel.",
+    "aboutValues.item1.copy": "Aliran kerja remote-first untuk pelanggan dan pencipta di lokasi berbeza, dengan brief, semakan dan penghantaran diurus secara online.",
     "aboutValues.item2.title": "Kategori Jelas",
     "aboutValues.item2.copy": "Pelanggan reka bentuk lihat servis reka bentuk; pencipta lihat halaman MCN.",
     "aboutValues.item3.title": "Komunikasi Tiga Bahasa",
@@ -916,6 +916,12 @@ Object.assign(translations.cn, {
   "business.mcn.cta": "了解合作方式",
   "home.about.copy": "想先了解梦幻起源欢娱工作室（FGESTUDIO）的公司背景与发展方向？",
   "home.about.cta": "认识 FGESTUDIO →",
+  "trust.registered.title": "马来西亚 SSM 注册商业",
+  "trust.registered.copy": "注册号码：202603071810（RA0133617-K）",
+  "trust.remote.title": "线上工作流程",
+  "trust.remote.copy": "需求、审核、付款安排与文件交付通过官方书面渠道处理。",
+  "trust.languages.title": "三语沟通",
+  "trust.languages.copy": "支持简体中文、English 与 Bahasa Melayu。",
   "aboutTimeline.title": "从创作者孵化出发，逐步扩展到视觉设计服务。",
   "aboutTimeline.copy": "FGESTUDIO 专注把现有的业务方向与合作方式说明清楚，让客户和创作者更快理解我们现在能提供什么。",
   "aboutTimeline.item1.title": "创作者项目开始",
@@ -940,6 +946,7 @@ Object.assign(translations.cn, {
   "language.menu": "选择语言",
   "pricing.market.malaysia": "马来西亚价格（MYR）",
   "pricing.market.international": "国际价格（USD）",
+  "pricing.internationalMediaNote": "含马币价格的马来西亚版宣传图已隐藏；请以本页显示的 USD 价格与配套内容为准。",
 });
 
 Object.assign(translations.en, {
@@ -1031,6 +1038,12 @@ Object.assign(translations.en, {
   "business.mcn.cta": "How collaboration works",
   "home.about.copy": "Want to know how FGESTUDIO started and what we do today?",
   "home.about.cta": "Meet FGESTUDIO →",
+  "trust.registered.title": "SSM-registered in Malaysia",
+  "trust.registered.copy": "Registration No. 202603071810 (RA0133617-K)",
+  "trust.remote.title": "Remote-first workflow",
+  "trust.remote.copy": "Briefs, reviews, payment arrangements and file delivery use official written channels.",
+  "trust.languages.title": "Three-language communication",
+  "trust.languages.copy": "English, Simplified Chinese and Bahasa Melayu.",
   "aboutTimeline.title": "Starting from creator incubation, then expanding into visual design services.",
   "aboutTimeline.copy": "FGESTUDIO keeps its active business directions and ways of working clear, so clients and creators can quickly understand what we offer today.",
   "aboutTimeline.item1.title": "Creator projects begin",
@@ -1052,6 +1065,7 @@ Object.assign(translations.en, {
   "language.menu": "Choose a language",
   "pricing.market.malaysia": "Malaysia pricing (MYR)",
   "pricing.market.international": "International pricing (USD)",
+  "pricing.internationalMediaNote": "Malaysia-edition artwork containing MYR prices is hidden. Please use the USD prices and package details shown on this page.",
 });
 
 Object.assign(translations.bm, {
@@ -1143,6 +1157,12 @@ Object.assign(translations.bm, {
   "business.mcn.cta": "Cara kerjasama",
   "home.about.copy": "Mahu tahu bagaimana FGESTUDIO bermula dan apa yang kami buat sekarang?",
   "home.about.cta": "Kenali FGESTUDIO →",
+  "trust.registered.title": "Perniagaan berdaftar SSM di Malaysia",
+  "trust.registered.copy": "No. Pendaftaran 202603071810 (RA0133617-K)",
+  "trust.remote.title": "Aliran kerja remote-first",
+  "trust.remote.copy": "Brief, semakan, urusan bayaran dan penghantaran fail menggunakan saluran rasmi bertulis.",
+  "trust.languages.title": "Komunikasi tiga bahasa",
+  "trust.languages.copy": "English, Bahasa Cina Ringkas dan Bahasa Melayu.",
   "aboutTimeline.title": "Bermula daripada inkubasi pencipta, kemudian berkembang ke servis reka bentuk visual.",
   "aboutTimeline.copy": "FGESTUDIO menerangkan hala tuju bisnes dan cara kerjasama yang aktif dengan jelas supaya pelanggan dan pencipta memahami apa yang kami tawarkan sekarang.",
   "aboutTimeline.item1.title": "Projek pencipta bermula",
@@ -1164,6 +1184,7 @@ Object.assign(translations.bm, {
   "language.menu": "Pilih bahasa",
   "pricing.market.malaysia": "Harga Malaysia (MYR)",
   "pricing.market.international": "Harga antarabangsa (USD)",
+  "pricing.internationalMediaNote": "Visual edisi Malaysia yang mengandungi harga MYR disembunyikan. Sila rujuk harga USD dan butiran pakej pada halaman ini.",
 });
 
 let editableContent = {
@@ -1244,7 +1265,7 @@ const langMap = {
 
 const localeMap = {
   cn: "zh_CN",
-  en: "en_US",
+  en: "en_MY",
   bm: "ms_MY",
 };
 
@@ -1264,6 +1285,12 @@ const languageDisplayNames = {
   cn: "CN",
   en: "EN",
   bm: "BM",
+};
+
+const languageQueryValues = {
+  cn: "zh-Hans",
+  en: "en",
+  bm: "ms",
 };
 
 const servicePriceKeys = ["poster", "social", "businessCard", "banner"];
@@ -1511,7 +1538,15 @@ function renderFeaturedVideos(videos) {
   if (!section || !grid) return;
 
   const validVideos = Array.isArray(videos)
-    ? videos.filter((video) => video?.title && video?.thumbnail && video?.url).slice(0, 3)
+    ? videos
+        .filter(
+          (video) =>
+            video?.title &&
+            video?.thumbnail &&
+            video?.url &&
+            !["short", "live", "liveReplay"].includes(video.kind),
+        )
+        .slice(0, 3)
     : [];
 
   if (!validVideos.length) {
@@ -1538,6 +1573,12 @@ function renderFeaturedVideos(videos) {
     image.src = video.thumbnail;
     image.alt = `${thumbnailLabel}: ${video.title}`;
     image.loading = "lazy";
+    image.decoding = "async";
+    image.addEventListener("error", () => {
+      if (image.dataset.fallbackApplied === "true") return;
+      image.dataset.fallbackApplied = "true";
+      image.src = "/images/social/mcn-og.jpg";
+    });
     thumbnail.append(image);
 
     const play = document.createElement("span");
@@ -1581,6 +1622,53 @@ function getStoredLanguage() {
   } catch (error) {
     return null;
   }
+}
+
+function getRequestedLanguage() {
+  const requested = new URLSearchParams(window.location.search)
+    .get("lang")
+    ?.toLowerCase();
+  const aliases = {
+    cn: "cn",
+    zh: "cn",
+    "zh-cn": "cn",
+    "zh-hans": "cn",
+    en: "en",
+    bm: "bm",
+    ms: "bm",
+    "ms-my": "bm",
+  };
+  return aliases[requested] || null;
+}
+
+function getCanonicalLanguageUrl(language) {
+  const url = new URL(window.location.pathname, window.location.origin);
+  if (language !== DEFAULT_LANGUAGE) {
+    url.searchParams.set(
+      "lang",
+      languageQueryValues[language] || languageQueryValues[DEFAULT_LANGUAGE],
+    );
+  }
+  return url.toString();
+}
+
+function updateLanguageUrl(language) {
+  const url = new URL(window.location.href);
+  if (language === DEFAULT_LANGUAGE) {
+    url.searchParams.delete("lang");
+  } else {
+    url.searchParams.set(
+      "lang",
+      languageQueryValues[language] || languageQueryValues[DEFAULT_LANGUAGE],
+    );
+  }
+  window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
+}
+
+function updateLocalizedMetadata(language) {
+  const localizedUrl = getCanonicalLanguageUrl(language);
+  document.querySelector('link[rel="canonical"]')?.setAttribute("href", localizedUrl);
+  document.querySelector('meta[property="og:url"]')?.setAttribute("content", localizedUrl);
 }
 
 function saveLanguagePreference(language) {
@@ -1645,6 +1733,9 @@ function renderMarketPricing(market = activeMarket) {
   const marketLabel = getText(activeLanguage, `pricing.market.${activeMarket}`);
   document.querySelectorAll("[data-market-pricing-note]").forEach((note) => {
     note.textContent = marketLabel;
+  });
+  document.querySelectorAll("[data-international-media-note]").forEach((note) => {
+    note.hidden = activeMarket !== "international";
   });
 }
 
@@ -1734,6 +1825,7 @@ function getPackageWhatsappMessage(link, lang) {
 function applyTranslations(lang) {
   activeLanguage = translations[lang] ? lang : DEFAULT_LANGUAGE;
   document.documentElement.lang = langMap[activeLanguage] || langMap[DEFAULT_LANGUAGE];
+  document.documentElement.dataset.language = activeLanguage;
 
   const title = getPageText(activeLanguage, "metaTitle");
   const description = getPageText(activeLanguage, "metaDescription");
@@ -1750,6 +1842,7 @@ function applyTranslations(lang) {
   setMeta('meta[name="twitter:title"]', title);
   setMeta('meta[name="twitter:description"]', description);
   setMeta('meta[name="twitter:image:alt"]', imageAlt);
+  updateLocalizedMetadata(activeLanguage);
 
   document.querySelectorAll("[data-i18n]").forEach((element) => {
     const key = element.getAttribute("data-i18n");
@@ -1804,7 +1897,7 @@ function initLanguageSwitcher() {
   const switcher = document.querySelector("[data-language-switcher]");
   const toggle = switcher?.querySelector("[data-lang-toggle]");
   const menu = switcher?.querySelector(".language-menu");
-  const defaultLang = getStoredLanguage() || DEFAULT_LANGUAGE;
+  const defaultLang = getRequestedLanguage() || getStoredLanguage() || DEFAULT_LANGUAGE;
 
   function setMenuOpen(isOpen) {
     if (!switcher || !toggle || !menu) return;
@@ -1821,6 +1914,7 @@ function initLanguageSwitcher() {
     button.addEventListener("click", () => {
       applyTranslations(button.dataset.lang);
       saveLanguagePreference(activeLanguage);
+      updateLanguageUrl(activeLanguage);
       setMenuOpen(false);
     });
   });

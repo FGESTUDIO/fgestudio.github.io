@@ -1,0 +1,37 @@
+name: Check site quality
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Check JavaScript syntax
+        run: |
+          node --check script.js
+          node --check 404.js
+          node --check privacy-page.js
+          node --check terms-page.js
+          node --check scripts/update-youtube-stats.mjs
+          node --check scripts/update-sitemap.mjs
+
+      - name: Run site tests
+        run: node --test scripts/*.test.mjs
+
+      - name: Validate JSON files
+        run: jq empty content.json data/youtube-stats.json site.webmanifest

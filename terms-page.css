@@ -16,7 +16,8 @@
   min-width: 0;
 }
 
-.terms-hero-copy h1 {
+.terms-hero-copy h1,
+.terms-hero-copy .legal-page-title {
   max-width: 680px;
   margin-bottom: 16px;
 }
