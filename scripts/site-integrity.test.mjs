@@ -113,14 +113,43 @@ test("public pages are English-first with one H1 and localized URLs", async () =
   }
 });
 
-test("international pricing cannot display Malaysia-edition price artwork", async () => {
+test("international pricing uses price-free service artwork and hides Malaysia package artwork", async () => {
   const html = await readFile(path.join(repositoryRoot, "design/index.html"), "utf8");
   const css = await readFile(path.join(repositoryRoot, "style.css"), "utf8");
   const script = await readFile(path.join(repositoryRoot, "script.js"), "utf8");
 
-  assert.match(html, /data-international-media-note/);
+  const internationalImages = new Set(
+    [...html.matchAll(/data-image-international="([^"]+)"/g)].map((match) => match[1])
+  );
+
+  assert.equal(internationalImages.size, 4);
+  for (const reference of internationalImages) {
+    const target = resolveLocalReference(
+      path.join(repositoryRoot, "design", "__document__"),
+      reference
+    );
+    assert.ok(target && await existsAsSiteTarget(target), `${reference} should exist`);
+  }
+
+  assert.doesNotMatch(html, /data-international-media-note|Malaysia-edition artwork/);
+  assert.doesNotMatch(script, /data-international-media-note|pricing\.internationalMediaNote/);
+  assert.match(script, /\[data-market-image\]/);
   assert.match(css, /data-market="international"[\s\S]*?\.package-image/);
-  assert.match(script, /\[data-international-media-note\]/);
+  assert.doesNotMatch(
+    css,
+    /data-market="international"[^,{]*\.public-service-image/
+  );
+});
+
+test("contact routes keep design on WhatsApp and MCN or brand enquiries on email", async () => {
+  const home = await readFile(path.join(repositoryRoot, "index.html"), "utf8");
+  const design = await readFile(path.join(repositoryRoot, "design/index.html"), "utf8");
+  const mcn = await readFile(path.join(repositoryRoot, "mcn/index.html"), "utf8");
+
+  assert.match(home, /data-whatsapp-message="whatsappMessage\.design"/);
+  assert.match(home, /data-email="mcnBrand"/);
+  assert.match(design, /class="mobile-contact-cta"[^>]*data-whatsapp/);
+  assert.doesNotMatch(mcn, /wa\.me|data-whatsapp/);
 });
 
 test("service rules retain the approved refund, revision and portfolio terms", async () => {

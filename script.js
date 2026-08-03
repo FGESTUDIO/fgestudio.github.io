@@ -10,6 +10,7 @@ let contactSettings = {
     design: "design@fgestudio.my",
     creators: "creators@fgestudio.my",
     business: "business@fgestudio.my",
+    mcnBrand: "contact@fgestudio.my",
   },
   facebookUrl: "https://www.facebook.com/fantasygenesisentertainmentstudio/",
 };
@@ -827,15 +828,20 @@ Object.assign(translations.cn, {
   "emailSubject.design": "设计需求咨询 - {short}",
   "emailSubject.mcn": "游戏创作者合作咨询 - {short}",
   "emailSubject.creators": "游戏创作者合作咨询 - {short}",
+  "emailSubject.mcnBrand": "MCN／品牌合作咨询 - {short}",
   "emailBody.design": "你好，我想询问平面设计服务。\n\n需要设计的内容：\n发布平台 / 尺寸：\n主要文案或宣传重点：\n参考风格（如有）：\n预计发布日期：\n\n谢谢。",
   "emailBody.mcn": "你好，我想了解 {short} 的游戏创作者合作。\n\n频道链接：\n内容类型：\n主要发布平台：\n目前想解决的问题：\n\n谢谢。",
   "emailBody.creators": "你好，我想了解 {short} 的游戏创作者合作。\n\n频道链接：\n内容类型：\n主要发布平台：\n目前想解决的问题：\n\n谢谢。",
+  "emailBody.mcnBrand": "你好，我想咨询 {short} 的 MCN／品牌合作。\n\n咨询类型：MCN 创作者合作 / 品牌广告合作\n频道或品牌名称：\n相关链接：\n想讨论的合作内容：\n预计时间：\n\n谢谢。",
   "hero.home.kicker": "平面设计 · 游戏创作者合作",
   "hero.home.title": "梦幻起源欢娱工作室（FGESTUDIO）",
   "hero.home.copy": "梦幻起源欢娱工作室（FGESTUDIO）是来自马来西亚的线上创意工作室。我们为商家与创作者制作宣传视觉，也与游戏内容创作者合作整理频道方向、内容与商业合作资料。",
   "hero.home.ctaDesign": "我要做设计",
   "hero.home.ctaMcn": "我是游戏创作者",
   "hero.home.scroll": "看看我们在做什么",
+  "home.contactOptions": "直接咨询方式",
+  "home.contactDesign": "WhatsApp 咨询设计",
+  "home.contactMcnBrand": "Email 咨询 MCN／品牌合作",
   "hero.design.title": "不只是把图做好看，而是让顾客一眼看懂你在卖什么。",
   "hero.design.slogan": "为商家、品牌与内容创作者制作有明确用途的宣传视觉。",
   "hero.design.copy": "海报、社媒贴文、广告图和 YouTube 缩略图，都会按照发布平台、目标顾客和宣传重点来设计。单张委托或月配套都可以。",
@@ -946,7 +952,6 @@ Object.assign(translations.cn, {
   "language.menu": "选择语言",
   "pricing.market.malaysia": "马来西亚价格（MYR）",
   "pricing.market.international": "国际价格（USD）",
-  "pricing.internationalMediaNote": "含马币价格的马来西亚版宣传图已隐藏；请以本页显示的 USD 价格与配套内容为准。",
 });
 
 Object.assign(translations.en, {
@@ -964,15 +969,20 @@ Object.assign(translations.en, {
   "emailSubject.design": "Design enquiry - {short}",
   "emailSubject.mcn": "Gaming creator collaboration enquiry - {short}",
   "emailSubject.creators": "Gaming creator collaboration enquiry - {short}",
+  "emailSubject.mcnBrand": "MCN / brand collaboration enquiry - {short}",
   "emailBody.design": "Hi, I would like to enquire about graphic design.\n\nWhat I need designed:\nPlatform / size:\nMain message or promotion focus:\nReference style (if any):\nExpected posting date:\n\nThank you.",
   "emailBody.mcn": "Hi, I would like to learn about gaming creator collaboration with {short}.\n\nChannel link:\nContent type:\nMain platform:\nWhat I would like to improve:\n\nThank you.",
   "emailBody.creators": "Hi, I would like to learn about gaming creator collaboration with {short}.\n\nChannel link:\nContent type:\nMain platform:\nWhat I would like to improve:\n\nThank you.",
+  "emailBody.mcnBrand": "Hi, I would like to enquire about MCN or brand collaboration with {short}.\n\nEnquiry type: Creator / MCN collaboration or brand advertising collaboration\nChannel or brand name:\nRelevant link:\nCollaboration details:\nPreferred timing:\n\nThank you.",
   "hero.home.kicker": "Graphic design · Gaming creator support",
   "hero.home.title": "We help businesses make their message clear, and gaming creators build their channels step by step.",
   "hero.home.copy": "FGESTUDIO is a Malaysian online creative studio. We create promotional visuals for businesses and creators, and work with gaming creators on channel direction, content and collaboration materials.",
   "hero.home.ctaDesign": "I need design",
   "hero.home.ctaMcn": "I'm a gaming creator",
   "hero.home.scroll": "See what we do",
+  "home.contactOptions": "Direct enquiry options",
+  "home.contactDesign": "WhatsApp design enquiry",
+  "home.contactMcnBrand": "Email MCN / brand collaboration",
   "hero.design.title": "More than a good-looking design — make it clear what you are selling.",
   "hero.design.slogan": "Practical promotional visuals for businesses, brands and content creators.",
   "hero.design.copy": "Posters, social posts, ad creatives and YouTube thumbnails are designed around the platform, audience and message. One-off jobs and monthly packages are both available.",
@@ -1065,7 +1075,6 @@ Object.assign(translations.en, {
   "language.menu": "Choose a language",
   "pricing.market.malaysia": "Malaysia pricing (MYR)",
   "pricing.market.international": "International pricing (USD)",
-  "pricing.internationalMediaNote": "Malaysia-edition artwork containing MYR prices is hidden. Please use the USD prices and package details shown on this page.",
 });
 
 Object.assign(translations.bm, {
@@ -1083,15 +1092,20 @@ Object.assign(translations.bm, {
   "emailSubject.design": "Pertanyaan reka bentuk - {short}",
   "emailSubject.mcn": "Pertanyaan kerjasama pencipta gaming - {short}",
   "emailSubject.creators": "Pertanyaan kerjasama pencipta gaming - {short}",
+  "emailSubject.mcnBrand": "Pertanyaan MCN / kerjasama jenama - {short}",
   "emailBody.design": "Hai, saya ingin bertanya tentang servis reka bentuk grafik.\n\nPerkara yang perlu direka: \nPlatform / saiz: \nMesej utama atau fokus promosi: \nGaya rujukan (jika ada): \nTarikh posting dijangka: \n\nTerima kasih.",
   "emailBody.mcn": "Hai, saya ingin mengetahui tentang kerjasama pencipta gaming dengan {short}.\n\nPautan channel: \nJenis kandungan: \nPlatform utama: \nPerkara yang ingin diperbaiki: \n\nTerima kasih.",
   "emailBody.creators": "Hai, saya ingin mengetahui tentang kerjasama pencipta gaming dengan {short}.\n\nPautan channel: \nJenis kandungan: \nPlatform utama: \nPerkara yang ingin diperbaiki: \n\nTerima kasih.",
+  "emailBody.mcnBrand": "Hai, saya ingin bertanya tentang kerjasama MCN atau jenama dengan {short}.\n\nJenis pertanyaan: Kerjasama pencipta / MCN atau pengiklanan jenama\nNama channel atau jenama:\nPautan berkaitan:\nButiran kerjasama:\nMasa yang dicadangkan:\n\nTerima kasih.",
   "hero.home.kicker": "Reka bentuk grafik · Sokongan pencipta gaming",
   "hero.home.title": "Kami bantu bisnes menjelaskan promosi, dan bantu pencipta gaming membina channel langkah demi langkah.",
   "hero.home.copy": "FGESTUDIO ialah studio kreatif online dari Malaysia. Kami menghasilkan visual promosi untuk bisnes dan pencipta, serta bekerjasama dengan pencipta gaming untuk menyusun arah channel, kandungan dan bahan kerjasama.",
   "hero.home.ctaDesign": "Saya perlukan reka bentuk",
   "hero.home.ctaMcn": "Saya pencipta gaming",
   "hero.home.scroll": "Lihat apa yang kami buat",
+  "home.contactOptions": "Pilihan pertanyaan terus",
+  "home.contactDesign": "Tanya reka bentuk di WhatsApp",
+  "home.contactMcnBrand": "Email MCN / kerjasama jenama",
   "hero.design.title": "Bukan sekadar cantik — pelanggan perlu terus faham apa yang anda jual.",
   "hero.design.slogan": "Visual promosi yang ada tujuan jelas untuk bisnes, jenama dan pencipta kandungan.",
   "hero.design.copy": "Poster, hantaran sosial, grafik iklan dan thumbnail YouTube direka mengikut platform, audiens dan mesej utama. Tempahan sekali atau pakej bulanan juga boleh.",
@@ -1184,7 +1198,6 @@ Object.assign(translations.bm, {
   "language.menu": "Pilih bahasa",
   "pricing.market.malaysia": "Harga Malaysia (MYR)",
   "pricing.market.international": "Harga antarabangsa (USD)",
-  "pricing.internationalMediaNote": "Visual edisi Malaysia yang mengandungi harga MYR disembunyikan. Sila rujuk harga USD dan butiran pakej pada halaman ini.",
 });
 
 let editableContent = {
@@ -1734,8 +1747,13 @@ function renderMarketPricing(market = activeMarket) {
   document.querySelectorAll("[data-market-pricing-note]").forEach((note) => {
     note.textContent = marketLabel;
   });
-  document.querySelectorAll("[data-international-media-note]").forEach((note) => {
-    note.hidden = activeMarket !== "international";
+  document.querySelectorAll("[data-market-image]").forEach((image) => {
+    const source = activeMarket === "malaysia"
+      ? image.dataset.imageMalaysia
+      : image.dataset.imageInternational;
+    if (source && image.getAttribute("src") !== source) {
+      image.setAttribute("src", source);
+    }
   });
 }
 

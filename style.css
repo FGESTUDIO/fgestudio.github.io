@@ -761,6 +761,51 @@ button {
   justify-content: center;
 }
 
+.hub-direct-contact {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.hub-contact-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 44px;
+  padding: 10px 14px;
+  border: 1px solid rgba(120, 210, 255, 0.24);
+  border-radius: 12px;
+  color: #eaf4ff;
+  background: rgba(5, 8, 22, 0.72);
+  font-size: 0.88rem;
+  font-weight: 850;
+  transition: transform var(--motion-fast) ease, border-color var(--motion-fast) ease, background var(--motion-fast) ease;
+}
+
+.hub-contact-link img {
+  width: 20px;
+  height: 20px;
+}
+
+.hub-contact-link.is-whatsapp {
+  border-color: rgba(77, 255, 174, 0.36);
+  background: rgba(77, 255, 174, 0.08);
+}
+
+.hub-contact-link.is-email {
+  border-color: rgba(24, 232, 255, 0.34);
+  background: rgba(24, 232, 255, 0.07);
+}
+
+.hub-contact-link:hover {
+  border-color: rgba(122, 247, 255, 0.74);
+  background: rgba(24, 232, 255, 0.13);
+  transform: translateY(-2px);
+}
+
 .hub-scroll-link {
   margin-top: clamp(30px, 6vw, 58px);
   color: rgba(224, 235, 255, 0.7);
@@ -1434,17 +1479,6 @@ button {
   font-weight: 750;
 }
 
-.international-package-note {
-  max-width: 760px;
-  margin: 14px 0 0;
-  padding: 12px 14px;
-  border-left: 3px solid var(--cyan);
-  color: #dce8ff;
-  background: rgba(24, 232, 255, 0.07);
-  font-size: 0.9rem;
-  line-height: 1.55;
-}
-
 .package-group-title {
   margin: 0 0 20px;
   color: var(--white);
@@ -1593,7 +1627,6 @@ body[data-page="about"] .hero h1 {
   background: #fff;
 }
 
-html[data-market="international"] body[data-page="design"] .public-service-image,
 html[data-market="international"] body[data-page="design"] .package-image {
   display: none;
 }
@@ -2731,7 +2764,7 @@ html[data-market="international"] body[data-page="design"] .package-image {
     scroll-snap-align: center;
   }
 
-  .mobile-contact-cta {
+  body[data-page="design"] .mobile-contact-cta {
     position: fixed;
     right: 14px;
     bottom: calc(14px + env(safe-area-inset-bottom));
@@ -2751,7 +2784,7 @@ html[data-market="international"] body[data-page="design"] .package-image {
     font-weight: 900;
   }
 
-  .mobile-contact-cta img {
+  body[data-page="design"] .mobile-contact-cta img {
     width: 22px;
     height: 22px;
   }
@@ -2883,6 +2916,11 @@ html[data-market="international"] body[data-page="design"] .package-image {
   }
 
   .hub-actions .btn {
+    width: 100%;
+  }
+
+  .hub-direct-contact,
+  .hub-contact-link {
     width: 100%;
   }
 
