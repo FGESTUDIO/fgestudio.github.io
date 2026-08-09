@@ -3,8 +3,8 @@
   "channelUrl": "https://www.youtube.com/@yinsi_gaming",
   "channelId": "UCRVp_Tpzm6REWPKIoEOf6PA",
   "title": "饮思YS",
-  "subscriberCount": 918,
-  "viewCount": 809809,
+  "subscriberCount": 919,
+  "viewCount": 809879,
   "videoCount": 465,
   "hiddenSubscriberCount": false,
   "videos": [
@@ -36,6 +36,6 @@
       "thumbnail": "/images/creators/youtube/ZDbiiJZ2Z3c.jpg"
     }
   ],
-  "updatedAt": "2026-08-08T01:06:54.972Z",
+  "updatedAt": "2026-08-09T01:11:13.818Z",
   "source": "YouTube Data API v3"
 }
