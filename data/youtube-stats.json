@@ -4,10 +4,19 @@
   "channelId": "UCRVp_Tpzm6REWPKIoEOf6PA",
   "title": "饮思YS",
   "subscriberCount": 919,
-  "viewCount": 809879,
-  "videoCount": 465,
+  "viewCount": 809964,
+  "videoCount": 466,
   "hiddenSubscriberCount": false,
   "videos": [
+    {
+      "id": "3T9LZBI1wcE",
+      "title": "【白银之城】二测全面分析：半年扩成40小时内容，它终于摆脱“顶级美术、常规玩法”了吗？",
+      "url": "https://www.youtube.com/watch?v=3T9LZBI1wcE",
+      "publishedAt": "2026-08-09T14:51:53Z",
+      "durationSeconds": 575,
+      "kind": "standard",
+      "thumbnail": "/images/creators/youtube/3T9LZBI1wcE.jpg"
+    },
     {
       "id": "VqNGzd5SP5k",
       "title": "【崩坏：因缘精灵】二测几乎重做！米哈游终于想清楚了？",
@@ -25,17 +34,8 @@
       "durationSeconds": 239,
       "kind": "standard",
       "thumbnail": "/images/creators/youtube/esooKDzsA6s.jpg"
-    },
-    {
-      "id": "ZDbiiJZ2Z3c",
-      "title": "【异环】1.2真红攻略 | 抽前必看！培养路线、驱动块、弧盘、队伍搭配整理",
-      "url": "https://www.youtube.com/watch?v=ZDbiiJZ2Z3c",
-      "publishedAt": "2026-07-11T04:46:38Z",
-      "durationSeconds": 215,
-      "kind": "standard",
-      "thumbnail": "/images/creators/youtube/ZDbiiJZ2Z3c.jpg"
     }
   ],
-  "updatedAt": "2026-08-09T01:11:13.818Z",
+  "updatedAt": "2026-08-10T01:13:39.411Z",
   "source": "YouTube Data API v3"
 }
