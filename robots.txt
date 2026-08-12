@@ -1,4 +1,15 @@
+# FGESTUDIO permits search indexing and real-time AI answers, but not AI model training.
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GPTBot
+Disallow: /
+
 User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=no, use=reference
 Allow: /
 
 Sitemap: https://fgestudio.my/sitemap.xml

@@ -1101,6 +1101,14 @@ button {
   gap: 18px;
 }
 
+.company-facts-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.company-facts-grid .business-card {
+  min-height: 330px;
+}
+
 .hub-business {
   background:
     radial-gradient(circle at 8% 14%, rgba(24, 232, 255, 0.09), transparent 26rem),
