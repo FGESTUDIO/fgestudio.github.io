@@ -1,7 +1,7 @@
 {
   "enabled": true,
-  "minimumVersionCode": 8,
-  "latestVersionName": "0.4.2",
+  "minimumVersionCode": 9,
+  "latestVersionName": "0.4.3",
   "title": "需要更新追番簿",
   "message": "你正在使用的版本已经过低，必须更新后才能继续使用。请联系开发者获取最新版。",
   "contactEmail": "contact@fgestudio.my"
