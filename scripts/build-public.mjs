@@ -101,7 +101,7 @@ export async function buildPublicSite(root = defaultRoot, output = path.join(roo
   await copy("data/youtube-stats.json");
   await copy("app-config/zhuifanbu.json", false);
   for (const name of ["index.html", "portfolio.css", "portfolio.js"]) await copy(`works-2026/${name}`);
-  await copyDirectory("works-2026/images", imageExtensions);
+  await copy("works-2026/images/portfolio-preview.webp", false);
 
   await checkParents('works-2026/works.json');
   if (!(await lstat(source('works-2026/works.json'))).isFile() || (await lstat(source('works-2026/works.json'))).isSymbolicLink()) throw new Error('Invalid portfolio data file');

@@ -32,7 +32,7 @@ for (const [i, work] of publicData.works.entries()) {
   assert.deepEqual(work, Object.fromEntries(Object.entries(expected[i]).filter(([key]) => fields.has(key))));
 }
 const publicImages = new Set(expected.map(work => work.image.replace(/^\//, '')));
-for (const name of names.filter(name => name.startsWith('works-2026/generated/'))) assert.ok(publicImages.has(name), `Unpublished preview: ${name}`);
+for (const name of names.filter(name => /^works-2026\/(generated|images)\//.test(name))) assert.ok(publicImages.has(name) || name === 'works-2026/images/portfolio-preview.webp', `Unpublished preview: ${name}`);
 let references = 0;
 async function checkValues(value) {
   if (typeof value === 'string' && /^\/?(?:images|works-2026)\//.test(value)) {

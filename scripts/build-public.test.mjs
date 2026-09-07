@@ -24,6 +24,7 @@ async function fixture() {
   await put("images/logo.webp", "public image");
   await put("works-2026/generated/visible.webp", "public preview");
   await put("works-2026/generated/hidden.webp", "unpublished preview");
+  await put("works-2026/images/hidden.webp", "unpublished legacy preview");
   await put("works-2026/uploads/original.png", "private original");
   await put(".github/secret.txt", "private secret");
   await put("docs/internal.md", "private docs");
@@ -62,6 +63,7 @@ test("builds a separate public tree without source files or raw uploads", async 
     assert.equal(await readFile(path.join(f.root, "works-2026/uploads/original.png"), "utf8"), "private original");
     await buildPublicSite(f.root);
     await absent(path.join(out, "works-2026/generated/hidden.webp"));
+    await absent(path.join(out, "works-2026/images/hidden.webp"));
   } finally { await f.cleanup(); }
 });
 
