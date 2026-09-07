@@ -79,8 +79,21 @@ test("rejects traversal and symlinked public assets", async () => {
     await writeFile(path.join(f.root, "works-2026/works.json"), JSON.stringify({ works: [{ published: true, title_en: "Unsafe", image: "../../private.webp" }] }));
     await assert.rejects(buildPublicSite(f.root), /Unsafe public asset path/);
     await writeFile(path.join(f.root, "works-2026/works.json"), JSON.stringify({ works: [] }));
-    await symlink(path.join(f.root, ".github/secret.txt"), path.join(f.root, "images/escape.webp"));
+    await symlink(path.join(f.root, ".github"), path.join(f.root, "images/escape"), "junction");
     await assert.rejects(buildPublicSite(f.root), /Symlink in public assets/);
+  } finally { await f.cleanup(); }
+});
+
+test('rejects symlinked parent directories and output directories', async () => {
+  const f = await fixture();
+  try {
+    await rm(path.join(f.root, 'works-2026/generated'), { recursive: true });
+    await symlink(path.join(f.root, '.github'), path.join(f.root, 'works-2026/generated'), 'junction');
+    await assert.rejects(buildPublicSite(f.root), /Symlink/);
+    await rm(path.join(f.root, 'dist'), { recursive: true });
+    await symlink(path.join(f.root, '.github'), path.join(f.root, 'dist'), 'junction');
+    await assert.rejects(buildPublicSite(f.root), /Symlink build output/);
+    assert.equal(await readFile(path.join(f.root, '.github/secret.txt'), 'utf8'), 'private secret');
   } finally { await f.cleanup(); }
 });
 

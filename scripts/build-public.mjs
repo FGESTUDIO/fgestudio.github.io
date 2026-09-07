@@ -5,7 +5,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 const defaultRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const rootFiles = [
   "index.html", "404.html", "about.html", "mcn.html", "privacy.html", "terms.html",
-  "script.js", "404.js", "privacy-page.js", "terms-page.js", "style.css",
+  "script.js", "404.js", "privacy-page.js", "terms-page.js", "style.css", "privacy-page.css", "terms-page.css",
   "content.json", "site.webmanifest", "robots.txt", "sitemap.xml", "llms.txt",
   "favicon.ico", "favicon-48x48.png", "favicon-96x96.png", "apple-touch-icon.png",
   "icon-192.png", "icon-512.png",
@@ -41,10 +41,19 @@ export async function buildPublicSite(root = defaultRoot, output = path.join(roo
   const destination = (name) => path.join(output, ...relativePath(name).split("/"));
   const published = new Set();
 
+  async function checkParents(name) {
+    const parts = relativePath(name).split('/');
+    for (let i = 1; i < parts.length; i++) {
+      const parent = await lstat(path.join(root, ...parts.slice(0, i)));
+      if (parent.isSymbolicLink() || !parent.isDirectory()) throw new Error(`Symlink or invalid public directory: ${name}`);
+    }
+  }
+
   async function copy(name, required = true) {
     const from = source(name);
     let info;
     try {
+      await checkParents(name);
       info = await lstat(from);
     } catch (error) {
       if (!required && error.code === "ENOENT") return;
@@ -59,6 +68,7 @@ export async function buildPublicSite(root = defaultRoot, output = path.join(roo
   async function copyDirectory(name, extensions) {
     let entries;
     try {
+      await checkParents(`${name}/__directory__`);
       entries = await readdir(source(name), { withFileTypes: true });
     } catch (error) {
       if (error.code === "ENOENT") return;
@@ -78,6 +88,11 @@ export async function buildPublicSite(root = defaultRoot, output = path.join(roo
 
   // The repository root is never the deployment directory. No CMS configuration,
   // workflows, scripts, source uploads, credentials or internal analytics are copied.
+  try {
+    if ((await lstat(output)).isSymbolicLink()) throw new Error('Symlink build output is forbidden');
+  } catch (error) {
+    if (error.code !== 'ENOENT') throw error;
+  }
   await rm(output, { recursive: true, force: true });
   await mkdir(output, { recursive: true });
   for (const name of rootFiles) await copy(name, ["index.html", "404.html", "script.js", "style.css", "content.json", "site.webmanifest", "robots.txt", "sitemap.xml"].includes(name));
@@ -88,6 +103,8 @@ export async function buildPublicSite(root = defaultRoot, output = path.join(roo
   for (const name of ["index.html", "portfolio.css", "portfolio.js"]) await copy(`works-2026/${name}`);
   await copyDirectory("works-2026/images", imageExtensions);
 
+  await checkParents('works-2026/works.json');
+  if (!(await lstat(source('works-2026/works.json'))).isFile() || (await lstat(source('works-2026/works.json'))).isSymbolicLink()) throw new Error('Invalid portfolio data file');
   const portfolio = JSON.parse(await readFile(source("works-2026/works.json"), "utf8"));
   if (!Array.isArray(portfolio.works)) throw new Error("Invalid portfolio data.");
   const publicWorks = [];
