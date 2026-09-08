@@ -1,8 +1,8 @@
 {
   "enabled": true,
-  "minimumVersionCode": 52,
-  "latestVersionName": "0.5.40",
+  "minimumVersionCode": 96,
+  "latestVersionName": "0.5.84",
   "title": "需要更新追番簿",
-  "message": "你正在使用的版本已经过低，必须更新后才能继续使用。请联系开发者获取最新版。",
+  "message": "当前版本已经过低。请更新至 v0.5.84 或更高版本后继续使用，以获得更快的加载速度、每日放送刷新和完整作品关系资料。",
   "contactEmail": "contact@fgestudio.my"
 }
