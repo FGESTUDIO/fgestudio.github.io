@@ -1,8 +1,8 @@
 {
   "enabled": true,
-  "minimumVersionCode": 96,
-  "latestVersionName": "0.5.84",
+  "minimumVersionCode": 99,
+  "latestVersionName": "0.5.87",
   "title": "需要更新追番簿",
-  "message": "当前版本已经过低。请更新至 v0.5.84 或更高版本后继续使用，以获得更快的加载速度、每日放送刷新和完整作品关系资料。",
+  "message": "当前版本已经过低。请更新至 v0.5.87 或更高版本后继续使用，以修复排行榜部分动漫仍显示英文或中英混合标题的问题。",
   "contactEmail": "contact@fgestudio.my"
 }
