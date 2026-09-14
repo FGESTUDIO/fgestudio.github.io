@@ -1,8 +1,8 @@
 {
   "enabled": true,
-  "minimumVersionCode": 99,
-  "latestVersionName": "0.5.87",
+  "minimumVersionCode": 112,
+  "latestVersionName": "0.6.00",
   "title": "需要更新追番簿",
-  "message": "当前版本已经过低。请更新至 v0.5.87 或更高版本后继续使用，以修复排行榜部分动漫仍显示英文或中英混合标题的问题。",
+  "message": "当前版本已经过低。请更新至 v0.6.00 或更高版本后继续使用，以获得修复后的角色排行榜同步和全局下拉刷新功能。",
   "contactEmail": "contact@fgestudio.my"
 }
