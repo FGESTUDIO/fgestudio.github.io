@@ -35,3 +35,21 @@ jobs:
 
       - name: Validate JSON files
         run: jq empty content.json data/youtube-stats.json site.webmanifest
+
+      - name: Build public deployment
+        run: node scripts/build-public.mjs
+
+      - name: Validate built pages and resources
+        run: node --test scripts/site-integrity.test.mjs
+        env:
+          SITE_ROOT: dist
+
+      - name: Audit public output
+        run: node scripts/audit-public.mjs
+
+      - name: Save verified public artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: public-site
+          path: dist/
+          if-no-files-found: error

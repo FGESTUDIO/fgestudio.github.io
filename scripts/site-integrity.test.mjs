@@ -4,7 +4,7 @@ import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
 
-const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const repositoryRoot = process.env.SITE_ROOT ? path.resolve(process.env.SITE_ROOT) : path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const ignoredSchemes = /^(?:mailto:|tel:|javascript:|data:|https?:\/\/|\/\/|#)/i;
 const publicPages = [
   "index.html",
@@ -19,7 +19,7 @@ async function walk(directory) {
   const entries = await readdir(directory, { withFileTypes: true });
   const files = [];
   for (const entry of entries) {
-    if (entry.name === ".git") continue;
+    if ([".git", "dist", "node_modules"].includes(entry.name)) continue;
     const fullPath = path.join(directory, entry.name);
     files.push(...(entry.isDirectory() ? await walk(fullPath) : [fullPath]));
   }
