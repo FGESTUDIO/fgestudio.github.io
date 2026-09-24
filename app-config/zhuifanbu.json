@@ -1,8 +1,8 @@
 {
   "enabled": true,
-  "minimumVersionCode": 129,
-  "latestVersionName": "0.6.17",
+  "minimumVersionCode": 130,
+  "latestVersionName": "0.6.18",
   "title": "需要更新追番簿",
-  "message": "当前版本已经过低。请更新至 v0.6.17 或更高版本后继续使用，以获得最新的功能、性能、流畅度与稳定性改进。",
+  "message": "当前版本已经过低。请更新至 v0.6.18 或更高版本后继续使用，以获得最新的功能、角色排行榜修复、性能与稳定性改进。",
   "contactEmail": "contact@fgestudio.my"
 }
