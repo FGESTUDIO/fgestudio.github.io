@@ -99,3 +99,14 @@ jq empty content.json data/youtube-stats.json
 `.github/workflows/update-sitemap.yml` 会根据公开页面及共用资源的最新 Git 提交日期更新 `sitemap.xml`，无需手动维护 `lastmod`。
 
 法律条款中的订金、退款、修改次数和附加费用属于业务规则；没有负责人确认时，不要自行更改。
+
+## AI 协同开发入口
+
+- ChatGPT / Codex / Work：先读 [`AI_HANDOFF.md`](AI_HANDOFF.md)
+- Claude / Claude Code：项目级入口 [`CLAUDE.md`](CLAUDE.md)
+- 多 AI 协作规则：[`docs/MULTI_AI_COLLABORATION.md`](docs/MULTI_AI_COLLABORATION.md)
+- 当前跨 AI 交接：[`docs/CURRENT_HANDOFF.md`](docs/CURRENT_HANDOFF.md)
+- 第三方复用与 License 登记：[`docs/THIRD_PARTY_REUSE.md`](docs/THIRD_PARTY_REUSE.md)
+
+ChatGPT/Codex 与 Claude 并行工作时使用独立任务分支，避免在同一分支同时修改同一任务。
+
