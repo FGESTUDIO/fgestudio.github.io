@@ -1,8 +1,8 @@
 {
   "enabled": true,
-  "minimumVersionCode": 141,
-  "latestVersionName": "0.6.20",
+  "minimumVersionCode": 145,
+  "latestVersionName": "0.6.24",
   "title": "需要更新追番簿",
-  "message": "当前版本已经过低。请更新至 v0.6.20 或更高版本后继续使用，以获得更顺畅的下拉刷新、本周榜名次变化显示，以及 v0.6.19 已加入的液态玻璃界面、性能优化、中文标题与评分补全、资讯翻译和平板适配等改进。",
+  "message": "当前版本已经过低。请更新至 v0.6.24 或更高版本后继续使用，以获得针对中低端手机的流畅度优化、后台线程性能改进、本周榜与资讯加载优化、性能诊断，以及此前版本已加入的液态玻璃界面、中文标题与评分补全、资讯翻译和平板适配等改进。",
   "contactEmail": "contact@fgestudio.my"
 }
